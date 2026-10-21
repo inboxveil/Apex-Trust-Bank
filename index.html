@@ -12,7 +12,368 @@
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: #060e1e; }
     ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
-  </style>
+  
+/* APEX TRUST BANK — PREMIUM HOMEPAGE */
+.apex-home {
+  display: none;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+  color: #f8fafc;
+  background: #071326;
+  overflow: hidden;
+}
+
+.apex-nav {
+  max-width: 1200px;
+  margin: auto;
+  padding: 22px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.apex-brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.apex-brand-mark {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 13px;
+  color: #071326;
+  background: linear-gradient(135deg, #f4d58a, #bd9140);
+  font-weight: 900;
+}
+
+.apex-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.apex-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  min-height: 46px;
+  padding: 0 19px;
+  border-radius: 9px;
+  border: 1px solid #344258;
+  color: #fff;
+  background: transparent;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: .2s ease;
+}
+
+.apex-btn:hover {
+  transform: translateY(-2px);
+}
+
+.apex-btn-gold {
+  color: #111827;
+  border-color: #e3bd70;
+  background: linear-gradient(135deg, #f5dda1, #c89a46);
+}
+
+.apex-hero {
+  max-width: 1200px;
+  margin: auto;
+  padding: 65px 24px 75px;
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  align-items: center;
+  gap: 48px;
+}
+
+.apex-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: #e7c779;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.apex-eyebrow::before {
+  content: "";
+  width: 25px;
+  height: 2px;
+  background: #d8b56a;
+}
+
+.apex-hero h1 {
+  margin: 22px 0;
+  max-width: 650px;
+  color: #fff;
+  font-size: clamp(38px, 5.5vw, 66px);
+  line-height: 1.08;
+  letter-spacing: -2px;
+  font-weight: 800;
+}
+
+.apex-hero h1 span {
+  color: #e4c477;
+}
+
+.apex-hero-copy {
+  max-width: 510px;
+  color: #aab7ca;
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.apex-hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.apex-trust-note {
+  margin-top: 27px;
+  color: #9cabc0;
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+.apex-visual {
+  position: relative;
+  min-height: 390px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.apex-visual-image {
+  width: 100%;
+  height: 390px;
+  object-fit: cover;
+  border-radius: 22px;
+  border: 1px solid #344258;
+  filter: saturate(.8);
+}
+
+.apex-visual-shade {
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(7,19,38,.05), rgba(7,19,38,.6));
+  pointer-events: none;
+}
+
+.apex-floating-card {
+  position: absolute;
+  right: -12px;
+  bottom: 25px;
+  width: min(265px, 80%);
+  padding: 20px;
+  border: 1px solid rgba(226,198,130,.35);
+  border-radius: 15px;
+  background: rgba(10,27,50,.94);
+  box-shadow: 0 20px 50px #0005;
+}
+
+.apex-floating-label {
+  color: #aab7ca;
+  font-size: 11px;
+}
+
+.apex-floating-title {
+  margin-top: 8px;
+  color: #f1d28a;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.apex-section {
+  max-width: 1200px;
+  margin: auto;
+  padding: 55px 24px;
+}
+
+.apex-section-heading {
+  max-width: 680px;
+  margin-bottom: 28px;
+}
+
+.apex-section-heading h2 {
+  margin: 12px 0;
+  color: #fff;
+  font-size: clamp(27px, 4vw, 40px);
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+.apex-section-heading p {
+  color: #aab7ca;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.apex-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.apex-feature {
+  padding: 24px;
+  border: 1px solid #273951;
+  border-radius: 15px;
+  background: #0b1b32;
+}
+
+.apex-feature-icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  color: #e7c779;
+  background: #d8b56a16;
+  font-size: 21px;
+}
+
+.apex-feature h3 {
+  margin: 17px 0 8px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.apex-feature p {
+  color: #aab7ca;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.apex-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+  padding: 30px 24px;
+  border-top: 1px solid #26364d;
+  border-bottom: 1px solid #26364d;
+  background: #09182b;
+}
+
+.apex-stat {
+  text-align: center;
+}
+
+.apex-stat strong {
+  display: block;
+  color: #e7c779;
+  font-size: 25px;
+  font-weight: 800;
+}
+
+.apex-stat span {
+  display: block;
+  margin-top: 7px;
+  color: #aab7ca;
+  font-size: 11px;
+}
+
+.apex-footer {
+  max-width: 1200px;
+  margin: auto;
+  padding: 28px 24px;
+  border-top: 1px solid #26364d;
+  color: #91a0b6;
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+.apex-footer a {
+  color: #e7c779;
+  text-decoration: none;
+}
+
+@media (max-width: 760px) {
+  .apex-nav {
+    padding: 18px 16px;
+  }
+
+  .apex-brand {
+    font-size: 11px;
+    letter-spacing: .5px;
+  }
+
+  .apex-brand-mark {
+    width: 36px;
+    height: 36px;
+  }
+
+  .apex-nav-actions {
+    gap: 7px;
+  }
+
+  .apex-btn {
+    min-height: 40px;
+    padding: 0 11px;
+    font-size: 11px;
+  }
+
+  .apex-hero {
+    grid-template-columns: 1fr;
+    padding: 38px 18px 45px;
+    gap: 30px;
+  }
+
+  .apex-hero h1 {
+    letter-spacing: -1.3px;
+  }
+
+  .apex-visual {
+    min-height: 300px;
+  }
+
+  .apex-visual-image {
+    height: 300px;
+  }
+
+  .apex-floating-card {
+    right: 8px;
+    bottom: 12px;
+  }
+
+  .apex-section {
+    padding: 40px 18px;
+  }
+
+  .apex-feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .apex-stats {
+    padding: 24px 12px;
+    gap: 8px;
+  }
+
+  .apex-stat strong {
+    font-size: 20px;
+  }
+
+  .apex-stat span {
+    font-size: 10px;
+  }
+}
+</style>
 </head>
 <body class="antialiased min-h-screen flex flex-col justify-center items-center p-2 sm:p-4 md:p-6 relative">
 
