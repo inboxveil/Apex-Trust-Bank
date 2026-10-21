@@ -12,9 +12,73 @@
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: #060e1e; }
     ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+    /* APEX TRUST BANK — PREMIUM HOMEPAGE */
+.apex-hero {
+  position: relative;
+  overflow: hidden;
   </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col justify-center items-center p-2 sm:p-4 md:p-6 relative">
+
+<!-- APEX TRUST BANK HOMEPAGE HERO -->
+<section class="apex-hero" id="apexHomepage">
+  <div class="apex-hero-inner">
+    <div>
+      <div class="apex-hero-tag">Banking with purpose</div>
+      <h1>Banking that moves <span>you forward.</span></h1>
+      <p>
+        A modern banking experience designed around your goals.
+        Explore your account options and discover a simpler way
+        to navigate your financial life.
+      </p>
+      <div class="apex-hero-actions">
+        <a href="#register" class="apex-hero-btn apex-hero-primary"
+           onclick="if(typeof showPage==='function'){showPage('register')}">
+          Open an Account &nbsp; ↗
+        </a>
+        <a href="#login" class="apex-hero-btn apex-hero-secondary"
+           onclick="if(typeof showPage==='function'){showPage('login')}">
+          Customer Login
+        </a>
+      </div>
+      <div class="apex-hero-note">A convenient digital banking experience.</div>
+    </div>
+
+    <div class="apex-hero-art" aria-label="Decorative bank card illustration">
+      <div class="apex-hero-circle">
+        <div class="apex-hero-card">
+          <div class="apex-card-top">
+            <span>APEX TRUST BANK</span>
+            <span class="apex-card-chip"></span>
+          </div>
+          <div class="apex-card-number">•••• &nbsp; •••• &nbsp; •••• &nbsp; 2048</div>
+          <div class="apex-card-bottom">
+            <span>YOUR NAME</span>
+            <span>DIGITAL BANKING</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="apex-hero-features">
+  <div class="apex-hero-feature-inner">
+    <div class="apex-feature">
+      ◈ &nbsp; Everyday Banking
+      <span>Keep your account information organized.</span>
+    </div>
+    <div class="apex-feature">
+      ◈ &nbsp; Security-Conscious Access
+      <span>Designed with account privacy in mind.</span>
+    </div>
+    <div class="apex-feature">
+      ◈ &nbsp; Financial Goals
+      <span>Keep your plans and priorities in view.</span>
+    </div>
+  </div>
+</section>
+<!-- END APEX TRUST BANK HOMEPAGE HERO -->
 
   <!-- SIDE NAVIGATION DRAWER (MAIN MENU) -->
   <div id="sideNavOverlay" onclick="toggleNav()" class="fixed inset-0 bg-black/70 backdrop-blur-md z-40 hidden transition-opacity"></div>
