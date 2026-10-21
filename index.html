@@ -12,11 +12,158 @@
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: #060e1e; }
     ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
-    /* APEX TRUST BANK — PREMIUM HOMEPAGE */
+    
+/* APEX TRUST BANK — PREMIUM HOMEPAGE */
 .apex-hero {
   position: relative;
   overflow: hidden;
-  </style>
+  width: 100%;
+  padding: 70px 7%;
+  color: #fff;
+  background: radial-gradient(ellipse at 85% 35%, rgba(216,181,106,.16), transparent 35%), linear-gradient(125deg, #071629, #102b49);
+}
+.apex-hero-inner {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  align-items: center;
+  gap: 45px;
+}
+.apex-hero-tag {
+  color: #e5c781;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.apex-hero h1 {
+  max-width: 680px;
+  margin: 22px 0;
+  font-size: clamp(40px, 5vw, 66px);
+  line-height: 1.1;
+  letter-spacing: -2px;
+}
+.apex-hero h1 span { color: #e5c781; }
+.apex-hero p {
+  max-width: 540px;
+  color: #c0cede;
+  font-size: 16px;
+  line-height: 1.9;
+}
+.apex-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+.apex-hero-btn {
+  display: inline-flex;
+  min-height: 49px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  border: 1px solid #d8b56a;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 13px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.apex-hero-primary {
+  color: #101b2b;
+  background: linear-gradient(135deg, #f0d99c, #d8b56a);
+}
+.apex-hero-secondary {
+  color: white;
+  background: transparent;
+}
+.apex-hero-note {
+  margin-top: 24px;
+  color: #b9c8d9;
+  font-size: 12px;
+}
+.apex-hero-art {
+  min-height: 320px;
+  display: grid;
+  place-items: center;
+}
+.apex-hero-circle {
+  width: min(100%, 360px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(229,199,129,.35);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 0 0 25px rgba(229,199,129,.035), 0 0 0 55px rgba(229,199,129,.025);
+}
+.apex-hero-card {
+  width: 83%;
+  min-height: 210px;
+  padding: 25px;
+  border: 1px solid rgba(240,217,156,.6);
+  border-radius: 18px;
+  background: linear-gradient(140deg, #1b4163, #09182b);
+  box-shadow: 0 25px 65px rgba(0,0,0,.35);
+  transform: rotate(-5deg);
+}
+.apex-card-top, .apex-card-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+}
+.apex-card-chip {
+  width: 34px;
+  height: 25px;
+  border: 1px solid #e5c781;
+  border-radius: 5px;
+}
+.apex-card-number {
+  margin-top: 43px;
+  color: #f0d99c;
+  letter-spacing: 3px;
+  font-size: 16px;
+}
+.apex-card-bottom { margin-top: 23px; }
+.apex-hero-features {
+  width: 100%;
+  padding: 25px 7%;
+  background: #0a1c30;
+  border-top: 1px solid rgba(255,255,255,.1);
+  border-bottom: 1px solid rgba(255,255,255,.1);
+}
+.apex-hero-feature-inner {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.apex-feature {
+  color: #fff;
+  font-weight: 700;
+  font-size: 13px;
+}
+.apex-feature span {
+  display: block;
+  margin-top: 7px;
+  color: #b9c8d9;
+  font-weight: 400;
+  line-height: 1.6;
+}
+@media (max-width: 760px) {
+  .apex-hero { padding: 54px 6% 40px; }
+  .apex-hero-inner { grid-template-columns: 1fr; gap: 20px; }
+  .apex-hero h1 { font-size: 43px; letter-spacing: -1.5px; }
+  .apex-hero p { font-size: 14px; }
+  .apex-hero-art { min-height: 290px; }
+  .apex-hero-circle { width: 260px; }
+  .apex-hero-card { padding: 20px; }
+  .apex-hero-feature-inner { grid-template-columns: 1fr; }
+}
+</style>
+</style>
 </head>
 <body class="antialiased min-h-screen flex flex-col justify-center items-center p-2 sm:p-4 md:p-6 relative">
 
