@@ -12,368 +12,633 @@
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: #060e1e; }
     ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
-  
-/* APEX TRUST BANK — PREMIUM HOMEPAGE */
-.apex-home {
-  display: none;
-  width: 100%;
-  min-height: 100vh;
-  margin: 0 auto;
-  color: #f8fafc;
-  background: #071326;
-  overflow: hidden;
+  <!-- APEX TRUST BANK — COMPLETE HOMEPAGE -->
+<section id="apexHome" class="apex-site">
+<style>
+.apex-site {
+  --navy:#071b3b;
+  --blue:#075de8;
+  --gold:#d8b56a;
+  --muted:#64748b;
+  font-family:Arial,Helvetica,sans-serif;
+  color:var(--navy);
+  background:#fff;
+  overflow:hidden;
 }
-
-.apex-nav {
-  max-width: 1200px;
-  margin: auto;
-  padding: 22px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+.apex-site * { box-sizing:border-box; }
+.apex-site button,
+.apex-site a { font:inherit; }
+.apex-site button { cursor:pointer; }
+.apex-site a { text-decoration:none; }
+.apex-site .wrap { width:90%;max-width:1200px;margin:auto; }
+.apex-site .nav {
+  display:flex;align-items:center;justify-content:space-between;
+  gap:20px;padding:20px 5%;border-bottom:1px solid #edf1f7;
+  background:#fff;
 }
-
-.apex-brand {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  font-weight: 800;
-  letter-spacing: 1px;
+.apex-site .brand {
+  display:flex;align-items:center;gap:10px;
+  font-weight:800;font-size:17px;white-space:nowrap;
 }
-
-.apex-brand-mark {
-  width: 42px;
-  height: 42px;
-  display: grid;
-  place-items: center;
-  border-radius: 13px;
-  color: #071326;
-  background: linear-gradient(135deg, #f4d58a, #bd9140);
-  font-weight: 900;
+.apex-site .brand small {
+  display:block;font-size:9px;letter-spacing:2px;
+  color:var(--blue);margin-top:4px;
 }
-
-.apex-nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.apex-site .logo { width:42px;height:42px;flex-shrink:0; }
+.apex-site .navlinks {
+  display:flex;align-items:center;gap:23px;
 }
-
-.apex-btn {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  min-height: 46px;
-  padding: 0 19px;
-  border-radius: 9px;
-  border: 1px solid #344258;
-  color: #fff;
-  background: transparent;
-  font-size: 13px;
-  font-weight: 700;
-  text-decoration: none;
-  cursor: pointer;
-  transition: .2s ease;
+.apex-site .navlinks a {
+  color:var(--navy);font-size:13px;font-weight:600;
 }
-
-.apex-btn:hover {
-  transform: translateY(-2px);
+.apex-site .navlinks a:hover { color:var(--blue); }
+.apex-site .btn {
+  display:inline-flex;align-items:center;justify-content:center;
+  gap:10px;padding:14px 21px;border-radius:30px;
+  background:var(--blue);color:white;border:1px solid var(--blue);
+  font-size:13px;font-weight:700;transition:.2s;
 }
-
-.apex-btn-gold {
-  color: #111827;
-  border-color: #e3bd70;
-  background: linear-gradient(135deg, #f5dda1, #c89a46);
+.apex-site .btn:hover {
+  transform:translateY(-2px);box-shadow:0 8px 22px #075de82b;
 }
-
-.apex-hero {
-  max-width: 1200px;
-  margin: auto;
-  padding: 65px 24px 75px;
-  display: grid;
-  grid-template-columns: 1.05fr .95fr;
-  align-items: center;
-  gap: 48px;
+.apex-site .btn-light {
+  color:var(--navy);background:white;border-color:#d5deec;
 }
-
-.apex-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  color: #e7c779;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+.apex-site .hero {
+  position:relative;
+  background:linear-gradient(110deg,#f6f9ff 0%,#fff 55%,#eaf3ff 100%);
+  padding:65px 0 55px;
 }
-
-.apex-eyebrow::before {
-  content: "";
-  width: 25px;
-  height: 2px;
-  background: #d8b56a;
+.apex-site .hero-grid {
+  display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;gap:35px;
 }
-
-.apex-hero h1 {
-  margin: 22px 0;
-  max-width: 650px;
-  color: #fff;
-  font-size: clamp(38px, 5.5vw, 66px);
-  line-height: 1.08;
-  letter-spacing: -2px;
-  font-weight: 800;
+.apex-site .eyebrow {
+  display:inline-flex;align-items:center;gap:9px;
+  background:#e7f0ff;color:#0648b7;border:1px solid #d6e5ff;
+  padding:10px 15px;border-radius:30px;font-size:12px;
+  font-weight:700;margin-bottom:24px;
 }
-
-.apex-hero h1 span {
-  color: #e4c477;
+.apex-site h1 {
+  font-size:clamp(37px,5vw,65px);line-height:1.08;
+  letter-spacing:-2px;margin:0 0 15px;font-weight:800;
 }
-
-.apex-hero-copy {
-  max-width: 510px;
-  color: #aab7ca;
-  font-size: 15px;
-  line-height: 1.9;
+.apex-site .blue { color:var(--blue); }
+.apex-site h2 {
+  font-size:clamp(27px,3vw,39px);line-height:1.2;
+  letter-spacing:-1px;margin:0 0 17px;
 }
-
-.apex-hero-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 30px;
+.apex-site h3 { margin:0 0 10px;font-size:19px; }
+.apex-site p {
+  color:var(--muted);font-size:15px;line-height:1.85;
 }
-
-.apex-trust-note {
-  margin-top: 27px;
-  color: #9cabc0;
-  font-size: 11px;
-  line-height: 1.8;
+.apex-site .hero-copy>p { max-width:510px; }
+.apex-site .actions {
+  display:flex;flex-wrap:wrap;gap:12px;margin:25px 0;
 }
-
-.apex-visual {
-  position: relative;
-  min-height: 390px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.apex-site .features {
+  display:flex;flex-wrap:wrap;gap:18px;margin-top:30px;
 }
-
-.apex-visual-image {
-  width: 100%;
-  height: 390px;
-  object-fit: cover;
-  border-radius: 22px;
-  border: 1px solid #344258;
-  filter: saturate(.8);
+.apex-site .feature {
+  display:flex;align-items:center;gap:9px;font-size:12px;
+  line-height:1.5;font-weight:700;
 }
-
-.apex-visual-shade {
-  position: absolute;
-  inset: 0;
-  border-radius: 22px;
-  background: linear-gradient(135deg, rgba(7,19,38,.05), rgba(7,19,38,.6));
-  pointer-events: none;
+.apex-site .feature-icon {
+  display:grid;place-items:center;width:42px;height:42px;
+  background:#e6efff;color:var(--blue);border-radius:50%;
+  font-size:20px;flex-shrink:0;
 }
-
-.apex-floating-card {
-  position: absolute;
-  right: -12px;
-  bottom: 25px;
-  width: min(265px, 80%);
-  padding: 20px;
-  border: 1px solid rgba(226,198,130,.35);
-  border-radius: 15px;
-  background: rgba(10,27,50,.94);
-  box-shadow: 0 20px 50px #0005;
+.apex-site .visual {
+  min-height:410px;position:relative;display:flex;
+  align-items:center;justify-content:center;
 }
-
-.apex-floating-label {
-  color: #aab7ca;
-  font-size: 11px;
+.apex-site .team-photo {
+  width:100%;height:430px;object-fit:cover;
+  border-radius:130px 18px 18px 18px;
+  box-shadow:0 25px 65px #123c721c;
 }
-
-.apex-floating-title {
-  margin-top: 8px;
-  color: #f1d28a;
-  font-size: 22px;
-  font-weight: 800;
+.apex-site .float-card {
+  position:absolute;background:#fff;padding:17px;
+  border:1px solid #edf1f7;border-radius:15px;
+  box-shadow:0 15px 40px #183b651a;
 }
-
-.apex-section {
-  max-width: 1200px;
-  margin: auto;
-  padding: 55px 24px;
+.apex-site .balance { left:-22px;top:25px;width:210px; }
+.apex-site .secure { right:-12px;top:48%;width:185px; }
+.apex-site .review-float { left:-20px;bottom:15px; }
+.apex-site .small-label { color:var(--muted);font-size:11px; }
+.apex-site .amount {
+  font-size:23px;font-weight:800;margin:9px 0;color:var(--navy);
 }
-
-.apex-section-heading {
-  max-width: 680px;
-  margin-bottom: 28px;
+.apex-site .green { color:#078b58;font-size:11px;font-weight:700; }
+.apex-site .stars { color:#f3a51b;letter-spacing:2px;margin:8px 0; }
+.apex-site .secure-row { display:flex;align-items:center;gap:10px; }
+.apex-site .secure-icon {
+  width:40px;height:40px;border-radius:12px;background:#e5efff;
+  color:var(--blue);display:grid;place-items:center;font-size:20px;
 }
-
-.apex-section-heading h2 {
-  margin: 12px 0;
-  color: #fff;
-  font-size: clamp(27px, 4vw, 40px);
-  line-height: 1.2;
-  font-weight: 800;
+.apex-site .section { padding:75px 0; }
+.apex-site .section-heading {
+  text-align:center;max-width:680px;margin:0 auto 40px;
 }
-
-.apex-section-heading p {
-  color: #aab7ca;
-  font-size: 14px;
-  line-height: 1.8;
+.apex-site .section-heading p { margin:0; }
+.apex-site .stats {
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-bottom:1px solid #e6edf6;padding:35px 0;
+  gap:20px;
 }
-
-.apex-feature-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
+.apex-site .stat {
+  text-align:center;border-right:1px solid #e0e8f4;padding:10px;
 }
-
-.apex-feature {
-  padding: 24px;
-  border: 1px solid #273951;
-  border-radius: 15px;
-  background: #0b1b32;
+.apex-site .stat:last-child { border-right:0; }
+.apex-site .stat-number {
+  color:var(--blue);font-size:clamp(25px,3vw,38px);
+  font-weight:800;display:block;margin-bottom:8px;
 }
-
-.apex-feature-icon {
-  width: 42px;
-  height: 42px;
-  display: grid;
-  place-items: center;
-  border-radius: 12px;
-  color: #e7c779;
-  background: #d8b56a16;
-  font-size: 21px;
+.apex-site .stat-label { color:var(--muted);font-size:13px; }
+.apex-site .about-grid {
+  display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;gap:50px;
 }
-
-.apex-feature h3 {
-  margin: 17px 0 8px;
-  color: #fff;
-  font-size: 15px;
-  font-weight: 800;
+.apex-site .about-photo {
+  width:100%;height:390px;object-fit:cover;border-radius:18px;
 }
-
-.apex-feature p {
-  color: #aab7ca;
-  font-size: 12px;
-  line-height: 1.8;
+.apex-site .checklist {
+  padding:0;list-style:none;display:grid;gap:15px;margin:25px 0;
 }
-
-.apex-stats {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 15px;
-  padding: 30px 24px;
-  border-top: 1px solid #26364d;
-  border-bottom: 1px solid #26364d;
-  background: #09182b;
+.apex-site .checklist li {
+  display:flex;gap:10px;align-items:flex-start;
+  color:#334155;font-size:14px;line-height:1.7;
 }
-
-.apex-stat {
-  text-align: center;
+.apex-site .check {
+  color:var(--blue);font-weight:800;font-size:18px;
 }
-
-.apex-stat strong {
-  display: block;
-  color: #e7c779;
-  font-size: 25px;
-  font-weight: 800;
+.apex-site .services { background:#f6f9ff; }
+.apex-site .service-grid {
+  display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
 }
-
-.apex-stat span {
-  display: block;
-  margin-top: 7px;
-  color: #aab7ca;
-  font-size: 11px;
+.apex-site .service-card {
+  background:white;padding:27px;border-radius:15px;
+  border:1px solid #e8eef8;transition:.2s;
 }
-
-.apex-footer {
-  max-width: 1200px;
-  margin: auto;
-  padding: 28px 24px;
-  border-top: 1px solid #26364d;
-  color: #91a0b6;
-  font-size: 11px;
-  line-height: 1.8;
+.apex-site .service-card:hover {
+  transform:translateY(-5px);box-shadow:0 15px 35px #12345a12;
 }
-
-.apex-footer a {
-  color: #e7c779;
-  text-decoration: none;
+.apex-site .service-icon {
+  display:grid;place-items:center;width:54px;height:54px;
+  border-radius:15px;background:#e8f0ff;color:var(--blue);
+  font-size:25px;margin-bottom:22px;
 }
-
-@media (max-width: 760px) {
-  .apex-nav {
-    padding: 18px 16px;
+.apex-site .service-card p { font-size:13px; }
+.apex-site .learn { color:var(--blue);font-size:13px;font-weight:700; }
+.apex-site .reviews-grid {
+  display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+}
+.apex-site .review-card {
+  border:1px solid #e7edf5;border-radius:16px;padding:25px;
+  box-shadow:0 8px 30px #12345a08;
+}
+.apex-site .review-top {
+  display:flex;align-items:center;gap:12px;margin-top:20px;
+}
+.apex-site .review-avatar {
+  width:49px;height:49px;object-fit:cover;border-radius:50%;
+}
+.apex-site .review-name { font-size:13px;font-weight:800; }
+.apex-site .review-role { color:var(--muted);font-size:11px;margin-top:4px; }
+.apex-site .cta {
+  margin:10px auto 70px;padding:48px 6%;
+  border-radius:22px;background:linear-gradient(120deg,#071b3b,#075de8);
+  color:#fff;display:flex;align-items:center;justify-content:space-between;
+  gap:25px;
+}
+.apex-site .cta h2 { color:#fff;margin-bottom:8px; }
+.apex-site .cta p { color:#d6e4ff;margin:0; }
+.apex-site .cta .btn { background:#fff;color:var(--navy);border-color:#fff; }
+.apex-site .footer {
+  background:#07152d;color:white;padding:48px 0 20px;
+}
+.apex-site .footer-grid {
+  display:grid;grid-template-columns:2fr 1fr 1fr;gap:35px;
+  padding-bottom:35px;
+}
+.apex-site .footer p { color:#aebbd0;font-size:13px; }
+.apex-site .footer h3 { font-size:14px;margin-bottom:16px; }
+.apex-site .footer a {
+  display:block;color:#c5d0e0;font-size:13px;margin:12px 0;
+}
+.apex-site .footer a:hover { color:white; }
+.apex-site .copyright {
+  border-top:1px solid #253651;padding-top:20px;
+  font-size:11px;color:#aebbd0;line-height:1.8;
+}
+.apex-site .menu-toggle {
+  display:none;background:#edf3ff;border:0;border-radius:8px;
+  padding:10px 12px;color:var(--navy);font-size:20px;
+}
+.apex-site .disclaimer {
+  font-size:11px;color:#8b98ab;line-height:1.6;margin-top:15px;
+}
+@media(max-width:900px) {
+  .apex-site .navlinks { gap:12px; }
+  .apex-site .navlinks a { font-size:11px; }
+  .apex-site .hero-grid { gap:20px; }
+  .apex-site .visual { min-height:350px; }
+  .apex-site .team-photo { height:360px; }
+  .apex-site .balance { left:-5px;width:175px; }
+  .apex-site .secure { right:-5px;width:160px; }
+  .apex-site .service-grid { grid-template-columns:repeat(2,1fr); }
+}
+@media(max-width:680px) {
+  .apex-site .nav { flex-wrap:wrap;padding:15px 5%; }
+  .apex-site .brand { font-size:13px; }
+  .apex-site .logo { width:35px;height:35px; }
+  .apex-site .menu-toggle { display:block; }
+  .apex-site .navlinks {
+    display:none;width:100%;flex-direction:column;align-items:stretch;
+    gap:0;padding-top:10px;
   }
-
-  .apex-brand {
-    font-size: 11px;
-    letter-spacing: .5px;
-  }
-
-  .apex-brand-mark {
-    width: 36px;
-    height: 36px;
-  }
-
-  .apex-nav-actions {
-    gap: 7px;
-  }
-
-  .apex-btn {
-    min-height: 40px;
-    padding: 0 11px;
-    font-size: 11px;
-  }
-
-  .apex-hero {
-    grid-template-columns: 1fr;
-    padding: 38px 18px 45px;
-    gap: 30px;
-  }
-
-  .apex-hero h1 {
-    letter-spacing: -1.3px;
-  }
-
-  .apex-visual {
-    min-height: 300px;
-  }
-
-  .apex-visual-image {
-    height: 300px;
-  }
-
-  .apex-floating-card {
-    right: 8px;
-    bottom: 12px;
-  }
-
-  .apex-section {
-    padding: 40px 18px;
-  }
-
-  .apex-feature-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .apex-stats {
-    padding: 24px 12px;
-    gap: 8px;
-  }
-
-  .apex-stat strong {
-    font-size: 20px;
-  }
-
-  .apex-stat span {
-    font-size: 10px;
-  }
+  .apex-site .navlinks.open { display:flex; }
+  .apex-site .navlinks a { padding:13px 5px;font-size:14px; }
+  .apex-site .nav>.btn { padding:11px 14px;font-size:11px; }
+  .apex-site .hero { padding:42px 0 35px; }
+  .apex-site .hero-grid,.apex-site .about-grid { grid-template-columns:1fr; }
+  .apex-site h1 { font-size:43px;letter-spacing:-1.5px; }
+  .apex-site h2 { font-size:30px; }
+  .apex-site .hero-copy>p { font-size:14px; }
+  .apex-site .visual { min-height:350px;margin-top:15px; }
+  .apex-site .team-photo { height:340px;border-radius:80px 15px 15px; }
+  .apex-site .float-card { padding:13px; }
+  .apex-site .balance { left:-5px;top:5px;width:170px; }
+  .apex-site .secure { right:-5px;top:48%;width:155px; }
+  .apex-site .review-float { left:-4px;bottom:0; }
+  .apex-site .section { padding:55px 0; }
+  .apex-site .stats { grid-template-columns:repeat(2,1fr);gap:8px; }
+  .apex-site .stat:nth-child(2) { border-right:0; }
+  .apex-site .about-photo { height:300px; }
+  .apex-site .service-grid,.apex-site .reviews-grid { grid-template-columns:1fr; }
+  .apex-site .cta { margin-bottom:45px;flex-direction:column;align-items:flex-start;padding:32px 25px; }
+  .apex-site .footer-grid { grid-template-columns:1fr;gap:20px; }
 }
 </style>
+<!-- NAVIGATION -->
+<header class="nav">
+  <a class="brand" href="#apexHome">
+    <svg class="logo" viewBox="0 0 48 48" fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <path d="M24 3L45 41H3L24 3Z" stroke="#075de8" stroke-width="3"/>
+      <path d="M24 16L37 39H11L24 16Z" fill="#075de8"/>
+      <path d="M24 27L31 39H17L24 27Z" fill="white"/>
+    </svg>
+    <span>APEX TRUST BANK<small>YOUR TRUST, OUR PRIORITY</small></span>
+  </a>
+  <button class="menu-toggle" type="button"
+    aria-label="Toggle navigation"
+    onclick="document.getElementById('apexLinks').classList.toggle('open')">
+    ☰
+  </button>
+  <nav class="navlinks" id="apexLinks">
+    <a href="#apexHome">Home</a>
+    <a href="#apexAbout">About Us</a>
+    <a href="#apexServices">Services</a>
+    <a href="#apexReviews">Reviews</a>
+    <a href="#apexContact">Contact</a>
+  </nav>
+  <button class="btn" type="button"
+    onclick="if(typeof showPage==='function'){showPage('register')}else{document.getElementById('apexHome').scrollIntoView()}">
+    Open Account →
+  </button>
+</header>
+<!-- HERO -->
+<div class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <div class="eyebrow">♙ &nbsp; YOUR TRUST, OUR PRIORITY</div>
+      <h1>APEX <span class="blue">TRUST BANK</span></h1>
+      <h2>Banking for a Brighter Tomorrow</h2>
+      <p>
+        Your goals deserve a banking experience built around you.
+        Explore convenient account access, personal banking tools,
+        and services designed to make managing money simpler.
+      </p>
+      <div class="actions">
+        <button class="btn" type="button"
+          onclick="if(typeof showPage==='function'){showPage('register')}else{document.getElementById('apexContact').scrollIntoView({behavior:'smooth'})}">
+          Open an Account →
+        </button>
+        <button class="btn btn-light" type="button"
+          onclick="if(typeof showPage==='function'){showPage('login')}else{document.getElementById('apexHome').scrollIntoView({behavior:'smooth'})}">
+          ↗ Online Banking
+        </button>
+      </div>
+      <div class="features">
+        <div class="feature"><span class="feature-icon">♢</span>Security-minded<br>banking</div>
+        <div class="feature"><span class="feature-icon">ϟ</span>Simple digital<br>access</div>
+        <div class="feature"><span class="feature-icon">♡</span>Personal<br>support</div>
+      </div>
+    </div>
+    <div class="visual">
+      <img class="team-photo"
+        src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1000&q=85"
+        alt="A diverse team of professionals working together"
+        loading="eager">
+      <div class="float-card balance">
+        <span class="small-label">A clearer financial picture</span>
+        <div class="amount">Your money</div>
+        <span class="green">Tools for your goals</span>
+      </div>
+      <div class="float-card secure">
+        <div class="secure-row">
+          <div class="secure-icon">✓</div>
+          <div><strong style="font-size:13px">Security first</strong>
+            <div class="small-label" style="margin-top:6px">
+              Protect your account
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="float-card review-float">
+        <div class="stars">★★★★★</div>
+        <strong style="font-size:13px">A personal banking experience</strong>
+        <div class="small-label" style="margin-top:6px">
+          Designed with customers in mind
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ANIMATED COUNTERS -->
+<div class="wrap">
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-number" data-count="3">0</span>
+      <span class="stat-label">Simple steps to get started</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number" data-count="24">0</span>
+      <span class="stat-label">Hours in a day</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number" data-count="1">0</span>
+      <span class="stat-label">Place for your banking tools</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number" data-count="100">0</span>
+      <span class="stat-label">Focus on your goals (%)</span>
+    </div>
+  </div>
+</div>
+<!-- ABOUT US -->
+<section class="section" id="apexAbout">
+  <div class="wrap about-grid">
+    <div>
+      <img class="about-photo"
+        src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=85"
+        alt="Professionals collaborating in a modern office"
+        loading="lazy">
+    </div>
+    <div>
+      <div class="eyebrow">ABOUT APEX TRUST BANK</div>
+      <h2>More than banking.<br><span class="blue">A partner in your plans.</span></h2>
+      <p>
+        We believe financial services should feel clear, accessible,
+        and centered on people. Our goal is to help customers understand
+        their options and make informed decisions about their finances.
+      </p>
+      <ul class="checklist">
+        <li><span class="check">✓</span><span>Convenient online account access and banking tools.</span></li>
+        <li><span class="check">✓</span><span>Clear information to help you understand your options.</span></li>
+        <li><span class="check">✓</span><span>Customer-focused service and helpful guidance.</span></li>
+      </ul>
+      <a class="btn" href="#apexServices">Explore Our Services →</a>
+    </div>
+  </div>
+</section>
+<!-- SERVICES -->
+<section class="section services" id="apexServices">
+  <div class="wrap">
+    <div class="section-heading">
+      <div class="eyebrow">BANKING MADE CLEAR</div>
+      <h2>Solutions for <span class="blue">your next step</span></h2>
+      <p>
+        Explore banking options designed for everyday money management
+        and longer-term financial goals.
+      </p>
+    </div>
+    <div class="service-grid">
+      <article class="service-card">
+        <div class="service-icon">▤</div>
+        <h3>Personal Banking</h3>
+        <p>Explore everyday banking options and account access for your personal needs.</p>
+        <a class="learn" href="#apexContact">Learn more →</a>
+      </article>
+      <article class="service-card">
+        <div class="service-icon">◈</div>
+        <h3>Savings</h3>
+        <p>Organize your savings goals and explore available options for setting money aside.</p>
+        <a class="learn" href="#apexContact">Learn more →</a>
+      </article>
+      <article class="service-card">
+        <div class="service-icon">▥</div>
+        <h3>Business Banking</h3>
+        <p>Discover tools and account options that may help you manage business finances.</p>
+        <a class="learn" href="#apexContact">Learn more →</a>
+      </article>
+      <article class="service-card">
+        <div class="service-icon">↔</div>
+        <h3>Transfers & Payments</h3>
+        <p>Access clear information about payment and transfer features supported by your account.</p>
+        <a class="learn" href="#apexContact">Learn more →</a>
+      </article>
+      <article class="service-card">
+        <div class="service-icon">♧</div>
+        <h3>Financial Planning</h3>
+        <p>Build a clearer picture of your goals with helpful planning information.</p>
+        <a class="learn" href="#apexContact">Learn more →</a>
+      </article>
+      <article class="service-card">
+        <div class="service-icon">⌑</div>
+        <h3>Account Support</h3>
+        <p>Find assistance with account access and answers to common banking questions.</p>
+        <a class="learn" href="#apexContact">Learn more →</a>
+      </article>
+    </div>
+  </div>
+</section>
+<!-- CUSTOMER REVIEWS -->
+<section class="section" id="apexReviews">
+  <div class="wrap">
+    <div class="section-heading">
+      <div class="eyebrow">CUSTOMER EXPERIENCE</div>
+      <h2>A banking experience that puts <span class="blue">people first</span></h2>
+      <p>
+        A welcoming experience begins with clear communication,
+        useful tools, and support when customers need it.
+      </p>
+    </div>
+    <div class="reviews-grid">
+      <article class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>
+          “I appreciate a banking experience that makes information
+          easy to understand and keeps things straightforward.”
+        </p>
+        <div class="review-top">
+          <img class="review-avatar"
+            src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80"
+            alt="Portrait of a male customer" loading="lazy">
+          <div>
+            <div class="review-name">Customer Story</div>
+            <div class="review-role">Illustrative testimonial</div>
+          </div>
+        </div>
+      </article>
+      <article class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>
+          “Having my financial information organized helps me
+          feel more prepared to plan for the future.”
+        </p>
+        <div class="review-top">
+          <img class="review-avatar"
+            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80"
+            alt="Portrait of a female customer" loading="lazy">
+          <div>
+            <div class="review-name">Customer Story</div>
+            <div class="review-role">Illustrative testimonial</div>
+          </div>
+        </div>
+      </article>
+      <article class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>
+          “Clear guidance and convenient access are important
+          to me whenever I manage my finances.”
+        </p>
+        <div class="review-top">
+          <img class="review-avatar"
+            src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=120&q=80"
+            alt="Portrait of a male customer" loading="lazy">
+          <div>
+            <div class="review-name">Customer Story</div>
+            <div class="review-role">Illustrative testimonial</div>
+          </div>
+        </div>
+      </article>
+    </div>
+    <p class="disclaimer">
+      The testimonials above are illustrative design examples, not verified
+      customer reviews. Replace them with genuine reviews only when you have
+      permission to publish them.
+    </p>
+  </div>
+</section>
+<!-- CALL TO ACTION -->
+<section class="wrap cta" id="apexContact">
+  <div>
+    <h2>Ready for your next financial step?</h2>
+    <p>Explore your account options or sign in to your existing account.</p>
+  </div>
+  <div class="actions" style="margin:0">
+    <button class="btn" type="button"
+      onclick="if(typeof showPage==='function'){showPage('register')}else{document.getElementById('apexHome').scrollIntoView()}">
+      Open an Account →
+    </button>
+    <button class="btn btn-light" type="button"
+      onclick="if(typeof showPage==='function'){showPage('login')}else{document.getElementById('apexHome').scrollIntoView()}">
+      Login
+    </button>
+  </div>
+</section>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="brand">
+          <svg class="logo" viewBox="0 0 48 48" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 3L45 41H3L24 3Z" stroke="#d8b56a" stroke-width="3"/>
+            <path d="M24 16L37 39H11L24 16Z" fill="#d8b56a"/>
+            <path d="M24 27L31 39H17L24 27Z" fill="#07152d"/>
+          </svg>
+          APEX TRUST BANK
+        </div>
+        <p>Banking for a brighter tomorrow. Explore our services and learn more about available account options.</p>
+      </div>
+      <div>
+        <h3>Explore</h3>
+        <a href="#apexAbout">About Us</a>
+        <a href="#apexServices">Our Services</a>
+        <a href="#apexReviews">Customer Experience</a>
+      </div>
+      <div>
+        <h3>Your Account</h3>
+        <a href="#apexHome"
+          onclick="if(typeof showPage==='function'){showPage('login');return false}">
+          Login
+        </a>
+        <a href="#apexHome"
+          onclick="if(typeof showPage==='function'){showPage('register');return false}">
+          Open an Account
+        </a>
+        <a href="#apexContact">Contact</a>
+      </div>
+    </div>
+    <div class="copyright">
+      © <span id="apexYear"></span> Apex Trust Bank. All rights reserved.
+      <br>
+      Website design demonstration. Verify the institution's legal identity,
+      licensing, security, and actual product availability before presenting
+      this site as a live banking service.
+    </div>
+  </div>
+</footer>
+<script>
+(function () {
+  const root = document.getElementById('apexHome');
+  if (!root) return;
+  const year = root.querySelector('#apexYear');
+  if (year) year.textContent = new Date().getFullYear();
+  const counters = root.querySelectorAll('[data-count]');
+  const animateCounters = function () {
+    counters.forEach(function (counter) {
+      if (counter.dataset.animated === 'yes') return;
+      counter.dataset.animated = 'yes';
+      const target = Number(counter.dataset.count) || 0;
+      const duration = 1200;
+      const start = performance.now();
+      function update(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        counter.textContent = Math.round(target * eased);
+        if (progress < 1) requestAnimationFrame(update);
+        else {
+          if (target === 24) counter.textContent = '24/7';
+          else if (target === 100) counter.textContent = '100%';
+          else counter.textContent = String(target);
+        }
+      }
+      requestAnimationFrame(update);
+    });
+  };
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          animateCounters();
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.2 });
+    const stats = root.querySelector('.stats');
+    if (stats) observer.observe(stats);
+  } else {
+    animateCounters();
+  }
+})();
+</script>
+</section>
+<!-- END APEX TRUST BANK HOMEPAGE --></style>
 </head>
 <body class="antialiased min-h-screen flex flex-col justify-center items-center p-2 sm:p-4 md:p-6 relative">
 
