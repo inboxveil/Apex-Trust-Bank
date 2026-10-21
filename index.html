@@ -555,10 +555,12 @@
         </div>
       </div>
 
-      <!-- USER GREETING CARD -->
+      <!-- USER GREETING CARD WITH AVATAR -->
       <div class="flex items-center justify-between bg-white p-4 rounded-2xl border border-slate-200/70 shadow-sm">
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-slate-900 to-slate-800 text-white flex items-center justify-center font-black text-sm shadow-md" id="userAvatar">JD</div>
+          <div id="userAvatarContainer" class="w-10 h-10 rounded-full overflow-hidden bg-gradient-to-tr from-slate-900 to-slate-800 text-white flex items-center justify-center font-black text-sm shadow-md shrink-0">
+            <span id="userAvatar">JD</span>
+          </div>
           <div>
             <h3 class="font-bold text-sm text-slate-900" id="userName">User Name</h3>
             <p class="text-[11px] text-slate-400 font-medium">Account ID: <span id="userAcc" class="font-mono font-bold text-slate-700">330000000</span></p>
@@ -806,29 +808,20 @@
     </div>
   </div>
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import { getFirestore, collection, addDoc, getDocs, query, where, doc, updateDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-    
-const firebaseConfig = {
-  apiKey: "AIzaSyBr6oZg7fQPEESM2vApFKrzHo54bl3oA98",
-  authDomain: "apex-trust-bank.firebaseapp.com",
-  projectId: "apex-trust-bank",
-  storageBucket: "apex-trust-bank.firebasestorage.app",
-  messagingSenderId: "854750185517",
-  appId: "1:854750185517:web:72d81a5c5660e8cd95d0a4"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-
+  <script>
     let currentUserData = null;
-    let currentDocId = null;
+    let currentAccountKey = null;
     let activeAccountTab = 'checking';
-    let userUnsubscribe = null;
     let isBalanceHidden = false;
+
+    function getAccounts() {
+      const data = localStorage.getItem('apex_accounts');
+      return data ? JSON.parse(data) : {};
+    }
+
+    function saveAccounts(accounts) {
+      localStorage.setItem('apex_accounts', JSON.stringify(accounts));
+    }
 
     window.toggleBalanceVisibility = () => {
       isBalanceHidden = !isBalanceHidden;
@@ -849,7 +842,7 @@ const db = getFirestore(app);
       if (!currentUserData) return;
       let bal = 0;
       if (activeAccountTab === 'checking') {
-        bal = currentUserData.checkingBalance || currentUserData.balance || 0;
+        bal = currentUserData.checkingBalance || 0;
       } else if (activeAccountTab === 'savings') {
         bal = currentUserData.savingsBalance || 0;
       } else if (activeAccountTab === 'investment') {
@@ -877,6 +870,33 @@ const db = getFirestore(app);
 
     window.navAction = (action) => {
       toggleNav();
+    };
+
+    window.handleProfilePicChange = (event) => {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      if (file.size > 2000000) {
+        alert('File size is too large. Please select an image under 2MB.');
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const base64Img = e.target.result;
+        document.getElementById('profileImgPreview').src = base64Img;
+
+        if (currentAccountKey) {
+          const accounts = getAccounts();
+          if (accounts[currentAccountKey]) {
+            accounts[currentAccountKey].profilePic = base64Img;
+            currentUserData = accounts[currentAccountKey];
+            saveAccounts(accounts);
+            updateDashboardUI();
+          }
+        }
+      };
+      reader.readAsDataURL(file);
     };
 
     window.openMenuModal = (type) => {
@@ -999,8 +1019,18 @@ const db = getFirestore(app);
           </div>`;
       } else if (type === 'profile') {
         title.textContent = "User Profile Information";
+        const currentPic = currentUserData?.profilePic || '';
         body.innerHTML = `
-          <div class="space-y-2.5 font-mono text-xs">
+          <div class="space-y-3 font-mono text-xs">
+            <!-- Profile Photo Upload Field -->
+            <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-100 text-center">
+              <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">Profile Picture</label>
+              <div class="relative w-20 h-20 mx-auto mb-2">
+                <img id="profileImgPreview" src="${currentPic || 'https://via.placeholder.com/80?text=Avatar'}" class="w-20 h-20 rounded-full object-cover border-2 border-slate-300 shadow-sm" alt="Profile Avatar">
+              </div>
+              <input type="file" id="profilePicInput" onchange="handleProfilePicChange(event)" accept="image/*" class="w-full text-xs text-slate-500 file:mr-2 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-cyan-100 file:text-cyan-700 hover:file:bg-cyan-200 cursor-pointer">
+            </div>
+
             <div class="bg-slate-50 p-3 rounded-xl border border-slate-100"><span class="text-slate-400 block text-[9px] font-bold">FULL LEGAL NAME</span><span class="font-bold text-slate-900">${currentUserData?.name}</span></div>
             <div class="bg-slate-50 p-3 rounded-xl border border-slate-100"><span class="text-slate-400 block text-[9px] font-bold">EMAIL ADDRESS</span><span class="font-bold text-slate-900">${currentUserData?.email}</span></div>
             <div class="bg-slate-50 p-3 rounded-xl border border-slate-100"><span class="text-slate-400 block text-[9px] font-bold">ACCOUNT NUMBER</span><span class="font-bold text-slate-900">${currentUserData?.accNo}</span></div>
@@ -1038,8 +1068,6 @@ const db = getFirestore(app);
     };
 
     window.showPage = (viewName) => {
-      if (userUnsubscribe) { userUnsubscribe(); userUnsubscribe = null; }
-
       const homeSec = document.getElementById('apexHome');
       const container = document.getElementById('mainPortalContainer');
       const loginV = document.getElementById('loginView');
@@ -1081,7 +1109,7 @@ const db = getFirestore(app);
       box.classList.remove('hidden');
     }
 
-    window.registerUser = async () => {
+    window.registerUser = () => {
       const name = document.getElementById('regName').value.trim();
       const email = document.getElementById('regEmail').value.trim().toLowerCase();
       const pass = document.getElementById('regPass').value;
@@ -1089,88 +1117,82 @@ const db = getFirestore(app);
 
       if (!name || !email || !pass || !pin) { showAlert('Please complete all fields.'); return; }
 
-      try {
-        const q = query(collection(db, 'cashflow_accounts'), where('email', '==', email));
-        const existing = await getDocs(q);
-        if (!existing.empty) { showAlert('Email address is already registered.'); return; }
-
-        const rawId = Math.floor(100000 + Math.random() * 900000);
-        const accNo = '458' + rawId;
-
-        await addDoc(collection(db, 'cashflow_accounts'), {
-          name, email, pass, pin, accNo,
-          checkingBalance: 0,
-          savingsBalance: 0,
-          investmentBalance: 0,
-          dailyLimit: 10000,
-          creditScore: 785,
-          routingNo: '021000' + (100 + Math.floor(Math.random() * 899)),
-          swiftCode: 'APEXUS33' + Math.floor(100 + Math.floor(Math.random() * 899)),
-          ibanNo: 'US64 APEX 0210 ' + rawId + ' 1000',
-          status: 'PENDING',
-          holdReason: '',
-          clearanceFee: 0,
-          created: Date.now(),
-          history: [],
-          pendingTransfers: []
-        });
-
-        document.getElementById('loginAccNo').value = accNo;
-        showPage('login');
-        showAlert(`Application submitted successfully! Your Account Number is ${accNo}. Status: PENDING approval.`, 'warning');
-      } catch (err) {
-        showAlert('Error: ' + err.message);
+      const accounts = getAccounts();
+      
+      // Check if email exists
+      for (let k in accounts) {
+        if (accounts[k].email === email) {
+          showAlert('Email address is already registered.');
+          return;
+        }
       }
+
+      const rawId = Math.floor(100000 + Math.random() * 900000);
+      const accNo = '458' + rawId;
+
+      accounts[accNo] = {
+        name, email, pass, pin, accNo,
+        checkingBalance: 1500.00, // Starting bonus for testing
+        savingsBalance: 5000.00,
+        investmentBalance: 2500.00,
+        dailyLimit: 10000,
+        creditScore: 785,
+        profilePic: '',
+        routingNo: '021000' + (100 + Math.floor(Math.random() * 899)),
+        swiftCode: 'APEXUS33' + Math.floor(100 + Math.floor(Math.random() * 899)),
+        ibanNo: 'US64 APEX 0210 ' + rawId + ' 1000',
+        status: 'ACTIVE',
+        holdReason: '',
+        clearanceFee: 0,
+        created: Date.now(),
+        history: [
+          { title: 'Welcome Deposit Bonus', amount: 1500.00, date: 'Sep 19, 2026', type: 'System Credit', ref: 'ATB-1002938' }
+        ],
+        pendingTransfers: []
+      };
+
+      saveAccounts(accounts);
+      document.getElementById('loginAccNo').value = accNo;
+      showPage('login');
+      showAlert(`Application approved! Your Account Number is ${accNo}. You can now sign in.`, 'warning');
     };
 
-    window.loginUser = async () => {
+    window.loginUser = () => {
       const accNo = document.getElementById('loginAccNo').value.trim();
       const pass = document.getElementById('loginPass').value;
 
       if (!accNo || !pass) { showAlert('Enter both Account Number and portal password.'); return; }
 
-      try {
-        const q = query(collection(db, 'cashflow_accounts'), where('accNo', '==', accNo));
-        const snap = await getDocs(q);
-
-        if (snap.empty) { showAlert('Account number not recognized.'); return; }
-
-        snap.forEach(d => {
-          currentUserData = d.data();
-          currentDocId = d.id;
-        });
-
-        if (currentUserData.pass !== pass) { showAlert('Incorrect password entered.'); return; }
-
-        if (currentUserData.status === 'PENDING') {
-          showAlert('Your account registration is currently PENDING administrative review.', 'warning');
-          return;
-        }
-
-        if (currentUserData.status === 'DECLINED') {
-          showAlert(`Your account application was DECLINED. Access denied.`);
-          return;
-        }
-
-        updateDashboardUI();
-        showPage('dashboard');
-
-        if (userUnsubscribe) userUnsubscribe();
-        userUnsubscribe = onSnapshot(doc(db, 'cashflow_accounts', currentDocId), (docSnap) => {
-          if (docSnap.exists()) {
-            currentUserData = docSnap.data();
-            updateDashboardUI();
-          }
-        });
-      } catch (err) {
-        showAlert('Error: ' + err.message);
+      const accounts = getAccounts();
+      if (!accounts[accNo]) {
+        showAlert('Account number not recognized.');
+        return;
       }
+
+      const user = accounts[accNo];
+      if (user.pass !== pass) {
+        showAlert('Incorrect password entered.');
+        return;
+      }
+
+      currentUserData = user;
+      currentAccountKey = accNo;
+
+      updateDashboardUI();
+      showPage('dashboard');
     };
 
     function updateDashboardUI() {
       if (!currentUserData) return;
-      const initials = currentUserData.name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
-      document.getElementById('userAvatar').textContent = initials || 'AT';
+      
+      const avatarContainer = document.getElementById('userAvatarContainer');
+      if (currentUserData.profilePic) {
+        avatarContainer.innerHTML = `<img src="${currentUserData.profilePic}" class="w-full h-full object-cover">`;
+      } else {
+        const initials = currentUserData.name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+        avatarContainer.innerHTML = `<span id="userAvatar">${initials || 'AT'}</span>`;
+      }
+
       document.getElementById('userName').textContent = currentUserData.name;
       document.getElementById('userAcc').textContent = currentUserData.accNo;
       document.getElementById('routingNo').textContent = currentUserData.routingNo || '021000021';
@@ -1358,7 +1380,7 @@ const db = getFirestore(app);
       else box.classList.add('hidden');
     };
 
-    window.processTransfer = async () => {
+    window.processTransfer = () => {
       const errBox = document.getElementById('trError');
       errBox.classList.add('hidden');
 
@@ -1396,7 +1418,7 @@ const db = getFirestore(app);
         return;
       }
 
-      let currentBal = sourceAcc === 'savings' ? (currentUserData.savingsBalance || 0) : sourceAcc === 'investment' ? (currentUserData.investmentBalance || 0) : (currentUserData.checkingBalance || currentUserData.balance || 0);
+      let currentBal = sourceAcc === 'savings' ? (currentUserData.savingsBalance || 0) : sourceAcc === 'investment' ? (currentUserData.investmentBalance || 0) : (currentUserData.checkingBalance || 0);
 
       if (amount > currentBal) {
         errBox.textContent = `Insufficient funds in selected ${sourceAcc} account.`;
@@ -1404,72 +1426,58 @@ const db = getFirestore(app);
         return;
       }
 
-      const btn = document.getElementById('trSubmitBtn');
-      btn.disabled = true;
-      btn.textContent = 'Submitting for Approval...';
+      const formattedDate = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+      const refNo = 'ATB-' + Math.floor(1000000 + Math.random() * 9000000);
 
-      try {
-        const formattedDate = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-        const refNo = 'ATB-' + Math.floor(1000000 + Math.random() * 9000000);
+      const pendingItem = {
+        title: `${trType === 'WIRE' ? 'Wire' : 'Transfer'} to ${recipient} (${bank})`,
+        amount: amount,
+        date: formattedDate,
+        recipient,
+        bank,
+        accNo,
+        type: trType === 'WIRE' ? 'International SWIFT Wire' : 'Local Domestic Transfer',
+        sourceAcc,
+        ref: refNo
+      };
 
-        const pendingItem = {
-          title: `${trType === 'WIRE' ? 'Wire' : 'Transfer'} to ${recipient} (${bank})`,
-          amount: amount,
-          date: formattedDate,
-          recipient,
-          bank,
-          accNo,
-          type: trType === 'WIRE' ? 'International SWIFT Wire' : 'Local Domestic Transfer',
-          sourceAcc,
-          ref: refNo
-        };
+      if (!currentUserData.pendingTransfers) currentUserData.pendingTransfers = [];
+      currentUserData.pendingTransfers.push(pendingItem);
 
-        const updatedPending = [...(currentUserData.pendingTransfers || []), pendingItem];
+      // Save to local storage
+      const accounts = getAccounts();
+      accounts[currentAccountKey] = currentUserData;
+      saveAccounts(accounts);
 
-        await updateDoc(doc(db, 'cashflow_accounts', currentDocId), {
-          pendingTransfers: updatedPending
-        });
+      closeTransferModal();
+      switchAccount(activeAccountTab);
+      renderTransactions();
 
-        currentUserData.pendingTransfers = updatedPending;
-        btn.disabled = false;
-        btn.textContent = 'Authorize & Send Payment';
+      const maskedAcc = '•••• ' + accNo.slice(-4);
+      const sourceLabel = sourceAcc.charAt(0).toUpperCase() + sourceAcc.slice(1) + ' Account';
 
-        closeTransferModal();
-        switchAccount(activeAccountTab);
-        renderTransactions();
+      document.getElementById('recAmount').textContent = '$' + amount.toLocaleString(undefined, {minimumFractionDigits: 2});
+      document.getElementById('recRef').textContent = refNo;
+      document.getElementById('recDate').textContent = new Date().toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+      document.getElementById('recType').textContent = trType === 'WIRE' ? 'International SWIFT Wire Transfer' : 'Local Domestic Transfer';
+      document.getElementById('recSource').textContent = sourceLabel;
+      document.getElementById('recRecipient').textContent = recipient;
+      document.getElementById('recBank').textContent = bank;
+      document.getElementById('recAccNo').textContent = maskedAcc;
 
-        const maskedAcc = '•••• ' + accNo.slice(-4);
-        const sourceLabel = sourceAcc.charAt(0).toUpperCase() + sourceAcc.slice(1) + ' Account';
+      document.getElementById('recHeaderTitle').textContent = "Transfer Pending Approval";
+      document.getElementById('recBadge').textContent = "Pending";
+      document.getElementById('recBadge').className = "inline-block mt-2 bg-amber-100 text-amber-800 text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider";
+      document.getElementById('recHeaderIcon').className = "w-12 h-12 bg-amber-500 rounded-2xl flex items-center justify-center mx-auto text-white mb-2.5 shadow-lg shadow-amber-500/30";
 
-        document.getElementById('recAmount').textContent = '$' + amount.toLocaleString(undefined, {minimumFractionDigits: 2});
-        document.getElementById('recRef').textContent = refNo;
-        document.getElementById('recDate').textContent = new Date().toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' });
-        document.getElementById('recType').textContent = trType === 'WIRE' ? 'International SWIFT Wire Transfer' : 'Local Domestic Transfer';
-        document.getElementById('recSource').textContent = sourceLabel;
-        document.getElementById('recRecipient').textContent = recipient;
-        document.getElementById('recBank').textContent = bank;
-        document.getElementById('recAccNo').textContent = maskedAcc;
-
-        document.getElementById('recHeaderTitle').textContent = "Transfer Pending Approval";
-        document.getElementById('recBadge').textContent = "Pending";
-        document.getElementById('recBadge').className = "inline-block mt-2 bg-amber-100 text-amber-800 text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider";
-        document.getElementById('recHeaderIcon').className = "w-12 h-12 bg-amber-500 rounded-2xl flex items-center justify-center mx-auto text-white mb-2.5 shadow-lg shadow-amber-500/30";
-
-        const receiptModal = document.getElementById('receiptModal');
-        receiptModal.classList.remove('hidden');
-        receiptModal.classList.add('flex');
-      } catch (err) {
-        btn.disabled = false;
-        btn.textContent = 'Authorize & Send Payment';
-        errBox.textContent = 'Transfer failed: ' + err.message;
-        errBox.classList.remove('hidden');
-      }
+      const receiptModal = document.getElementById('receiptModal');
+      receiptModal.classList.remove('hidden');
+      receiptModal.classList.add('flex');
     };
 
     window.logoutUser = () => {
-      if (userUnsubscribe) { userUnsubscribe(); userUnsubscribe = null; }
       currentUserData = null;
-      currentDocId = null;
+      currentAccountKey = null;
       showPage('home');
     };
 
