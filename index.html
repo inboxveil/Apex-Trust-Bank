@@ -502,7 +502,7 @@
       </div>
     </div>
 
-    <!-- VIEW 2: REGISTER FORM -->
+    <!-- VIEW 2: REGISTER FORM (RESTRUCTURED EXACTLY AS REQUESTED) -->
     <div id="registerView" class="hidden p-6 pt-3">
       <div class="mb-5">
         <h2 class="font-extrabold text-xl text-slate-900 tracking-tight">Open New Account</h2>
@@ -510,22 +510,98 @@
       </div>
       
       <div class="space-y-3.5">
+        <!-- 1. Name -->
         <div>
-          <label class="block text-xs font-bold text-slate-700 mb-1">Full Legal Name</label>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Full Name</label>
           <input id="regName" type="text" placeholder="John Doe" class="w-full h-11 border border-slate-200 rounded-xl px-4 text-xs font-semibold focus:outline-none focus:border-cyan-600 bg-slate-50 text-slate-800">
         </div>
+
+        <!-- 2. Email -->
         <div>
           <label class="block text-xs font-bold text-slate-700 mb-1">Email Address</label>
           <input id="regEmail" type="email" placeholder="john@example.com" class="w-full h-11 border border-slate-200 rounded-xl px-4 text-xs font-semibold focus:outline-none focus:border-cyan-600 bg-slate-50 text-slate-800">
         </div>
+
+        <!-- 3. Account Type Dropdown -->
         <div>
-          <label class="block text-xs font-bold text-slate-700 mb-1">Secure Password</label>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Account Type</label>
+          <select id="regAccType" class="w-full h-11 border border-slate-200 rounded-xl px-3 text-xs font-bold bg-slate-50 text-slate-800 focus:outline-none focus:border-cyan-600">
+            <option value="Checking Account">Personal Checking Account</option>
+            <option value="Savings Account">High-Yield Savings Account</option>
+            <option value="Investment Account">Wealth Investment Account</option>
+            <option value="Corporate Account">Corporate / Business Account</option>
+          </select>
+        </div>
+
+        <!-- 4. Country Dropdown (EXCLUDING ALL AFRICAN COUNTRIES) -->
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Country of Residence</label>
+          <select id="regCountry" class="w-full h-11 border border-slate-200 rounded-xl px-3 text-xs font-bold bg-slate-50 text-slate-800 focus:outline-none focus:border-cyan-600">
+            <option value="United States">United States</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="Canada">Canada</option>
+            <option value="Australia">Australia</option>
+            <option value="Germany">Germany</option>
+            <option value="France">France</option>
+            <option value="Switzerland">Switzerland</option>
+            <option value="United Arab Emirates">United Arab Emirates</option>
+            <option value="Singapore">Singapore</option>
+            <option value="Japan">Japan</option>
+            <option value="Netherlands">Netherlands</option>
+            <option value="Sweden">Sweden</option>
+            <option value="Norway">Norway</option>
+            <option value="Denmark">Denmark</option>
+            <option value="Spain">Spain</option>
+            <option value="Italy">Italy</option>
+            <option value="Portugal">Portugal</option>
+            <option value="Austria">Austria</option>
+            <option value="Belgium">Belgium</option>
+            <option value="Finland">Finland</option>
+            <option value="Ireland">Ireland</option>
+            <option value="New Zealand">New Zealand</option>
+            <option value="Saudi Arabia">Saudi Arabia</option>
+            <option value="Qatar">Qatar</option>
+            <option value="Kuwait">Kuwait</option>
+            <option value="Bahrain">Bahrain</option>
+            <option value="Oman">Oman</option>
+            <option value="South Korea">South Korea</option>
+            <option value="Hong Kong">Hong Kong</option>
+            <option value="Brazil">Brazil</option>
+            <option value="Mexico">Mexico</option>
+            <option value="Argentina">Argentina</option>
+            <option value="Chile">Chile</option>
+          </select>
+        </div>
+
+        <!-- 5. Password -->
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Password</label>
           <input id="regPass" type="password" placeholder="••••••••" class="w-full h-11 border border-slate-200 rounded-xl px-4 text-xs font-semibold focus:outline-none focus:border-cyan-600 bg-slate-50 text-slate-800">
         </div>
+
+        <!-- 6. Confirm Password -->
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Confirm Password</label>
+          <input id="regConfirmPass" type="password" placeholder="••••••••" class="w-full h-11 border border-slate-200 rounded-xl px-4 text-xs font-semibold focus:outline-none focus:border-cyan-600 bg-slate-50 text-slate-800">
+        </div>
+
+        <!-- 7. PIN -->
         <div>
           <label class="block text-xs font-bold text-slate-700 mb-1">4-Digit Authorization PIN</label>
           <input id="regPin" type="password" maxlength="4" placeholder="1234" class="w-full h-11 border border-slate-200 rounded-xl px-4 text-xs font-mono font-bold focus:outline-none focus:border-cyan-600 bg-slate-50 text-slate-800">
         </div>
+
+        <!-- 8. Gender Dropdown -->
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Gender</label>
+          <select id="regGender" class="w-full h-11 border border-slate-200 rounded-xl px-3 text-xs font-bold bg-slate-50 text-slate-800 focus:outline-none focus:border-cyan-600">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Non-Binary">Non-Binary</option>
+            <option value="Prefer not to say">Prefer not to say</option>
+          </select>
+        </div>
+
         <button onclick="registerUser()" class="w-full h-12 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white rounded-xl font-bold text-xs shadow-lg shadow-cyan-600/20 active:scale-[0.98] transition-all mt-2">Submit Account Application</button>
       </div>
 
@@ -1033,6 +1109,9 @@
 
             <div class="bg-slate-50 p-3 rounded-xl border border-slate-100"><span class="text-slate-400 block text-[9px] font-bold">FULL LEGAL NAME</span><span class="font-bold text-slate-900">${currentUserData?.name}</span></div>
             <div class="bg-slate-50 p-3 rounded-xl border border-slate-100"><span class="text-slate-400 block text-[9px] font-bold">EMAIL ADDRESS</span><span class="font-bold text-slate-900">${currentUserData?.email}</span></div>
+            <div class="bg-slate-50 p-3 rounded-xl border border-slate-100"><span class="text-slate-400 block text-[9px] font-bold">ACCOUNT TYPE</span><span class="font-bold text-slate-900">${currentUserData?.accType || 'Checking Account'}</span></div>
+            <div class="bg-slate-50 p-3 rounded-xl border border-slate-100"><span class="text-slate-400 block text-[9px] font-bold">COUNTRY</span><span class="font-bold text-slate-900">${currentUserData?.country || 'United States'}</span></div>
+            <div class="bg-slate-50 p-3 rounded-xl border border-slate-100"><span class="text-slate-400 block text-[9px] font-bold">GENDER</span><span class="font-bold text-slate-900">${currentUserData?.gender || 'Not specified'}</span></div>
             <div class="bg-slate-50 p-3 rounded-xl border border-slate-100"><span class="text-slate-400 block text-[9px] font-bold">ACCOUNT NUMBER</span><span class="font-bold text-slate-900">${currentUserData?.accNo}</span></div>
             <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-200 flex justify-between items-center"><span class="text-emerald-800 font-bold text-[10px]">VERIFICATION STATUS</span><span class="bg-emerald-200 text-emerald-900 text-[10px] font-black px-2 py-0.5 rounded uppercase">VERIFIED</span></div>
           </div>`;
@@ -1109,13 +1188,31 @@
       box.classList.remove('hidden');
     }
 
+    /* RESTRUCTURED REGISTER FUNCTION */
     window.registerUser = () => {
       const name = document.getElementById('regName').value.trim();
       const email = document.getElementById('regEmail').value.trim().toLowerCase();
+      const accType = document.getElementById('regAccType').value;
+      const country = document.getElementById('regCountry').value;
       const pass = document.getElementById('regPass').value;
+      const confirmPass = document.getElementById('regConfirmPass').value;
       const pin = document.getElementById('regPin').value;
+      const gender = document.getElementById('regGender').value;
 
-      if (!name || !email || !pass || !pin) { showAlert('Please complete all fields.'); return; }
+      if (!name || !email || !pass || !confirmPass || !pin) { 
+        showAlert('Please complete all required fields.'); 
+        return; 
+      }
+
+      if (pass !== confirmPass) {
+        showAlert('Passwords do not match.');
+        return;
+      }
+
+      if (pin.length !== 4) {
+        showAlert('PIN must be exactly 4 digits.');
+        return;
+      }
 
       const accounts = getAccounts();
       
@@ -1131,8 +1228,8 @@
       const accNo = '458' + rawId;
 
       accounts[accNo] = {
-        name, email, pass, pin, accNo,
-        checkingBalance: 1500.00, // Starting bonus for testing
+        name, email, accType, country, pass, pin, gender, accNo,
+        checkingBalance: 1500.00,
         savingsBalance: 5000.00,
         investmentBalance: 2500.00,
         dailyLimit: 10000,
