@@ -1158,7 +1158,7 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
     </div>
   </div>
 
-  <!-- VIEW 2: REGISTER FORM (EXACT ORDER + NO AFRICAN COUNTRIES) -->
+  <!-- VIEW 2: REGISTER FORM -->
   <div id="registerView" class="hidden p-6 pt-3">
     <div class="mb-5">
       <h2 class="font-extrabold text-xl text-slate-900 tracking-tight">Open New Account</h2>
@@ -1166,19 +1166,16 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
     </div>
     
     <div class="space-y-3.5">
-      <!-- 1. Name -->
       <div>
         <label class="block text-xs font-bold text-slate-700 mb-1">Name</label>
         <input id="regName" type="text" placeholder="John Doe" class="w-full h-11 border border-slate-200 rounded-xl px-4 text-xs font-semibold focus:outline-none focus:border-cyan-600 bg-slate-50 text-slate-800">
       </div>
 
-      <!-- 2. Email -->
       <div>
         <label class="block text-xs font-bold text-slate-700 mb-1">Email</label>
         <input id="regEmail" type="email" placeholder="john@example.com" class="w-full h-11 border border-slate-200 rounded-xl px-4 text-xs font-semibold focus:outline-none focus:border-cyan-600 bg-slate-50 text-slate-800">
       </div>
 
-      <!-- 3. Account type drop-down -->
       <div>
         <label class="block text-xs font-bold text-slate-700 mb-1">Account type drop-down</label>
         <select id="regAccType" class="w-full h-11 border border-slate-200 rounded-xl px-3 text-xs font-bold bg-slate-50 text-slate-800 focus:outline-none focus:border-cyan-600">
@@ -1189,7 +1186,6 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
         </select>
       </div>
 
-      <!-- 4. Country drop-down (No African countries) -->
       <div>
         <label class="block text-xs font-bold text-slate-700 mb-1">Country drop-down</label>
         <select id="regCountry" class="w-full h-11 border border-slate-200 rounded-xl px-3 text-xs font-bold bg-slate-50 text-slate-800 focus:outline-none focus:border-cyan-600">
@@ -1229,25 +1225,21 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
         </select>
       </div>
 
-      <!-- 5. Password -->
       <div>
         <label class="block text-xs font-bold text-slate-700 mb-1">Password</label>
         <input id="regPass" type="password" placeholder="••••••••" class="w-full h-11 border border-slate-200 rounded-xl px-4 text-xs font-semibold focus:outline-none focus:border-cyan-600 bg-slate-50 text-slate-800">
       </div>
 
-      <!-- 6. Confirm password -->
       <div>
         <label class="block text-xs font-bold text-slate-700 mb-1">Confirm password</label>
         <input id="regConfirmPass" type="password" placeholder="••••••••" class="w-full h-11 border border-slate-200 rounded-xl px-4 text-xs font-semibold focus:outline-none focus:border-cyan-600 bg-slate-50 text-slate-800">
       </div>
 
-      <!-- 7. Pin -->
       <div>
         <label class="block text-xs font-bold text-slate-700 mb-1">Pin (4 Digits)</label>
         <input id="regPin" type="password" maxlength="4" placeholder="1234" class="w-full h-11 border border-slate-200 rounded-xl px-4 text-xs font-mono font-bold focus:outline-none focus:border-cyan-600 bg-slate-50 text-slate-800">
       </div>
 
-      <!-- 8. Gender -->
       <div>
         <label class="block text-xs font-bold text-slate-700 mb-1">Gender</label>
         <select id="regGender" class="w-full h-11 border border-slate-200 rounded-xl px-3 text-xs font-bold bg-slate-50 text-slate-800 focus:outline-none focus:border-cyan-600">
@@ -1645,7 +1637,12 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
     }
   };
 
-  window.navAction = (action) => { toggleNav(); };
+  window.navAction = (action) => { 
+    toggleNav(); 
+    if (action === 'Dashboard') {
+      showPage('dashboard');
+    }
+  };
 
   window.handleProfilePicChange = (event) => {
     const file = event.target.files[0];
@@ -1655,7 +1652,8 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
     const reader = new FileReader();
     reader.onload = async (e) => {
       const base64Img = e.target.result;
-      document.getElementById('profileImgPreview').src = base64Img;
+      const previewEl = document.getElementById('profileImgPreview');
+      if (previewEl) previewEl.src = base64Img;
       try {
         if (currentDocId) {
           await updateDoc(doc(db, 'cashflow_accounts', currentDocId), { profilePic: base64Img });
@@ -2114,18 +2112,20 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
   };
 </script>
 
-<!-- ANIMATIONS & TOAST UTILITIES -->
 <script>
 const menuToggle = document.getElementById('menuToggle');
 const navLinks = document.getElementById('navLinks');
 
-menuToggle.addEventListener('click', () => {
-  const open = navLinks.classList.toggle('open');
-  menuToggle.setAttribute('aria-expanded', String(open));
-  menuToggle.textContent = open ? '×' : '☰';
-});
+if(menuToggle && navLinks) {
+  menuToggle.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', String(open));
+    menuToggle.textContent = open ? '×' : '☰';
+  });
+}
 
-document.getElementById('year').textContent = new Date().getFullYear();
+const yearEl = document.getElementById('year');
+if(yearEl) yearEl.textContent = new Date().getFullYear();
 
 function formatNumber(value, el) {
   const prefix = el.dataset.prefix || '';
@@ -2170,6 +2170,7 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 const toast = document.getElementById('toast');
 let toastTimer;
 function showToast(message) {
+  if(!toast) return;
   toast.textContent = message;
   toast.classList.add('show');
   clearTimeout(toastTimer);
