@@ -13,22 +13,23 @@
     ::-webkit-scrollbar-track { background: #060e1e; }
     ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
 
-    /* APEX TRUST BANK — ENHANCED HERO & LANDING STYLES */
+    /* APEX TRUST BANK — REFINED HERO STYLES */
     .apex-home {
       width: 100%;
       min-height: 100vh;
       overflow-x: hidden;
       color: #fff;
       background:
-        radial-gradient(ellipse at 85% 20%, rgba(212,175,55,.18), transparent 40%),
-        radial-gradient(ellipse at 15% 60%, rgba(14,165,233,.15), transparent 45%),
-        linear-gradient(135deg,#040c1a,#0b2341 60%,#051122);
+        radial-gradient(ellipse at 85% 15%, rgba(212,175,55,.22), transparent 42%),
+        radial-gradient(ellipse at 12% 65%, rgba(14,165,233,.14), transparent 48%),
+        linear-gradient(145deg, #030a16 0%, #0a1f38 55%, #040d1a 100%);
     }
     .apex-home * { box-sizing: border-box; }
+
     .apex-nav {
       max-width: 1240px;
       margin: auto;
-      padding: 22px 6%;
+      padding: 24px 6%;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -37,136 +38,158 @@
     .apex-brand {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 11px;
       font-weight: 800;
-      letter-spacing: .5px;
+      letter-spacing: .4px;
+      font-size: 15px;
     }
-    .apex-brand svg { width: 42px; height: 42px; color: #e5c46b; }
-    .apex-brand span { color: #e5c46b; }
+    .apex-brand svg { width: 40px; height: 40px; color: #e8ca75; }
+    .apex-brand span { color: #e8ca75; }
+
     .apex-nav-actions, .apex-hero-buttons {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
     }
+
     .apex-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       min-height: 48px;
-      padding: 0 22px;
+      padding: 0 24px;
       border-radius: 14px;
       font-size: 13px;
       font-weight: 800;
       text-decoration: none;
       cursor: pointer;
-      transition: all .25s ease;
+      transition: all .25s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .apex-btn:hover { transform: translateY(-2px); }
     .apex-btn-outline {
       color: #fff;
-      border: 1px solid rgba(255,255,255,.3);
-      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.28);
+      background: rgba(255,255,255,.04);
+      backdrop-filter: blur(8px);
     }
-    .apex-btn-outline:hover { background: rgba(255,255,255,.1); }
+    .apex-btn-outline:hover { 
+      background: rgba(255,255,255,.1); 
+      border-color: rgba(255,255,255,.45);
+    }
     .apex-btn-gold {
-      color: #101a2b;
-      background: linear-gradient(135deg,#f5df98,#cba747);
+      color: #0c1525;
+      background: linear-gradient(135deg, #f7e4a8 0%, #e0b84a 50%, #c9a03a 100%);
       border: 1px solid #e8cb77;
-      box-shadow: 0 10px 28px rgba(205,166,62,.2);
+      box-shadow: 0 8px 24px rgba(205,166,62,.28);
     }
-    .apex-btn-gold:hover { box-shadow: 0 14px 34px rgba(205,166,62,.3); }
+    .apex-btn-gold:hover { 
+      box-shadow: 0 12px 32px rgba(205,166,62,.38);
+      filter: brightness(1.05);
+    }
 
     .apex-hero-inner {
       max-width: 1240px;
-      min-height: 75vh;
+      min-height: 72vh;
       margin: auto;
-      padding: 45px 6% 60px;
+      padding: 40px 6% 50px;
       display: grid;
       grid-template-columns: 1.05fr .95fr;
       align-items: center;
-      gap: 48px;
+      gap: 52px;
     }
+
     .apex-eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 9px;
       color: #f0d88d;
-      border: 1px solid rgba(231,201,117,.35);
-      background: rgba(231,201,117,.08);
-      padding: 9px 15px;
+      border: 1px solid rgba(231,201,117,.38);
+      background: rgba(231,201,117,.09);
+      padding: 9px 16px;
       border-radius: 100px;
       font-size: 11px;
       font-weight: 800;
-      letter-spacing: 1.2px;
+      letter-spacing: 1.3px;
       text-transform: uppercase;
     }
     .apex-eyebrow i {
-      width: 8px; height: 8px; border-radius: 50%;
+      width: 7px; height: 7px; border-radius: 50%;
       background: #e6c66e;
-      box-shadow: 0 0 12px #e6c66e;
+      box-shadow: 0 0 10px #e6c66e;
     }
+
     .apex-hero h1 {
       margin: 22px 0 18px;
-      font-size: clamp(38px,5.2vw,64px);
-      line-height: 1.08;
-      letter-spacing: -2px;
+      font-size: clamp(36px, 5vw, 60px);
+      line-height: 1.07;
+      letter-spacing: -1.8px;
       font-weight: 800;
     }
-    .apex-hero h1 em { color: #e8ca75; font-style: normal; }
-    .apex-hero-copy {
-      max-width: 520px;
-      color: #bdcada;
-      font-size: 15px;
-      line-height: 1.8;
+    .apex-hero h1 em { 
+      color: #e8ca75; 
+      font-style: normal; 
     }
+
+    .apex-hero-copy {
+      max-width: 510px;
+      color: #b8c7d9;
+      font-size: 15.5px;
+      line-height: 1.75;
+      margin-bottom: 28px;
+    }
+
     .apex-trust-note {
       display: flex;
       align-items: center;
       gap: 10px;
-      margin-top: 25px;
-      color: #b8c7d8;
-      font-size: 12px;
-      line-height: 1.7;
+      margin-top: 26px;
+      color: #a8b9cc;
+      font-size: 12.5px;
+      line-height: 1.6;
     }
     .apex-trust-note svg {
-      width: 21px; height: 21px; color: #e5c46b; flex-shrink: 0;
+      width: 20px; height: 20px; color: #e5c46b; flex-shrink: 0;
     }
 
-    /* VISUAL & FLOATING CARDS */
+    /* VISUAL SIDE */
     .apex-visual {
       position: relative;
-      min-height: 480px;
+      min-height: 500px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
     .apex-photo {
       position: absolute;
-      inset: 22px 25px 30px 35px;
-      width: calc(100% - 60px);
-      height: calc(100% - 52px);
+      inset: 18px 20px 28px 28px;
+      width: calc(100% - 48px);
+      height: calc(100% - 46px);
       object-fit: cover;
-      border-radius: 30px;
-      opacity: .65;
-      filter: saturate(.8);
+      border-radius: 28px;
+      opacity: .72;
+      filter: saturate(.85) brightness(.95);
     }
     .apex-photo-shade {
       position: absolute;
-      inset: 22px 25px 30px 35px;
-      border-radius: 30px;
-      background: linear-gradient(180deg,rgba(5,17,35,.04),rgba(5,17,35,.95));
+      inset: 18px 20px 28px 28px;
+      border-radius: 28px;
+      background: linear-gradient(165deg, rgba(4,14,28,.15) 0%, rgba(4,14,28,.75) 55%, rgba(3,10,22,.92) 100%);
     }
+
+    /* CENTRAL CARD */
     .apex-card {
       position: absolute;
       z-index: 2;
-      width: min(340px,85%);
-      padding: 24px;
-      border: 1px solid rgba(255,255,255,.2);
+      width: min(330px, 86%);
+      padding: 22px 24px;
+      border: 1px solid rgba(255,255,255,.18);
       border-radius: 22px;
-      background: linear-gradient(145deg,rgba(19,43,72,.96),rgba(5,18,36,.96));
-      box-shadow: 0 25px 65px rgba(0,0,0,.5);
-      backdrop-filter: blur(18px);
-      animation: apexFloat 5s ease-in-out infinite;
+      background: linear-gradient(155deg, rgba(16,38,68,.97), rgba(6,18,36,.98));
+      box-shadow: 
+        0 25px 60px rgba(0,0,0,.55),
+        inset 0 1px 0 rgba(255,255,255,.08);
+      backdrop-filter: blur(20px);
+      animation: apexFloat 5.5s ease-in-out infinite;
     }
     .apex-card-top, .apex-card-bottom {
       display: flex;
@@ -175,111 +198,166 @@
       gap: 12px;
     }
     .apex-card-label {
-      color: #b4c3d4;
+      color: #a9b9cc;
       font-size: 10px;
-      letter-spacing: 1px;
+      letter-spacing: 1.1px;
       text-transform: uppercase;
+      font-weight: 600;
     }
-    .apex-card-title { font-size: 14px; font-weight: 800; margin-top: 5px; }
-    .apex-card-amount { margin: 22px 0; font-size: 28px; letter-spacing: 2px; font-weight: 800; }
+    .apex-card-title { 
+      font-size: 14px; 
+      font-weight: 800; 
+      margin-top: 4px; 
+      letter-spacing: .2px;
+    }
+    .apex-card-amount { 
+      margin: 20px 0 18px; 
+      font-size: 27px; 
+      letter-spacing: 1px; 
+      font-weight: 800;
+      font-family: 'Plus Jakarta Sans', monospace;
+    }
     .apex-card-chip {
-      width: 38px; height: 26px; border-radius: 6px;
-      background: linear-gradient(135deg,#f3dfa0,#b18b35);
+      width: 36px; height: 24px; border-radius: 5px;
+      background: linear-gradient(135deg, #f3dfa0, #b18b35);
+      box-shadow: 0 2px 8px rgba(177,139,53,.4);
     }
     .apex-card-bottom {
-      padding-top: 15px;
-      border-top: 1px solid rgba(255,255,255,.12);
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,.1);
     }
-    .apex-card-bottom strong { color: #f0d88d; font-size: 11px; }
+    .apex-card-bottom strong { 
+      color: #f0d88d; 
+      font-size: 11px; 
+      font-weight: 700;
+    }
 
-    /* FLOATING UI BADGES */
+    /* FLOATING BADGES */
     .apex-float {
       position: absolute;
       z-index: 3;
       display: flex;
       align-items: center;
-      gap: 11px;
-      padding: 14px 18px;
+      gap: 12px;
+      padding: 13px 16px;
       color: #fff;
-      background: rgba(11,27,51,.94);
-      border: 1px solid rgba(255,255,255,.18);
-      border-radius: 18px;
-      box-shadow: 0 15px 40px rgba(0,0,0,.35);
-      backdrop-filter: blur(12px);
-      animation: apexFloat 6s ease-in-out infinite;
+      background: rgba(10,24,46,.92);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 16px;
+      box-shadow: 0 14px 36px rgba(0,0,0,.4);
+      backdrop-filter: blur(14px);
+      animation: apexFloat 6.2s ease-in-out infinite;
     }
-    .apex-float-one { top: 25px; right: -10px; }
-    .apex-float-two { bottom: 40px; left: -10px; animation-delay: -2s; }
-    .apex-float-three { top: 50%; left: -25px; transform: translateY(-50%); animation-delay: -3.5s; }
-    
+    .apex-float-one { top: 22px; right: -6px; }
+    .apex-float-two { bottom: 36px; left: -8px; animation-delay: -2.1s; }
+    .apex-float-three { top: 48%; left: -22px; transform: translateY(-50%); animation-delay: -3.8s; }
+
     .apex-float-icon {
-      width: 40px; height: 40px;
+      width: 38px; height: 38px;
       display: grid; place-items: center;
-      border-radius: 12px;
-      background: rgba(225,190,93,.15);
+      border-radius: 11px;
+      background: rgba(225,190,93,.14);
       color: #e8ca75;
       flex-shrink: 0;
     }
-    .apex-float-icon svg { width: 22px; height: 22px; }
-    .apex-float small { display: block; color: #b4c3d4; font-size: 10px; font-weight: 600; }
-    .apex-float strong { display: block; margin-top: 2px; font-size: 12px; font-weight: 800; }
+    .apex-float-icon svg { width: 20px; height: 20px; }
+    .apex-float small { 
+      display: block; 
+      color: #a8b9cc; 
+      font-size: 10px; 
+      font-weight: 600; 
+      letter-spacing: .3px;
+    }
+    .apex-float strong { 
+      display: block; 
+      margin-top: 2px; 
+      font-size: 12.5px; 
+      font-weight: 800; 
+    }
 
-    /* STATS COUNTER BAR */
+    /* STATS */
     .apex-hero-stats {
       max-width: 1240px;
       margin: 0 auto;
-      padding: 0 6% 40px;
+      padding: 10px 6% 42px;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
+      gap: 18px;
     }
-    .apex-stat { padding: 20px; border-top: 1px solid rgba(255,255,255,.15); }
-    .apex-stat strong { display: block; color: #e8ca75; font-size: 28px; font-weight: 900; font-family: monospace; }
-    .apex-stat span { display: block; margin-top: 6px; color: #b4c3d4; font-size: 11px; font-weight: 600; }
+    .apex-stat { 
+      padding: 18px 8px 8px; 
+      border-top: 1px solid rgba(255,255,255,.12); 
+    }
+    .apex-stat strong { 
+      display: block; 
+      color: #e8ca75; 
+      font-size: 26px; 
+      font-weight: 900; 
+      font-family: monospace; 
+      letter-spacing: -0.5px;
+    }
+    .apex-stat span { 
+      display: block; 
+      margin-top: 5px; 
+      color: #a8b9cc; 
+      font-size: 11.5px; 
+      font-weight: 600; 
+    }
 
-    /* ABOUT US SECTION */
+    /* ABOUT */
     .apex-about {
       max-width: 1240px;
-      margin: 30px auto 60px;
+      margin: 20px auto 50px;
       padding: 0 6%;
     }
     .apex-about-card {
-      background: linear-gradient(135deg, rgba(13,32,59,0.8), rgba(6,18,36,0.9));
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 28px;
-      padding: 45px 6%;
+      background: linear-gradient(145deg, rgba(12,30,55,0.85), rgba(5,16,32,0.92));
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 26px;
+      padding: 42px 5.5%;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 40px;
+      gap: 38px;
       align-items: center;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.28);
     }
 
     .apex-disclaimer {
-      padding: 0 6% 30px;
-      color: #91a4ba;
-      font-size: 10px;
+      padding: 0 6% 28px;
+      color: #7e93ab;
+      font-size: 10.5px;
       text-align: center;
       line-height: 1.7;
     }
 
     @keyframes apexFloat {
-      0%,100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-11px); }
     }
 
-    @media(max-width: 900px) {
-      .apex-hero-inner { grid-template-columns: 1fr; gap: 20px; padding: 30px 6% 30px; }
-      .apex-about-card { grid-template-columns: 1fr; gap: 25px; padding: 30px; }
-      .apex-hero-stats { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .apex-hero-inner { 
+        grid-template-columns: 1fr; 
+        gap: 28px; 
+        padding: 28px 6% 30px; 
+        min-height: auto;
+      }
+      .apex-visual { min-height: 420px; margin-top: 10px; }
+      .apex-about-card { grid-template-columns: 1fr; gap: 24px; padding: 28px; }
+      .apex-hero-stats { grid-template-columns: repeat(2, 1fr); gap: 12px; }
       .apex-float-three { display: none; }
     }
-    @media(max-width: 600px) {
-      .apex-nav { padding: 16px 5%; }
+
+    @media (max-width: 600px) {
+      .apex-nav { padding: 18px 5%; }
       .apex-brand svg { width: 34px; height: 34px; }
-      .apex-btn { min-height: 42px; padding: 0 14px; font-size: 11px; }
-      .apex-float-one { right: -5px; top: 10px; }
-      .apex-float-two { left: -5px; bottom: 15px; }
+      .apex-btn { min-height: 44px; padding: 0 16px; font-size: 12px; }
+      .apex-hero h1 { font-size: clamp(32px, 8vw, 40px); }
+      .apex-float-one { right: 0; top: 12px; transform: scale(0.92); }
+      .apex-float-two { left: 0; bottom: 18px; transform: scale(0.92); }
+      .apex-card { width: min(300px, 90%); }
+      .apex-hero-stats { padding-bottom: 30px; }
     }
   </style>
 </head>
@@ -1478,7 +1556,7 @@
         html += `<div onclick="viewTransactionDetails('completed', ${originalIdx})" class="flex justify-between items-center border-b border-slate-50 pb-2 p-1 rounded-xl cursor-pointer hover:bg-slate-50 transition-all">
           <div class="flex items-center gap-2">
             <div class="w-7 h-7 rounded-full bg-cyan-100 text-cyan-700 flex items-center justify-center">
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7m10 0v10"/></svg>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7m10 0v10"/></svg>
             </div>
             <div>
               <p class="font-bold text-slate-900">${t.title}</p>
