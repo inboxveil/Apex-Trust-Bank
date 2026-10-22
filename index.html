@@ -1293,18 +1293,11 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
       <span id="userStatus" class="bg-emerald-100 text-emerald-700 text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider">Active</span>
     </div>
 
-    <!-- ACCOUNT TYPE TAB SELECTOR -->
-    <div class="flex bg-slate-200/70 p-1 rounded-xl text-xs font-bold gap-1">
-      <button id="tabChecking" onclick="switchAccount('checking')" class="flex-1 py-2 rounded-lg bg-white text-slate-900 shadow-sm transition-all font-extrabold">Checking</button>
-      <button id="tabSavings" onclick="switchAccount('savings')" class="flex-1 py-2 rounded-lg text-slate-600 hover:text-slate-900 transition-all">Savings</button>
-      <button id="tabInvestment" onclick="switchAccount('investment')" class="flex-1 py-2 rounded-lg text-slate-600 hover:text-slate-900 transition-all">Investment</button>
-    </div>
-
     <!-- VIRTUAL CARD / BALANCE BOARD -->
     <div class="bg-gradient-to-tr from-slate-900 via-[#0e223f] to-[#12315c] rounded-2xl p-5 text-white shadow-xl relative overflow-hidden border border-slate-800">
       <div class="absolute -right-8 -bottom-8 w-36 h-36 bg-cyan-500/10 rounded-full blur-3xl"></div>
       <div class="flex justify-between items-center text-xs opacity-75 font-semibold">
-        <span id="accTypeLabel">Checking Balance</span>
+        <span>Checking Balance</span>
         <span class="font-extrabold tracking-widest text-cyan-400">VISA INFINITE</span>
       </div>
       <div class="flex items-center justify-between mt-2.5">
@@ -1443,15 +1436,6 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
       </div>
 
       <div>
-        <label class="block text-xs font-bold text-slate-700 mb-1">Source Account</label>
-        <select id="trSourceAcc" class="w-full h-11 border border-slate-200 rounded-xl px-3 text-xs font-bold bg-slate-50 text-slate-800 focus:outline-none focus:border-cyan-600">
-          <option value="checking">Checking Account</option>
-          <option value="savings">Savings Account</option>
-          <option value="investment">Investment Account</option>
-        </select>
-      </div>
-
-      <div>
         <label class="block text-xs font-bold text-slate-700 mb-1">Beneficiary Full Name</label>
         <input id="trRecipient" type="text" placeholder="e.g. Sarah Jenkins" class="w-full h-11 border border-slate-200 rounded-xl px-4 text-xs font-semibold bg-slate-50 text-slate-800 focus:outline-none focus:border-cyan-600">
       </div>
@@ -1547,7 +1531,6 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
 
   let currentUserData = null;
   let currentDocId = null;
-  let activeAccountTab = 'checking';
   let userUnsubscribe = null;
   let isBalanceHidden = false;
 
@@ -1564,6 +1547,9 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
     document.getElementById('landingPageWrapper').classList.add('hidden');
     document.getElementById('mainPortalContainer').classList.remove('hidden');
     
+    // Hide public header when viewing portal
+    document.getElementById('siteHeader').style.display = 'none';
+
     const loginV = document.getElementById('loginView');
     const regV = document.getElementById('registerView');
     const dashV = document.getElementById('dashboardView');
@@ -1613,10 +1599,7 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
 
   function updateBalanceDisplay() {
     if (!currentUserData) return;
-    let bal = 0;
-    if (activeAccountTab === 'checking') bal = currentUserData.checkingBalance || 0;
-    else if (activeAccountTab === 'savings') bal = currentUserData.savingsBalance || 0;
-    else if (activeAccountTab === 'investment') bal = currentUserData.investmentBalance || 0;
+    let bal = currentUserData.checkingBalance || 0;
 
     if (isBalanceHidden) {
       document.getElementById('userBalance').textContent = '••••••••';
@@ -1678,8 +1661,6 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
       body.innerHTML = `
         <div class="space-y-2.5 font-mono text-xs">
           <div class="flex justify-between bg-slate-50 p-3 rounded-xl border border-slate-100"><span class="text-slate-500">Checking Balance:</span> <span class="font-bold text-slate-900">$${(currentUserData?.checkingBalance || 0).toLocaleString(undefined,{minimumFractionDigits:2})}</span></div>
-          <div class="flex justify-between bg-slate-50 p-3 rounded-xl border border-slate-100"><span class="text-slate-500">Savings Balance:</span> <span class="font-bold text-slate-900">$${(currentUserData?.savingsBalance || 0).toLocaleString(undefined,{minimumFractionDigits:2})}</span></div>
-          <div class="flex justify-between bg-slate-50 p-3 rounded-xl border border-slate-100"><span class="text-slate-500">Investment Balance:</span> <span class="font-bold text-slate-900">$${(currentUserData?.investmentBalance || 0).toLocaleString(undefined,{minimumFractionDigits:2})}</span></div>
           <div class="flex justify-between bg-slate-50 p-3 rounded-xl border border-slate-100"><span class="text-slate-500">ABA Routing Number:</span> <span class="font-bold text-slate-900">${currentUserData?.routingNo || 'N/A'}</span></div>
         </div>`;
     } else if (type === 'creditScore') {
@@ -1832,8 +1813,6 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
       await addDoc(collection(db, 'cashflow_accounts'), {
         name, email, accType, country, pass, pin, gender, accNo,
         checkingBalance: 1500.00,
-        savingsBalance: 5000.00,
-        investmentBalance: 2500.00,
         dailyLimit: 10000,
         creditScore: 785,
         profilePic: '',
@@ -1931,32 +1910,8 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
     }
 
     renderTransactions();
-    switchAccount(activeAccountTab);
-  }
-
-  window.switchAccount = (type) => {
-    if (!currentUserData) return;
-    activeAccountTab = type;
-    const btnC = document.getElementById('tabChecking');
-    const btnS = document.getElementById('tabSavings');
-    const btnI = document.getElementById('tabInvestment');
-
-    btnC.className = "flex-1 py-2 rounded-lg text-slate-600 hover:text-slate-900 transition-all text-xs font-semibold";
-    btnS.className = "flex-1 py-2 rounded-lg text-slate-600 hover:text-slate-900 transition-all text-xs font-semibold";
-    btnI.className = "flex-1 py-2 rounded-lg text-slate-600 hover:text-slate-900 transition-all text-xs font-semibold";
-
-    if (type === 'checking') {
-      btnC.className = "flex-1 py-2 rounded-lg bg-white text-slate-900 shadow-sm transition-all text-xs font-extrabold";
-      document.getElementById('accTypeLabel').textContent = "Checking Balance";
-    } else if (type === 'savings') {
-      btnS.className = "flex-1 py-2 rounded-lg bg-white text-slate-900 shadow-sm transition-all text-xs font-extrabold";
-      document.getElementById('accTypeLabel').textContent = "Savings Balance";
-    } else if (type === 'investment') {
-      btnI.className = "flex-1 py-2 rounded-lg bg-white text-slate-900 shadow-sm transition-all text-xs font-extrabold";
-      document.getElementById('accTypeLabel').textContent = "Investment Balance";
-    }
     updateBalanceDisplay();
-  };
+  }
 
   function renderTransactions() {
     const list = document.getElementById('activityList');
@@ -2050,7 +2005,6 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
     errBox.classList.add('hidden');
 
     const trType = document.getElementById('trType').value;
-    const sourceAcc = document.getElementById('trSourceAcc').value;
     const recipient = document.getElementById('trRecipient').value.trim();
     const bank = document.getElementById('trBank').value.trim();
     const accNo = document.getElementById('trAccountNo').value.trim();
@@ -2070,9 +2024,9 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
       return;
     }
 
-    let currentBal = sourceAcc === 'savings' ? (currentUserData.savingsBalance || 0) : sourceAcc === 'investment' ? (currentUserData.investmentBalance || 0) : (currentUserData.checkingBalance || 0);
+    let currentBal = currentUserData.checkingBalance || 0;
     if (amount > currentBal) {
-      errBox.textContent = `Insufficient funds in selected ${sourceAcc} account.`;
+      errBox.textContent = `Insufficient funds in checking account.`;
       errBox.classList.remove('hidden');
       return;
     }
@@ -2085,7 +2039,7 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
         title: `${trType === 'WIRE' ? 'Wire' : 'Transfer'} to ${recipient} (${bank})`,
         amount, date: formattedDate, recipient, bank, accNo,
         type: trType === 'WIRE' ? 'International SWIFT Wire' : 'Local Domestic Transfer',
-        sourceAcc, ref: refNo
+        sourceAcc: 'checking', ref: refNo
       };
 
       const updatedPending = [...(currentUserData.pendingTransfers || []), pendingItem];
