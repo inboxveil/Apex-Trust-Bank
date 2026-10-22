@@ -1317,92 +1317,6 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
       </div>
     </div>
 
-    <!-- CASHFLOW ANALYTICS (SVG GRAPH WIDGET) -->
-    <div class="bg-white p-4 rounded-2xl border border-slate-200/70 shadow-sm">
-      <svg viewBox="0 0 400 440" class="w-full h-auto select-none" style="font-family: system-ui, -apple-system, sans-serif;">
-        <!-- Container Background -->
-        <rect width="400" height="440" rx="20" fill="#ffffff"/>
-        
-        <!-- Header: Title & Dropdown -->
-        <text x="24" y="42" font-size="20" font-weight="700" fill="#111827">Cashflow</text>
-        
-        <!-- Dropdown Box -->
-        <g transform="translate(280, 18)">
-          <rect width="96" height="34" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
-          <text x="14" y="22" font-size="13" font-weight="500" fill="#be123c">1 Month</text>
-          <path d="M72 13 L76 9 L80 13 M72 21 L76 25 L80 21" stroke="#374151" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </g>
-        
-        <!-- Chart Legends -->
-        <g transform="translate(68, 70)">
-          <!-- Credit -->
-          <rect x="0" y="0" width="42" height="15" rx="3" fill="#1d9bf0"/>
-          <text x="48" y="12" font-size="12" fill="#4b5563">Credit</text>
-          
-          <!-- Deposit -->
-          <rect x="90" y="0" width="44" height="15" rx="3" fill="#38bdf8" opacity="0.85"/>
-          <text x="140" y="12" font-size="12" fill="#4b5563">Deposit</text>
-          
-          <!-- Debit -->
-          <rect x="190" y="0" width="44" height="15" rx="3" fill="#fb923c"/>
-          <text x="240" y="12" font-size="12" fill="#4b5563">Debit</text>
-          
-          <!-- Transfer -->
-          <rect x="90" y="22" width="44" height="15" rx="3" fill="#fb7185"/>
-          <text x="140" y="34" font-size="12" fill="#4b5563">Transfer</text>
-        </g>
-        
-        <!-- SVG Chart Grid Area (Bounds: X=95 to 330, Y=145 to 380) -->
-        <!-- Y-Axis Grid Lines & Amount Labels -->
-        <g font-size="12" fill="#6b7280" text-anchor="end">
-          <text x="85" y="150">$80,000</text>
-          <line x1="95" y1="145" x2="330" y2="145" stroke="#f3f4f6" stroke-width="1.5"/>
-          
-          <text x="85" y="183">$70,000</text>
-          <line x1="95" y1="178" x2="330" y2="178" stroke="#f3f4f6" stroke-width="1.5"/>
-          
-          <text x="85" y="216">$60,000</text>
-          <line x1="95" y1="211" x2="330" y2="211" stroke="#f3f4f6" stroke-width="1.5"/>
-          
-          <text x="85" y="249">$50,000</text>
-          <line x1="95" y1="244" x2="330" y2="244" stroke="#f3f4f6" stroke-width="1.5"/>
-          
-          <text x="85" y="282">$40,000</text>
-          <line x1="95" y1="277" x2="330" y2="277" stroke="#f3f4f6" stroke-width="1.5"/>
-          
-          <text x="85" y="315">$30,000</text>
-          <line x1="95" y1="310" x2="330" y2="310" stroke="#f3f4f6" stroke-width="1.5"/>
-          
-          <text x="85" y="348">$20,000</text>
-          <line x1="95" y1="343" x2="330" y2="343" stroke="#f3f4f6" stroke-width="1.5"/>
-          
-          <text x="85" y="381">$10,000</text>
-          <line x1="95" y1="376" x2="330" y2="376" stroke="#f3f4f6" stroke-width="1.5"/>
-          
-          <text x="85" y="408">$0</text>
-          <line x1="95" y1="405" x2="330" y2="405" stroke="#e5e7eb" stroke-width="1.5"/>
-        </g>
-        
-        <!-- Vertical Grid Boundary Lines -->
-        <line x1="95" y1="145" x2="95" y2="405" stroke="#e5e7eb" stroke-width="1.5"/>
-        <line x1="330" y1="145" x2="330" y2="405" stroke="#e5e7eb" stroke-width="1.5"/>
-        
-        <!-- X-Axis Date Labels -->
-        <text x="95" y="425" font-size="12" fill="#4b5563" text-anchor="middle">2026-09-18</text>
-        <text x="330" y="425" font-size="12" fill="#4b5563" text-anchor="middle">2026-09-22</text>
-        
-        <!-- Plot Line 1: Credit Line ($0 Flat Line) -->
-        <line x1="95" y1="405" x2="330" y2="405" stroke="#1d9bf0" stroke-width="3.5" stroke-linecap="round"/>
-        <circle cx="95" cy="405" r="5" fill="#1d9bf0"/>
-        <circle cx="330" cy="405" r="5" fill="#1d9bf0"/>
-        
-        <!-- Plot Line 2: Transfer Line ($75,000 down to $27,000) -->
-        <line x1="95" y1="162" x2="330" y2="320" stroke="#fb7185" stroke-width="3.5" stroke-linecap="round"/>
-        <circle cx="95" cy="162" r="5.5" fill="#fb7185"/>
-        <circle cx="330" cy="320" r="5.5" fill="#fb7185"/>
-      </svg>
-    </div>
-
     <!-- KYC VERIFICATION STATUS BADGE -->
     <div class="bg-emerald-50/80 border border-emerald-200 rounded-2xl p-3.5 flex items-center justify-between shadow-sm">
       <div class="flex items-center gap-3">
@@ -1443,20 +1357,33 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
       </div>
     </div>
 
-    <!-- QUICK ACTIONS -->
-    <div class="grid grid-cols-3 gap-2">
+    <!-- QUICK ACTIONS (4 BUTTONS: TRANSFER, DEPOSIT, ANALYSIS, HISTORY) -->
+    <div class="grid grid-cols-4 gap-2">
+      <!-- Transfer Button -->
       <button onclick="openTransferModal()" class="bg-white border border-slate-200/70 p-3 rounded-2xl flex flex-col items-center gap-1.5 shadow-sm hover:bg-slate-50 transition-all group">
         <div class="w-8 h-8 rounded-xl bg-cyan-50 text-cyan-600 flex items-center justify-center font-bold text-sm group-hover:bg-cyan-600 group-hover:text-white transition-colors">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7m10 0v10"/></svg>
         </div>
         <span class="text-[11px] font-bold text-slate-700">Transfer</span>
       </button>
+
+      <!-- Deposit Button -->
       <button onclick="openMenuModal('depositCheck')" class="bg-white border border-slate-200/70 p-3 rounded-2xl flex flex-col items-center gap-1.5 shadow-sm hover:bg-slate-50 transition-all group">
         <div class="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-sm group-hover:bg-emerald-600 group-hover:text-white transition-colors">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 7L7 17M7 17h10M7 7v10"/></svg>
         </div>
         <span class="text-[11px] font-bold text-slate-700">Deposit</span>
       </button>
+
+      <!-- Analysis Button (Opens Analytics Modal) -->
+      <button onclick="openMenuModal('analysis')" class="bg-white border border-slate-200/70 p-3 rounded-2xl flex flex-col items-center gap-1.5 shadow-sm hover:bg-slate-50 transition-all group">
+        <div class="w-8 h-8 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-sm group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+        </div>
+        <span class="text-[11px] font-bold text-slate-700">Analysis</span>
+      </button>
+
+      <!-- History Button -->
       <button onclick="openMenuModal('transactions')" class="bg-white border border-slate-200/70 p-3 rounded-2xl flex flex-col items-center gap-1.5 shadow-sm hover:bg-slate-50 transition-all group">
         <div class="w-8 h-8 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-sm group-hover:bg-blue-600 group-hover:text-white transition-colors">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
@@ -1742,7 +1669,59 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
     modal.classList.remove('hidden');
     modal.classList.add('flex');
 
-    if (type === 'summary') {
+    if (type === 'analysis') {
+      title.textContent = "Cashflow Analytics";
+      body.innerHTML = `
+        <svg viewBox="0 0 400 440" class="w-full h-auto select-none" style="font-family: system-ui, -apple-system, sans-serif;">
+          <rect width="400" height="440" rx="20" fill="#ffffff"/>
+          <text x="24" y="42" font-size="20" font-weight="700" fill="#111827">Cashflow</text>
+          <g transform="translate(280, 18)">
+            <rect width="96" height="34" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+            <text x="14" y="22" font-size="13" font-weight="500" fill="#be123c">1 Month</text>
+            <path d="M72 13 L76 9 L80 13 M72 21 L76 25 L80 21" stroke="#374151" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </g>
+          <g transform="translate(48, 70)">
+            <rect x="0" y="0" width="42" height="15" rx="3" fill="#1d9bf0"/>
+            <text x="48" y="12" font-size="12" fill="#4b5563">Credit</text>
+            <rect x="90" y="0" width="44" height="15" rx="3" fill="#38bdf8" opacity="0.85"/>
+            <text x="140" y="12" font-size="12" fill="#4b5563">Deposit</text>
+            <rect x="190" y="0" width="44" height="15" rx="3" fill="#fb923c"/>
+            <text x="240" y="12" font-size="12" fill="#4b5563">Debit</text>
+            <rect x="90" y="22" width="44" height="15" rx="3" fill="#fb7185"/>
+            <text x="140" y="34" font-size="12" fill="#4b5563">Transfer</text>
+          </g>
+          <g font-size="12" fill="#6b7280" text-anchor="end">
+            <text x="85" y="150">$80,000</text>
+            <line x1="95" y1="145" x2="330" y2="145" stroke="#f3f4f6" stroke-width="1.5"/>
+            <text x="85" y="183">$70,000</text>
+            <line x1="95" y1="178" x2="330" y2="178" stroke="#f3f4f6" stroke-width="1.5"/>
+            <text x="85" y="216">$60,000</text>
+            <line x1="95" y1="211" x2="330" y2="211" stroke="#f3f4f6" stroke-width="1.5"/>
+            <text x="85" y="249">$50,000</text>
+            <line x1="95" y1="244" x2="330" y2="244" stroke="#f3f4f6" stroke-width="1.5"/>
+            <text x="85" y="282">$40,000</text>
+            <line x1="95" y1="277" x2="330" y2="277" stroke="#f3f4f6" stroke-width="1.5"/>
+            <text x="85" y="315">$30,000</text>
+            <line x1="95" y1="310" x2="330" y2="310" stroke="#f3f4f6" stroke-width="1.5"/>
+            <text x="85" y="348">$20,000</text>
+            <line x1="95" y1="343" x2="330" y2="343" stroke="#f3f4f6" stroke-width="1.5"/>
+            <text x="85" y="381">$10,000</text>
+            <line x1="95" y1="376" x2="330" y2="376" stroke="#f3f4f6" stroke-width="1.5"/>
+            <text x="85" y="408">$0</text>
+            <line x1="95" y1="405" x2="330" y2="405" stroke="#e5e7eb" stroke-width="1.5"/>
+          </g>
+          <line x1="95" y1="145" x2="95" y2="405" stroke="#e5e7eb" stroke-width="1.5"/>
+          <line x1="330" y1="145" x2="330" y2="405" stroke="#e5e7eb" stroke-width="1.5"/>
+          <text x="95" y="425" font-size="12" fill="#4b5563" text-anchor="middle">2026-09-18</text>
+          <text x="330" y="425" font-size="12" fill="#4b5563" text-anchor="middle">2026-09-22</text>
+          <line x1="95" y1="405" x2="330" y2="405" stroke="#1d9bf0" stroke-width="3.5" stroke-linecap="round"/>
+          <circle cx="95" cy="405" r="5" fill="#1d9bf0"/>
+          <circle cx="330" cy="405" r="5" fill="#1d9bf0"/>
+          <line x1="95" y1="162" x2="330" y2="320" stroke="#fb7185" stroke-width="3.5" stroke-linecap="round"/>
+          <circle cx="95" cy="162" r="5.5" fill="#fb7185"/>
+          <circle cx="330" cy="320" r="5.5" fill="#fb7185"/>
+        </svg>`;
+    } else if (type === 'summary') {
       title.textContent = "Account Financial Summary";
       body.innerHTML = `
         <div class="space-y-2.5 font-mono text-xs">
