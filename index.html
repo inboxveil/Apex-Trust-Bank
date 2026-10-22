@@ -13,128 +13,160 @@
     ::-webkit-scrollbar-track { background: #060e1e; }
     ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
 
-    /* APEX TRUST BANK — REFINED HERO STYLES */
+    /* ========== REAL BANK HERO STYLES ========== */
     .apex-home {
       width: 100%;
       min-height: 100vh;
       overflow-x: hidden;
       color: #fff;
-      background:
-        radial-gradient(ellipse at 85% 15%, rgba(212,175,55,.22), transparent 42%),
-        radial-gradient(ellipse at 12% 65%, rgba(14,165,233,.14), transparent 48%),
-        linear-gradient(145deg, #030a16 0%, #0a1f38 55%, #040d1a 100%);
+      background: linear-gradient(160deg, #020817 0%, #0a1628 45%, #07111f 100%);
+      position: relative;
     }
+
+    .apex-home::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse 80% 50% at 70% -10%, rgba(212, 175, 55, 0.12), transparent),
+        radial-gradient(ellipse 60% 40% at 10% 80%, rgba(14, 165, 233, 0.08), transparent);
+      pointer-events: none;
+    }
+
     .apex-home * { box-sizing: border-box; }
 
+    /* NAV */
     .apex-nav {
-      max-width: 1240px;
-      margin: auto;
-      padding: 24px 6%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 20px 5%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 18px;
+      position: relative;
+      z-index: 10;
     }
+
     .apex-brand {
       display: flex;
       align-items: center;
-      gap: 11px;
+      gap: 12px;
       font-weight: 800;
-      letter-spacing: .4px;
       font-size: 15px;
+      letter-spacing: 0.3px;
     }
-    .apex-brand svg { width: 40px; height: 40px; color: #e8ca75; }
-    .apex-brand span { color: #e8ca75; }
 
-    .apex-nav-actions, .apex-hero-buttons {
+    .apex-brand svg {
+      width: 38px;
+      height: 38px;
+      color: #d4af37;
+    }
+
+    .apex-brand span {
+      color: #d4af37;
+    }
+
+    .apex-nav-actions {
       display: flex;
-      flex-wrap: wrap;
       gap: 12px;
     }
 
+    /* BUTTONS */
     .apex-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 48px;
-      padding: 0 24px;
-      border-radius: 14px;
+      min-height: 46px;
+      padding: 0 22px;
+      border-radius: 10px;
       font-size: 13px;
-      font-weight: 800;
-      text-decoration: none;
+      font-weight: 700;
       cursor: pointer;
-      transition: all .25s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .apex-btn:hover { transform: translateY(-2px); }
-    .apex-btn-outline {
-      color: #fff;
-      border: 1px solid rgba(255,255,255,.28);
-      background: rgba(255,255,255,.04);
-      backdrop-filter: blur(8px);
-    }
-    .apex-btn-outline:hover { 
-      background: rgba(255,255,255,.1); 
-      border-color: rgba(255,255,255,.45);
-    }
-    .apex-btn-gold {
-      color: #0c1525;
-      background: linear-gradient(135deg, #f7e4a8 0%, #e0b84a 50%, #c9a03a 100%);
-      border: 1px solid #e8cb77;
-      box-shadow: 0 8px 24px rgba(205,166,62,.28);
-    }
-    .apex-btn-gold:hover { 
-      box-shadow: 0 12px 32px rgba(205,166,62,.38);
-      filter: brightness(1.05);
+      transition: all 0.22s ease;
+      letter-spacing: 0.2px;
     }
 
+    .apex-btn-outline {
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.25);
+      background: transparent;
+    }
+
+    .apex-btn-outline:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.4);
+    }
+
+    .apex-btn-gold {
+      color: #0a1628;
+      background: linear-gradient(135deg, #f0d78c, #d4af37);
+      border: none;
+      box-shadow: 0 4px 16px rgba(212, 175, 55, 0.25);
+    }
+
+    .apex-btn-gold:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
+    }
+
+    /* HERO LAYOUT */
     .apex-hero-inner {
-      max-width: 1240px;
-      min-height: 72vh;
-      margin: auto;
-      padding: 40px 6% 50px;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 50px 5% 40px;
       display: grid;
-      grid-template-columns: 1.05fr .95fr;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
       align-items: center;
-      gap: 52px;
+      position: relative;
+      z-index: 5;
     }
 
     .apex-eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 9px;
-      color: #f0d88d;
-      border: 1px solid rgba(231,201,117,.38);
-      background: rgba(231,201,117,.09);
-      padding: 9px 16px;
-      border-radius: 100px;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 1.3px;
+      gap: 8px;
+      color: #d4af37;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
+      margin-bottom: 18px;
     }
-    .apex-eyebrow i {
-      width: 7px; height: 7px; border-radius: 50%;
-      background: #e6c66e;
-      box-shadow: 0 0 10px #e6c66e;
+
+    .apex-eyebrow::before {
+      content: '';
+      width: 28px;
+      height: 1.5px;
+      background: #d4af37;
     }
 
     .apex-hero h1 {
-      margin: 22px 0 18px;
-      font-size: clamp(36px, 5vw, 60px);
-      line-height: 1.07;
-      letter-spacing: -1.8px;
+      font-size: clamp(38px, 4.8vw, 56px);
+      line-height: 1.12;
       font-weight: 800;
+      letter-spacing: -1.5px;
+      margin: 0 0 20px;
+      color: #ffffff;
     }
-    .apex-hero h1 em { 
-      color: #e8ca75; 
-      font-style: normal; 
+
+    .apex-hero h1 em {
+      font-style: normal;
+      color: #d4af37;
     }
 
     .apex-hero-copy {
-      max-width: 510px;
-      color: #b8c7d9;
-      font-size: 15.5px;
-      line-height: 1.75;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #94a3b8;
+      max-width: 480px;
+      margin-bottom: 32px;
+    }
+
+    .apex-hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
       margin-bottom: 28px;
     }
 
@@ -142,222 +174,310 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      margin-top: 26px;
-      color: #a8b9cc;
-      font-size: 12.5px;
-      line-height: 1.6;
-    }
-    .apex-trust-note svg {
-      width: 20px; height: 20px; color: #e5c46b; flex-shrink: 0;
+      font-size: 13px;
+      color: #94a3b8;
     }
 
-    /* VISUAL SIDE */
+    .apex-trust-note svg {
+      width: 18px;
+      height: 18px;
+      color: #d4af37;
+      flex-shrink: 0;
+    }
+
+    /* VISUAL SIDE - BANK STYLE */
     .apex-visual {
       position: relative;
-      min-height: 500px;
+      height: 520px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
+
     .apex-photo {
       position: absolute;
-      inset: 18px 20px 28px 28px;
-      width: calc(100% - 48px);
-      height: calc(100% - 46px);
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      border-radius: 28px;
-      opacity: .72;
-      filter: saturate(.85) brightness(.95);
-    }
-    .apex-photo-shade {
-      position: absolute;
-      inset: 18px 20px 28px 28px;
-      border-radius: 28px;
-      background: linear-gradient(165deg, rgba(4,14,28,.15) 0%, rgba(4,14,28,.75) 55%, rgba(3,10,22,.92) 100%);
+      border-radius: 20px;
+      opacity: 0.55;
+      filter: saturate(0.75) brightness(0.85);
     }
 
-    /* CENTRAL CARD */
-    .apex-card {
+    .apex-photo-shade {
       position: absolute;
-      z-index: 2;
-      width: min(330px, 86%);
-      padding: 22px 24px;
-      border: 1px solid rgba(255,255,255,.18);
-      border-radius: 22px;
-      background: linear-gradient(155deg, rgba(16,38,68,.97), rgba(6,18,36,.98));
+      inset: 0;
+      border-radius: 20px;
+      background: linear-gradient(145deg, 
+        rgba(2, 8, 23, 0.3) 0%, 
+        rgba(2, 8, 23, 0.6) 40%,
+        rgba(2, 8, 23, 0.85) 100%);
+    }
+
+    /* MAIN BANKING CARD */
+    .apex-card {
+      position: relative;
+      z-index: 5;
+      width: 340px;
+      padding: 28px;
+      border-radius: 18px;
+      background: linear-gradient(145deg, #0f1f35 0%, #0a1628 100%);
+      border: 1px solid rgba(212, 175, 55, 0.25);
       box-shadow: 
-        0 25px 60px rgba(0,0,0,.55),
-        inset 0 1px 0 rgba(255,255,255,.08);
-      backdrop-filter: blur(20px);
-      animation: apexFloat 5.5s ease-in-out infinite;
+        0 25px 50px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.05) inset;
     }
-    .apex-card-top, .apex-card-bottom {
+
+    .apex-card-top {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 28px;
     }
+
     .apex-card-label {
-      color: #a9b9cc;
-      font-size: 10px;
-      letter-spacing: 1.1px;
+      font-size: 11px;
+      color: #94a3b8;
+      letter-spacing: 1px;
       text-transform: uppercase;
       font-weight: 600;
     }
-    .apex-card-title { 
-      font-size: 14px; 
-      font-weight: 800; 
-      margin-top: 4px; 
-      letter-spacing: .2px;
+
+    .apex-card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      margin-top: 4px;
     }
-    .apex-card-amount { 
-      margin: 20px 0 18px; 
-      font-size: 27px; 
-      letter-spacing: 1px; 
-      font-weight: 800;
-      font-family: 'Plus Jakarta Sans', monospace;
-    }
+
     .apex-card-chip {
-      width: 36px; height: 24px; border-radius: 5px;
-      background: linear-gradient(135deg, #f3dfa0, #b18b35);
-      box-shadow: 0 2px 8px rgba(177,139,53,.4);
+      width: 42px;
+      height: 30px;
+      border-radius: 6px;
+      background: linear-gradient(135deg, #e8d48b, #c9a227);
+      position: relative;
+      overflow: hidden;
     }
+
+    .apex-card-chip::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    }
+
+    .apex-card-amount {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #fff;
+      margin-bottom: 24px;
+      font-variant-numeric: tabular-nums;
+    }
+
     .apex-card-bottom {
-      padding-top: 14px;
-      border-top: 1px solid rgba(255,255,255,.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,0.08);
     }
-    .apex-card-bottom strong { 
-      color: #f0d88d; 
-      font-size: 11px; 
+
+    .apex-card-bottom .apex-card-label {
+      margin-bottom: 3px;
+    }
+
+    .apex-card-bottom strong {
+      font-size: 13px;
+      color: #d4af37;
       font-weight: 700;
     }
 
-    /* FLOATING BADGES */
+    /* FLOATING BADGES - MORE REFINED */
     .apex-float {
       position: absolute;
-      z-index: 3;
+      z-index: 6;
       display: flex;
       align-items: center;
       gap: 12px;
-      padding: 13px 16px;
-      color: #fff;
-      background: rgba(10,24,46,.92);
-      border: 1px solid rgba(255,255,255,.14);
-      border-radius: 16px;
-      box-shadow: 0 14px 36px rgba(0,0,0,.4);
-      backdrop-filter: blur(14px);
-      animation: apexFloat 6.2s ease-in-out infinite;
+      padding: 14px 18px;
+      background: rgba(15, 31, 53, 0.92);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.35);
     }
-    .apex-float-one { top: 22px; right: -6px; }
-    .apex-float-two { bottom: 36px; left: -8px; animation-delay: -2.1s; }
-    .apex-float-three { top: 48%; left: -22px; transform: translateY(-50%); animation-delay: -3.8s; }
+
+    .apex-float-one {
+      top: 30px;
+      right: -20px;
+    }
+
+    .apex-float-two {
+      bottom: 40px;
+      left: -25px;
+    }
+
+    .apex-float-three {
+      display: none; /* Cleaner look - only two badges */
+    }
 
     .apex-float-icon {
-      width: 38px; height: 38px;
-      display: grid; place-items: center;
-      border-radius: 11px;
-      background: rgba(225,190,93,.14);
-      color: #e8ca75;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      background: rgba(212, 175, 55, 0.12);
+      color: #d4af37;
       flex-shrink: 0;
     }
-    .apex-float-icon svg { width: 20px; height: 20px; }
-    .apex-float small { 
-      display: block; 
-      color: #a8b9cc; 
-      font-size: 10px; 
-      font-weight: 600; 
-      letter-spacing: .3px;
-    }
-    .apex-float strong { 
-      display: block; 
-      margin-top: 2px; 
-      font-size: 12.5px; 
-      font-weight: 800; 
+
+    .apex-float-icon svg {
+      width: 18px;
+      height: 18px;
     }
 
-    /* STATS */
+    .apex-float small {
+      display: block;
+      font-size: 11px;
+      color: #94a3b8;
+      font-weight: 500;
+    }
+
+    .apex-float strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      margin-top: 1px;
+    }
+
+    /* STATS BAR */
     .apex-hero-stats {
-      max-width: 1240px;
+      max-width: 1280px;
       margin: 0 auto;
-      padding: 10px 6% 42px;
+      padding: 30px 5% 50px;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-    .apex-stat { 
-      padding: 18px 8px 8px; 
-      border-top: 1px solid rgba(255,255,255,.12); 
-    }
-    .apex-stat strong { 
-      display: block; 
-      color: #e8ca75; 
-      font-size: 26px; 
-      font-weight: 900; 
-      font-family: monospace; 
-      letter-spacing: -0.5px;
-    }
-    .apex-stat span { 
-      display: block; 
-      margin-top: 5px; 
-      color: #a8b9cc; 
-      font-size: 11.5px; 
-      font-weight: 600; 
+      gap: 24px;
+      position: relative;
+      z-index: 5;
+      border-top: 1px solid rgba(255,255,255,0.06);
     }
 
-    /* ABOUT */
-    .apex-about {
-      max-width: 1240px;
-      margin: 20px auto 50px;
-      padding: 0 6%;
+    .apex-stat {
+      text-align: left;
     }
+
+    .apex-stat strong {
+      display: block;
+      font-size: 28px;
+      font-weight: 800;
+      color: #d4af37;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+
+    .apex-stat span {
+      font-size: 13px;
+      color: #94a3b8;
+      font-weight: 500;
+    }
+
+    /* ABOUT SECTION */
+    .apex-about {
+      max-width: 1280px;
+      margin: 0 auto 60px;
+      padding: 0 5%;
+      position: relative;
+      z-index: 5;
+    }
+
     .apex-about-card {
-      background: linear-gradient(145deg, rgba(12,30,55,0.85), rgba(5,16,32,0.92));
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 26px;
-      padding: 42px 5.5%;
+      background: linear-gradient(145deg, rgba(15, 31, 53, 0.8), rgba(10, 22, 40, 0.9));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 48px;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 38px;
+      gap: 48px;
       align-items: center;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.28);
     }
 
     .apex-disclaimer {
-      padding: 0 6% 28px;
-      color: #7e93ab;
-      font-size: 10.5px;
+      padding: 0 5% 40px;
+      color: #64748b;
+      font-size: 11px;
       text-align: center;
-      line-height: 1.7;
-    }
-
-    @keyframes apexFloat {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-11px); }
+      line-height: 1.6;
     }
 
     /* RESPONSIVE */
-    @media (max-width: 960px) {
-      .apex-hero-inner { 
-        grid-template-columns: 1fr; 
-        gap: 28px; 
-        padding: 28px 6% 30px; 
-        min-height: auto;
+    @media (max-width: 980px) {
+      .apex-hero-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 40px 5% 30px;
       }
-      .apex-visual { min-height: 420px; margin-top: 10px; }
-      .apex-about-card { grid-template-columns: 1fr; gap: 24px; padding: 28px; }
-      .apex-hero-stats { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-      .apex-float-three { display: none; }
+
+      .apex-visual {
+        height: 420px;
+        max-width: 480px;
+        margin: 0 auto;
+      }
+
+      .apex-float-one {
+        right: 10px;
+        top: 20px;
+      }
+
+      .apex-float-two {
+        left: 10px;
+        bottom: 20px;
+      }
+
+      .apex-hero-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .apex-about-card {
+        grid-template-columns: 1fr;
+        padding: 32px;
+        gap: 28px;
+      }
     }
 
     @media (max-width: 600px) {
-      .apex-nav { padding: 18px 5%; }
-      .apex-brand svg { width: 34px; height: 34px; }
-      .apex-btn { min-height: 44px; padding: 0 16px; font-size: 12px; }
-      .apex-hero h1 { font-size: clamp(32px, 8vw, 40px); }
-      .apex-float-one { right: 0; top: 12px; transform: scale(0.92); }
-      .apex-float-two { left: 0; bottom: 18px; transform: scale(0.92); }
-      .apex-card { width: min(300px, 90%); }
-      .apex-hero-stats { padding-bottom: 30px; }
+      .apex-nav {
+        padding: 16px 5%;
+      }
+
+      .apex-brand svg {
+        width: 32px;
+        height: 32px;
+      }
+
+      .apex-btn {
+        min-height: 44px;
+        padding: 0 16px;
+        font-size: 12px;
+      }
+
+      .apex-hero h1 {
+        font-size: 34px;
+      }
+
+      .apex-card {
+        width: 90%;
+        max-width: 320px;
+      }
+
+      .apex-float {
+        transform: scale(0.9);
+      }
     }
   </style>
 </head>
@@ -385,91 +505,79 @@
     <div class="apex-hero">
       <div class="apex-hero-inner">
         <div>
-          <div class="apex-eyebrow"><i></i> Next-Generation Digital Banking</div>
-          <h1>Institutional Power. <em>Personal Precision.</em></h1>
+          <div class="apex-eyebrow">Private Banking</div>
+          <h1>Institutional Power.<br><em>Personal Precision.</em></h1>
           <p class="apex-hero-copy">
             Experience absolute control over your wealth with Apex Trust Bank. Instant international clearing, multi-currency accounts, and end-to-end encrypted asset protection.
           </p>
           <div class="apex-hero-buttons">
             <button type="button" class="apex-btn apex-btn-gold" onclick="showPage('register')">
-              Open an Account Now &rarr;
+              Open an Account
             </button>
             <button type="button" class="apex-btn apex-btn-outline" onclick="showPage('login')">
               Access Private Portal
             </button>
           </div>
           <div class="apex-trust-note">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M12 3 20 6v5c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-3Z"/>
               <path d="m8.5 12 2.2 2.2 4.8-5"/>
             </svg>
-            Tier 2 Institutional Verification & 256-Bit SSL Encryption Guaranteed.
+            Tier 2 Institutional Verification • 256-Bit SSL Encryption
           </div>
         </div>
 
-        <!-- HERO VISUAL WITH FLOATING UI ELEMENTS -->
+        <!-- HERO VISUAL -->
         <div class="apex-visual">
           <img class="apex-photo" src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=1000&q=85" alt="Modern Banking Office" loading="eager">
           <div class="apex-photo-shade"></div>
           
-          <!-- CENTRAL VIRTUAL CARD -->
+          <!-- MAIN CARD -->
           <div class="apex-card">
             <div class="apex-card-top">
               <div>
-                <div class="apex-card-label">Asset Overview</div>
-                <div class="apex-card-title">Apex Private Vault</div>
+                <div class="apex-card-label">Private Vault</div>
+                <div class="apex-card-title">Apex Trust Preferred</div>
               </div>
-              <div class="apex-card-chip" aria-hidden="true"></div>
+              <div class="apex-card-chip"></div>
             </div>
             <div class="apex-card-amount">$1,248,950.00</div>
             <div class="apex-card-bottom">
               <div>
-                <div class="apex-card-label">Swift Transfer status</div>
+                <div class="apex-card-label">Status</div>
                 <strong>Instant Clearance Active</strong>
               </div>
-              <svg width="35" height="26" viewBox="0 0 35 26" fill="none" aria-hidden="true">
-                <path d="M2 20 10 13 16 17 25 7 33 3" stroke="#e8ca75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <svg width="32" height="24" viewBox="0 0 35 26" fill="none">
+                <path d="M2 20 10 13 16 17 25 7 33 3" stroke="#d4af37" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>
           </div>
 
-          <!-- FLOATING UI BADGE 1: LIVE TRANSFER -->
+          <!-- FLOATING BADGE 1 -->
           <div class="apex-float apex-float-one">
             <div class="apex-float-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             </div>
             <div>
               <small>Wire Received</small>
-              <strong>+$240,000.00 (USD)</strong>
+              <strong>+$240,000.00</strong>
             </div>
           </div>
 
-          <!-- FLOATING UI BADGE 2: SECURITY VERIFIED -->
+          <!-- FLOATING BADGE 2 -->
           <div class="apex-float apex-float-two">
             <div class="apex-float-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
             </div>
             <div>
               <small>Security Rating</small>
-              <strong>Tier 2 Compliance Verified</strong>
+              <strong>Tier 2 Verified</strong>
             </div>
           </div>
-
-          <!-- FLOATING UI BADGE 3: CREDIT SCORE -->
-          <div class="apex-float apex-float-three">
-            <div class="apex-float-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
-            </div>
-            <div>
-              <small>FICO® Score</small>
-              <strong>785 Prime Rating</strong>
-            </div>
-          </div>
-
         </div>
       </div>
 
-      <!-- ANIMATED STATISTICS COUNTER SECTION -->
+      <!-- STATS -->
       <div class="apex-hero-stats">
         <div class="apex-stat">
           <strong>$<span class="apex-count" data-target="14">0</span>B+</strong>
@@ -485,31 +593,37 @@
         </div>
         <div class="apex-stat">
           <strong>24/7</strong>
-          <span>Help Desk Monitoring</span>
+          <span>Priority Support</span>
         </div>
       </div>
 
-      <!-- ABOUT US SECTION -->
+      <!-- ABOUT -->
       <div class="apex-about">
         <div class="apex-about-card">
           <div>
-            <span class="apex-eyebrow"><i></i> About Apex Trust Bank</span>
-            <h2 class="text-2xl sm:text-3xl font-extrabold mt-3 text-white">Built for global stability and modern speed.</h2>
-            <p class="text-slate-300 text-xs sm:text-sm mt-3 leading-relaxed">
+            <div class="apex-eyebrow">About Apex Trust Bank</div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold mt-2 text-white leading-tight">Built for global stability and modern speed.</h2>
+            <p class="text-slate-400 text-sm mt-4 leading-relaxed">
               Apex Trust Bank combines traditional banking reliability with cutting-edge fintech infrastructure. We empower individuals and corporations with seamless international SWIFT/ACH wires, automated check deposits, multi-asset management, and institutional-grade credit lines.
             </p>
-            <div class="mt-6">
-              <button onclick="showPage('register')" class="apex-btn apex-btn-gold">Create Account Today &rarr;</button>
+            <div class="mt-7">
+              <button onclick="showPage('register')" class="apex-btn apex-btn-gold">Create Account Today</button>
             </div>
           </div>
-          <div class="space-y-3 font-semibold text-xs text-slate-200">
-            <div class="bg-white/5 p-4 rounded-2xl border border-white/10 flex items-center gap-3">
-              <div class="w-8 h-8 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center shrink-0">✓</div>
-              <div><strong>Global Domestic & Wire Transfers</strong><p class="text-[11px] text-slate-400 mt-0.5">Automated clearing networks for instant domestic and cross-border transfers.</p></div>
+          <div class="space-y-3">
+            <div class="bg-white/5 p-4 rounded-xl border border-white/8 flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg bg-cyan-500/15 text-cyan-400 flex items-center justify-center shrink-0 text-sm font-bold">✓</div>
+              <div>
+                <strong class="text-white text-sm">Global Domestic & Wire Transfers</strong>
+                <p class="text-xs text-slate-400 mt-1">Automated clearing networks for instant domestic and cross-border transfers.</p>
+              </div>
             </div>
-            <div class="bg-white/5 p-4 rounded-2xl border border-white/10 flex items-center gap-3">
-              <div class="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">✓</div>
-              <div><strong>Multi-Asset Vaults</strong><p class="text-[11px] text-slate-400 mt-0.5">Manage Checking, Savings, Investment, and Digital Vaults in one space.</p></div>
+            <div class="bg-white/5 p-4 rounded-xl border border-white/8 flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-400 flex items-center justify-center shrink-0 text-sm font-bold">✓</div>
+              <div>
+                <strong class="text-white text-sm">Multi-Asset Vaults</strong>
+                <p class="text-xs text-slate-400 mt-1">Manage Checking, Savings, Investment, and Digital Vaults in one space.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -648,7 +762,7 @@
       </div>
     </div>
 
-    <!-- VIEW 2: REGISTER FORM (STRICT ORDER SPECIFIED) -->
+    <!-- VIEW 2: REGISTER FORM -->
     <div id="registerView" class="hidden p-6 pt-3">
       <div class="mb-5">
         <h2 class="font-extrabold text-xl text-slate-900 tracking-tight">Open New Account</h2>
@@ -656,19 +770,14 @@
       </div>
       
       <div class="space-y-3.5">
-        <!-- 1. Name -->
         <div>
           <label class="block text-xs font-bold text-slate-700 mb-1">Full Name</label>
           <input id="regName" type="text" placeholder="John Doe" class="w-full h-11 border border-slate-200 rounded-xl px-4 text-xs font-semibold focus:outline-none focus:border-cyan-600 bg-slate-50 text-slate-800">
         </div>
-
-        <!-- 2. Email -->
         <div>
           <label class="block text-xs font-bold text-slate-700 mb-1">Email Address</label>
           <input id="regEmail" type="email" placeholder="john@example.com" class="w-full h-11 border border-slate-200 rounded-xl px-4 text-xs font-semibold focus:outline-none focus:border-cyan-600 bg-slate-50 text-slate-800">
         </div>
-
-        <!-- 3. Account Type Dropdown -->
         <div>
           <label class="block text-xs font-bold text-slate-700 mb-1">Account Type</label>
           <select id="regAccType" class="w-full h-11 border border-slate-200 rounded-xl px-3 text-xs font-bold bg-slate-50 text-slate-800 focus:outline-none focus:border-cyan-600">
@@ -678,8 +787,6 @@
             <option value="Corporate Account">Corporate / Business Account</option>
           </select>
         </div>
-
-        <!-- 4. Country Dropdown (EXCLUDING ALL AFRICAN COUNTRIES) -->
         <div>
           <label class="block text-xs font-bold text-slate-700 mb-1">Country of Residence</label>
           <select id="regCountry" class="w-full h-11 border border-slate-200 rounded-xl px-3 text-xs font-bold bg-slate-50 text-slate-800 focus:outline-none focus:border-cyan-600">
@@ -718,26 +825,18 @@
             <option value="Chile">Chile</option>
           </select>
         </div>
-
-        <!-- 5. Password -->
         <div>
           <label class="block text-xs font-bold text-slate-700 mb-1">Password</label>
           <input id="regPass" type="password" placeholder="••••••••" class="w-full h-11 border border-slate-200 rounded-xl px-4 text-xs font-semibold focus:outline-none focus:border-cyan-600 bg-slate-50 text-slate-800">
         </div>
-
-        <!-- 6. Confirm Password -->
         <div>
           <label class="block text-xs font-bold text-slate-700 mb-1">Confirm Password</label>
           <input id="regConfirmPass" type="password" placeholder="••••••••" class="w-full h-11 border border-slate-200 rounded-xl px-4 text-xs font-semibold focus:outline-none focus:border-cyan-600 bg-slate-50 text-slate-800">
         </div>
-
-        <!-- 7. PIN -->
         <div>
           <label class="block text-xs font-bold text-slate-700 mb-1">4-Digit Authorization PIN</label>
           <input id="regPin" type="password" maxlength="4" placeholder="1234" class="w-full h-11 border border-slate-200 rounded-xl px-4 text-xs font-mono font-bold focus:outline-none focus:border-cyan-600 bg-slate-50 text-slate-800">
         </div>
-
-        <!-- 8. Gender Dropdown -->
         <div>
           <label class="block text-xs font-bold text-slate-700 mb-1">Gender</label>
           <select id="regGender" class="w-full h-11 border border-slate-200 rounded-xl px-3 text-xs font-bold bg-slate-50 text-slate-800 focus:outline-none focus:border-cyan-600">
@@ -747,7 +846,6 @@
             <option value="Prefer not to say">Prefer not to say</option>
           </select>
         </div>
-
         <button onclick="registerUser()" class="w-full h-12 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white rounded-xl font-bold text-xs shadow-lg shadow-cyan-600/20 active:scale-[0.98] transition-all mt-2">Submit Account Application</button>
       </div>
 
@@ -760,7 +858,6 @@
     <!-- VIEW 3: CLIENT DASHBOARD -->
     <div id="dashboardView" class="hidden bg-slate-50/80 p-4 space-y-4">
       
-      <!-- ACCOUNT HOLD NOTICE BANNER -->
       <div id="holdNotice" class="hidden bg-rose-50 border-2 border-rose-200 rounded-2xl p-4 text-rose-900 shadow-sm relative">
         <div class="flex items-start gap-3">
           <div class="w-8 h-8 rounded-xl bg-rose-600 text-white flex items-center justify-center shrink-0 mt-0.5 shadow-md shadow-rose-600/20">
@@ -777,7 +874,6 @@
         </div>
       </div>
 
-      <!-- USER GREETING CARD WITH AVATAR -->
       <div class="flex items-center justify-between bg-white p-4 rounded-2xl border border-slate-200/70 shadow-sm">
         <div class="flex items-center gap-3">
           <div id="userAvatarContainer" class="w-10 h-10 rounded-full overflow-hidden bg-gradient-to-tr from-slate-900 to-slate-800 text-white flex items-center justify-center font-black text-sm shadow-md shrink-0">
@@ -791,14 +887,12 @@
         <span id="userStatus" class="bg-emerald-100 text-emerald-700 text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider">Active</span>
       </div>
 
-      <!-- ACCOUNT TYPE TAB SELECTOR -->
       <div class="flex bg-slate-200/70 p-1 rounded-xl text-xs font-bold gap-1">
         <button id="tabChecking" onclick="switchAccount('checking')" class="flex-1 py-2 rounded-lg bg-white text-slate-900 shadow-sm transition-all font-extrabold">Checking</button>
         <button id="tabSavings" onclick="switchAccount('savings')" class="flex-1 py-2 rounded-lg text-slate-600 hover:text-slate-900 transition-all">Savings</button>
         <button id="tabInvestment" onclick="switchAccount('investment')" class="flex-1 py-2 rounded-lg text-slate-600 hover:text-slate-900 transition-all">Investment</button>
       </div>
 
-      <!-- VIRTUAL CARD / BALANCE BOARD -->
       <div class="bg-gradient-to-tr from-slate-900 via-[#0e223f] to-[#12315c] rounded-2xl p-5 text-white shadow-xl relative overflow-hidden border border-slate-800">
         <div class="absolute -right-8 -bottom-8 w-36 h-36 bg-cyan-500/10 rounded-full blur-3xl"></div>
         <div class="flex justify-between items-center text-xs opacity-75 font-semibold">
@@ -807,7 +901,6 @@
         </div>
         <div class="flex items-center justify-between mt-2.5">
           <div class="text-3xl font-black tracking-tight font-mono" id="userBalance">$0.00</div>
-          <!-- EYE VIEW TOGGLE BUTTON -->
           <button onclick="toggleBalanceVisibility()" id="eyeToggleBtn" class="w-10 h-10 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-cyan-400 transition-all backdrop-blur-sm border border-white/10 shadow-md" title="Toggle balance view">
             <svg id="eyeIconOpen" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
             <svg id="eyeIconClosed" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/></svg>
@@ -822,7 +915,6 @@
         </div>
       </div>
 
-      <!-- KYC VERIFICATION STATUS BADGE -->
       <div class="bg-emerald-50/80 border border-emerald-200 rounded-2xl p-3.5 flex items-center justify-between shadow-sm">
         <div class="flex items-center gap-3">
           <div class="w-9 h-9 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-md shadow-emerald-600/20">
@@ -842,7 +934,6 @@
         </div>
       </div>
 
-      <!-- CREDIT SCORE WIDGET -->
       <div onclick="openMenuModal('creditScore')" class="bg-gradient-to-r from-cyan-50 to-blue-50 border border-cyan-200/70 rounded-2xl p-3.5 flex items-center justify-between shadow-sm cursor-pointer hover:shadow-md hover:border-cyan-300 transition-all group">
         <div class="flex items-center gap-3">
           <div class="w-9 h-9 rounded-xl bg-cyan-600 text-white flex items-center justify-center shrink-0 shadow-md shadow-cyan-600/20 group-hover:scale-105 transition-transform">
@@ -862,7 +953,6 @@
         </div>
       </div>
 
-      <!-- QUICK ACTIONS -->
       <div class="grid grid-cols-3 gap-2">
         <button onclick="openTransferModal()" class="bg-white border border-slate-200/70 p-3 rounded-2xl flex flex-col items-center gap-1.5 shadow-sm hover:bg-slate-50 transition-all group">
           <div class="w-8 h-8 rounded-xl bg-cyan-50 text-cyan-600 flex items-center justify-center font-bold text-sm group-hover:bg-cyan-600 group-hover:text-white transition-colors">
@@ -884,7 +974,6 @@
         </button>
       </div>
 
-      <!-- RECENT TRANSACTIONS -->
       <div class="bg-white p-4 rounded-2xl border border-slate-200/70 shadow-sm">
         <div class="flex justify-between items-center mb-3">
           <h4 class="font-extrabold text-xs text-slate-900 uppercase tracking-wider">Recent Activity</h4>
@@ -939,7 +1028,6 @@
             <option value="WIRE">International SWIFT Wire Transfer</option>
           </select>
         </div>
-
         <div>
           <label class="block text-xs font-bold text-slate-700 mb-1">Source Account</label>
           <select id="trSourceAcc" class="w-full h-11 border border-slate-200 rounded-xl px-3 text-xs font-bold bg-slate-50 text-slate-800 focus:outline-none focus:border-cyan-600">
@@ -948,27 +1036,22 @@
             <option value="investment">Investment Account</option>
           </select>
         </div>
-
         <div>
           <label class="block text-xs font-bold text-slate-700 mb-1">Beneficiary Full Name</label>
           <input id="trRecipient" type="text" placeholder="e.g. Sarah Jenkins" class="w-full h-11 border border-slate-200 rounded-xl px-4 text-xs font-semibold bg-slate-50 text-slate-800 focus:outline-none focus:border-cyan-600">
         </div>
-
         <div>
           <label class="block text-xs font-bold text-slate-700 mb-1">Recipient Bank Name</label>
           <input id="trBank" type="text" placeholder="e.g. Chase Bank / Barclays" class="w-full h-11 border border-slate-200 rounded-xl px-4 text-xs font-semibold bg-slate-50 text-slate-800 focus:outline-none focus:border-cyan-600">
         </div>
-
         <div>
           <label class="block text-xs font-bold text-slate-700 mb-1">Account Number / IBAN</label>
           <input id="trAccountNo" type="text" placeholder="e.g. 0098765432" class="w-full h-11 border border-slate-200 rounded-xl px-4 text-xs bg-slate-50 text-slate-800 focus:outline-none focus:border-cyan-600 font-mono font-bold">
         </div>
-
         <div id="swiftBox" class="hidden">
           <label class="block text-xs font-bold text-slate-700 mb-1">SWIFT / BIC Routing Code</label>
           <input id="trSwift" type="text" placeholder="e.g. CHASUS33" class="w-full h-11 border border-slate-200 rounded-xl px-4 text-xs bg-slate-50 text-slate-800 focus:outline-none focus:border-cyan-600 font-mono font-bold">
         </div>
-
         <div>
           <div class="flex justify-between items-center mb-1">
             <label class="block text-xs font-bold text-slate-700">Transfer Amount ($)</label>
@@ -976,23 +1059,18 @@
           </div>
           <input id="trAmount" type="number" step="any" placeholder="0.00" class="w-full h-11 border border-slate-200 rounded-xl px-4 text-xs bg-slate-50 text-slate-800 focus:outline-none focus:border-cyan-600 font-bold font-mono">
         </div>
-
         <div>
           <label class="block text-xs font-bold text-slate-700 mb-1">4-Digit Security PIN</label>
           <input id="trPin" type="password" maxlength="4" placeholder="••••" class="w-full h-11 border border-slate-200 rounded-xl px-4 text-xs bg-slate-50 text-slate-800 focus:outline-none focus:border-cyan-600 font-mono font-bold">
         </div>
-
         <button id="trSubmitBtn" onclick="processTransfer()" class="w-full h-12 bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-bold text-xs shadow-lg shadow-slate-900/15 active:scale-[0.98] transition-all mt-2">Authorize & Send Payment</button>
       </div>
-
     </div>
   </div>
 
   <!-- TRANSACTION RECEIPT MODAL -->
   <div id="receiptModal" class="fixed inset-0 bg-black/75 backdrop-blur-md hidden items-center justify-center p-4 z-50">
     <div class="bg-white rounded-[2rem] p-6 w-full max-w-md shadow-2xl relative max-h-[90vh] overflow-y-auto text-slate-900 border border-slate-100">
-      
-      <!-- Receipt Header -->
       <div class="text-center pb-4 border-b border-dashed border-slate-200">
         <div id="recHeaderIcon" class="w-12 h-12 bg-amber-500 rounded-2xl flex items-center justify-center mx-auto text-white mb-2.5 shadow-lg shadow-amber-500/30">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
@@ -1000,15 +1078,11 @@
         <h3 id="recHeaderTitle" class="font-black text-lg text-slate-900 tracking-tight">Transfer Pending Approval</h3>
         <p class="text-xs text-slate-400 mt-0.5">Apex Trust Bank Official Transaction Receipt</p>
       </div>
-
-      <!-- Amount Banner -->
       <div class="py-4 text-center bg-slate-50 rounded-2xl my-4 border border-slate-100">
         <p class="text-[10px] uppercase tracking-wider font-extrabold text-slate-400">Total Transfer Amount</p>
         <p class="text-3xl font-black text-slate-900 mt-1 font-mono" id="recAmount">$0.00</p>
         <span id="recBadge" class="inline-block mt-2 bg-amber-100 text-amber-800 text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">Pending Admin Approval</span>
       </div>
-
-      <!-- Detailed Breakdown -->
       <div class="space-y-2.5 text-xs font-mono bg-slate-50/70 p-4 rounded-2xl border border-slate-100 text-slate-700">
         <div class="flex justify-between"><span class="text-slate-400">Transaction Ref:</span> <span class="font-bold text-slate-800" id="recRef">ATB-8941239</span></div>
         <div class="flex justify-between"><span class="text-slate-400">Date & Time:</span> <span class="font-bold text-slate-800" id="recDate">Oct 21, 2026, 8:10 PM</span></div>
@@ -1018,15 +1092,12 @@
         <div class="flex justify-between"><span class="text-slate-400">Recipient Bank:</span> <span class="font-bold text-slate-800" id="recBank">Chase Bank</span></div>
         <div class="flex justify-between"><span class="text-slate-400">Account Number:</span> <span class="font-bold text-slate-800" id="recAccNo">•••• 5432</span></div>
       </div>
-
-      <!-- Action Buttons -->
       <div class="mt-6 space-y-2.5">
         <button onclick="window.print()" class="w-full h-11 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl font-bold text-xs transition-all flex items-center justify-center gap-2">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg> Save / Print Receipt
         </button>
         <button onclick="closeReceiptModal()" class="w-full h-12 bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-bold text-xs shadow-lg shadow-slate-900/15 active:scale-[0.98] transition-all">Done</button>
       </div>
-
     </div>
   </div>
 
@@ -1035,7 +1106,6 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
     import { getFirestore, collection, addDoc, getDocs, query, where, doc, updateDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-    // YOUR EXACT FIREBASE CONFIGURATION
     const firebaseConfig = {
       apiKey: "AIzaSyBr6oZg7fQPEESM2vApFKrzHo54bl3oA98",
       authDomain: "apex-trust-bank.firebaseapp.com",
@@ -1107,7 +1177,7 @@
       const file = event.target.files[0];
       if (!file) return;
 
-      if (file.size > 2000000) { // Limit to 2MB
+      if (file.size > 2000000) {
         alert('File size is too large. Please select an image under 2MB.');
         return;
       }
@@ -1255,7 +1325,6 @@
         const currentPic = currentUserData?.profilePic || '';
         body.innerHTML = `
           <div class="space-y-3 font-mono text-xs">
-            <!-- Profile Photo Upload Field -->
             <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-100 text-center">
               <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">Profile Picture</label>
               <div class="relative w-20 h-20 mx-auto mb-2">
@@ -1263,7 +1332,6 @@
               </div>
               <input type="file" id="profilePicInput" onchange="handleProfilePicChange(event)" accept="image/*" class="w-full text-xs text-slate-500 file:mr-2 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-cyan-100 file:text-cyan-700 hover:file:bg-cyan-200 cursor-pointer">
             </div>
-
             <div class="bg-slate-50 p-3 rounded-xl border border-slate-100"><span class="text-slate-400 block text-[9px] font-bold">FULL LEGAL NAME</span><span class="font-bold text-slate-900">${currentUserData?.name}</span></div>
             <div class="bg-slate-50 p-3 rounded-xl border border-slate-100"><span class="text-slate-400 block text-[9px] font-bold">EMAIL ADDRESS</span><span class="font-bold text-slate-900">${currentUserData?.email}</span></div>
             <div class="bg-slate-50 p-3 rounded-xl border border-slate-100"><span class="text-slate-400 block text-[9px] font-bold">ACCOUNT TYPE</span><span class="font-bold text-slate-900">${currentUserData?.accType || 'Checking Account'}</span></div>
@@ -1347,7 +1415,6 @@
       box.classList.remove('hidden');
     }
 
-    /* FIREBASE REGISTER FUNCTION */
     window.registerUser = async () => {
       const name = document.getElementById('regName').value.trim();
       const email = document.getElementById('regEmail').value.trim().toLowerCase();
@@ -1410,7 +1477,6 @@
       }
     };
 
-    /* FIREBASE LOGIN FUNCTION */
     window.loginUser = async () => {
       const accNo = document.getElementById('loginAccNo').value.trim();
       const pass = document.getElementById('loginPass').value;
@@ -1556,7 +1622,7 @@
         html += `<div onclick="viewTransactionDetails('completed', ${originalIdx})" class="flex justify-between items-center border-b border-slate-50 pb-2 p-1 rounded-xl cursor-pointer hover:bg-slate-50 transition-all">
           <div class="flex items-center gap-2">
             <div class="w-7 h-7 rounded-full bg-cyan-100 text-cyan-700 flex items-center justify-center">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7m10 0v10"/></svg>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7m10 0v10"/></svg>
             </div>
             <div>
               <p class="font-bold text-slate-900">${t.title}</p>
@@ -1768,7 +1834,6 @@
       showPage('home');
     };
 
-    // Initialize default view to Landing Home Page
     showPage('home');
   </script>
 
