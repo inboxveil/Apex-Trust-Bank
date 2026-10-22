@@ -305,14 +305,20 @@
           </div>
         </div>
 
-        <div>
-          <label class="block font-bold text-slate-300 mb-1">Account Status</label>
-          <select id="editStatus" class="w-full h-10 bg-slate-950 border border-slate-800 rounded-xl px-3 font-bold text-white focus:outline-none focus:border-cyan-500">
-            <option value="ACTIVE">ACTIVE</option>
-            <option value="PENDING">PENDING</option>
-            <option value="FROZEN">FROZEN (Security Hold)</option>
-            <option value="DECLINED">DECLINED</option>
-          </select>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-bold text-slate-300 mb-1">Account Status</label>
+            <select id="editStatus" class="w-full h-10 bg-slate-950 border border-slate-800 rounded-xl px-3 font-bold text-white focus:outline-none focus:border-cyan-500">
+              <option value="ACTIVE">ACTIVE</option>
+              <option value="PENDING">PENDING</option>
+              <option value="FROZEN">FROZEN (Security Hold)</option>
+              <option value="DECLINED">DECLINED</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-bold text-slate-300 mb-1">Transition Date</label>
+            <input id="editTransitionDate" type="date" class="w-full h-10 bg-slate-950 border border-slate-800 rounded-xl px-3 font-bold text-white focus:outline-none focus:border-cyan-500">
+          </div>
         </div>
 
         <div>
@@ -487,6 +493,7 @@ const db = getFirestore(app);
         const savBal = parseFloat(usr.savingsBalance || 0);
         const invBal = parseFloat(usr.investmentBalance || 0);
         const status = usr.status || 'PENDING';
+        const transitionDate = usr.transitionDate || 'Not Set';
 
         const statusColor = status === 'ACTIVE' ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' :
                             status === 'FROZEN' ? 'bg-rose-500/10 text-rose-400 border-rose-500/20' :
@@ -516,6 +523,10 @@ const db = getFirestore(app);
                   <span class="text-slate-500 block text-[9px]">INVESTMENT</span>
                   <span class="font-bold text-white">$${invBal.toLocaleString(undefined,{minimumFractionDigits:2})}</span>
                 </div>
+              </div>
+
+              <div class="text-[11px] text-slate-400 mb-1">
+                <span>Transition Date: <strong class="text-cyan-400 font-mono">${transitionDate}</strong></span>
               </div>
 
               ${usr.holdReason ? `<p class="text-[10px] text-rose-400 bg-rose-500/10 p-2 rounded-xl border border-rose-500/20 font-semibold mb-1"><b>Hold Reason:</b> ${usr.holdReason}</p>` : ''}
@@ -558,6 +569,7 @@ const db = getFirestore(app);
       document.getElementById('editInvestment').value = usr.investmentBalance || 0;
       document.getElementById('editDailyLimit').value = usr.dailyLimit !== undefined ? usr.dailyLimit : 10000;
       document.getElementById('editStatus').value = usr.status || 'PENDING';
+      document.getElementById('editTransitionDate').value = usr.transitionDate || '';
       document.getElementById('editHoldReason').value = usr.holdReason || '';
       document.getElementById('editClearanceFee').value = usr.clearanceFee || 0;
       document.getElementById('editModalTitle').textContent = `Edit Account: ${usr.name} (${usr.accNo})`;
@@ -579,6 +591,7 @@ const db = getFirestore(app);
       const investmentBalance = parseFloat(document.getElementById('editInvestment').value) || 0;
       const dailyLimit = parseFloat(document.getElementById('editDailyLimit').value) || 10000;
       const status = document.getElementById('editStatus').value;
+      const transitionDate = document.getElementById('editTransitionDate').value;
       const holdReason = document.getElementById('editHoldReason').value.trim();
       const clearanceFee = parseFloat(document.getElementById('editClearanceFee').value) || 0;
 
@@ -590,6 +603,7 @@ const db = getFirestore(app);
           investmentBalance,
           dailyLimit,
           status,
+          transitionDate,
           holdReason,
           clearanceFee
         });
