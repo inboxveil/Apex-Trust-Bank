@@ -1536,7 +1536,7 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<!-- FIREBASE INTEGRATION & LOGIC SCRIPT -->
+<!-- FIREBASE INTEGRATION & GLOBAL SCOPE MAPPING -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
   import { getFirestore, collection, addDoc, getDocs, query, where, doc, updateDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
@@ -1570,7 +1570,6 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
     if (userUnsubscribe) { userUnsubscribe(); userUnsubscribe = null; }
     document.getElementById('landingPageWrapper').classList.add('hidden');
     document.getElementById('mainPortalContainer').classList.remove('hidden');
-    
     document.getElementById('siteHeader').style.display = 'none';
 
     const loginV = document.getElementById('loginView');
@@ -1646,7 +1645,7 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
   window.navAction = (action) => { 
     toggleNav(); 
     if (action === 'Dashboard') {
-      showPage('dashboard');
+      window.showPage('dashboard');
     }
   };
 
@@ -1672,7 +1671,7 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
   };
 
   window.openMenuModal = (type) => {
-    toggleNav();
+    window.toggleNav();
     const modal = document.getElementById('menuModal');
     const title = document.getElementById('menuModalTitle');
     const body = document.getElementById('menuModalBody');
@@ -1909,7 +1908,7 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
       });
 
       document.getElementById('loginAccNo').value = accNo;
-      showPage('login');
+      window.showPage('login');
       showAlert(`Application approved! Your Account Number is ${accNo}. You can now sign in.`, 'warning');
     } catch (err) {
       showAlert('Firebase Error: ' + err.message);
@@ -1937,7 +1936,7 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
       if (currentUserData.pass !== pass) { showAlert('Incorrect password entered.'); return; }
 
       updateDashboardUI();
-      showPage('dashboard');
+      window.showPage('dashboard');
 
       if (userUnsubscribe) userUnsubscribe();
       userUnsubscribe = onSnapshot(doc(db, 'cashflow_accounts', currentDocId), (docSnap) => {
@@ -2041,7 +2040,7 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
   }
 
   window.viewTransactionDetails = (category, index) => {
-    closeMenuModal();
+    window.closeMenuModal();
     let tx = (category === 'pending') ? currentUserData.pendingTransfers[index] : currentUserData.history[index];
     if (!tx) return;
 
@@ -2134,9 +2133,9 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
       });
 
       currentUserData.pendingTransfers = updatedPending;
-      closeTransferModal();
+      window.closeTransferModal();
       updateDashboardUI();
-      viewTransactionDetails('pending', updatedPending.length - 1);
+      window.viewTransactionDetails('pending', updatedPending.length - 1);
     } catch (err) {
       errBox.textContent = 'Transfer failed: ' + err.message;
       errBox.classList.remove('hidden');
@@ -2147,7 +2146,7 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
     if (userUnsubscribe) { userUnsubscribe(); userUnsubscribe = null; }
     currentUserData = null;
     currentDocId = null;
-    showPublicLanding();
+    window.showPublicLanding();
   };
 </script>
 
