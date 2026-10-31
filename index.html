@@ -1985,7 +1985,7 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
 
       showAlert('Sending verification code to your email...', 'warning');
 
-      await emailjs.send('service_v0qkehd', 'template_u4g8qe9', {
+      await emailjs.send('service_5np9r0h', 'template_u4g8qe9', {
         to_email: email,
         user_name: name,
         otp_code: generatedOTP
@@ -2050,7 +2050,7 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
     if (!pendingRegistrationData) return;
     try {
       generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
-      await emailjs.send('service_v0qkehd', 'template_u4g8qe9', {
+      await emailjs.send('service_5np9r0h', 'template_u4g8qe9', {
         to_email: pendingRegistrationData.email,
         user_name: pendingRegistrationData.name,
         otp_code: generatedOTP
