@@ -310,7 +310,7 @@
             <label class="block font-bold text-slate-300 mb-1">Account Status</label>
             <select id="editStatus" class="w-full h-10 bg-slate-950 border border-slate-800 rounded-xl px-3 font-bold text-white focus:outline-none focus:border-cyan-500">
               <option value="ACTIVE">ACTIVE</option>
-              <option value="PENDING">PENDING</option>
+              <option value="PENDING_APPROVAL">PENDING APPROVAL</option>
               <option value="FROZEN">FROZEN (Security Hold)</option>
               <option value="DECLINED">DECLINED</option>
             </select>
@@ -338,21 +338,19 @@
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import { getFirestore, collection, getDocs, query, where, doc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+    import { getFirestore, collection, getDocs, doc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-    
-const firebaseConfig = {
-  apiKey: "AIzaSyBr6oZg7fQPEESM2vApFKrzHo54bl3oA98",
-  authDomain: "apex-trust-bank.firebaseapp.com",
-  projectId: "apex-trust-bank",
-  storageBucket: "apex-trust-bank.firebasestorage.app",
-  messagingSenderId: "854750185517",
-  appId: "1:854750185517:web:72d81a5c5660e8cd95d0a4"
-};
+    const firebaseConfig = {
+      apiKey: "AIzaSyBr6oZg7fQPEESM2vApFKrzHo54bl3oA98",
+      authDomain: "apex-trust-bank.firebaseapp.com",
+      projectId: "apex-trust-bank",
+      storageBucket: "apex-trust-bank.firebasestorage.app",
+      messagingSenderId: "854750185517",
+      appId: "1:854750185517:web:72d81a5c5660e8cd95d0a4"
+    };
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
 
     let cachedUsers = [];
 
@@ -492,7 +490,7 @@ const db = getFirestore(app);
         const checkBal = parseFloat(usr.checkingBalance || usr.balance || 0);
         const savBal = parseFloat(usr.savingsBalance || 0);
         const invBal = parseFloat(usr.investmentBalance || 0);
-        const status = usr.status || 'PENDING';
+        const status = usr.status || 'PENDING_APPROVAL';
         const transitionDate = usr.transitionDate || 'Not Set';
 
         const statusColor = status === 'ACTIVE' ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' :
@@ -568,7 +566,7 @@ const db = getFirestore(app);
       document.getElementById('editSavings').value = usr.savingsBalance || 0;
       document.getElementById('editInvestment').value = usr.investmentBalance || 0;
       document.getElementById('editDailyLimit').value = usr.dailyLimit !== undefined ? usr.dailyLimit : 10000;
-      document.getElementById('editStatus').value = usr.status || 'PENDING';
+      document.getElementById('editStatus').value = usr.status || 'PENDING_APPROVAL';
       document.getElementById('editTransitionDate').value = usr.transitionDate || '';
       document.getElementById('editHoldReason').value = usr.holdReason || '';
       document.getElementById('editClearanceFee').value = usr.clearanceFee || 0;
