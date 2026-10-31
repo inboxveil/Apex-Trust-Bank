@@ -792,7 +792,7 @@ header {
 
 .partners { border-top: 1px solid #e8edf3; padding: 28px 0; background: #fff; }
 .partners p { text-align: center; text-transform: uppercase; letter-spacing: 1.7px; font-size: 9px; font-weight: 800; color: #8792a2; margin-bottom: 20px; }
-.partner-logos { display: flex; align-items: center; justify-space-around; gap: 20px; flex-wrap: wrap; color: #7f8a9a; font-weight: 850; font-size: 16px; }
+.partner-logos { display: flex; align-items: center; justify-content: space-around; gap: 20px; flex-wrap: wrap; color: #7f8a9a; font-weight: 850; font-size: 16px; }
 
 footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
 .footer-grid { display: grid; grid-template-columns: 1.5fr repeat(3, 1fr); gap: 42px; padding-bottom: 35px; }
@@ -803,8 +803,9 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
 .footer-col a { display: block; font-size: 11px; color: #b7c4d5; margin: 12px 0; }
 .footer-col a:hover { color: #fff; }
 .contact-line { font-size: 11px; line-height: 1.8; color: #b7c4d5; margin: 10px 0; }
-.footer-bottom { border-top: 1px solid #ffffff1b; padding-top: 17px; display: flex; justify-between; gap: 15px; color: #9eacbf; font-size: 10px; }
+.footer-bottom { border-top: 1px solid #ffffff1b; padding-top: 17px; display: flex; justify-content: space-between; gap: 15px; color: #9eacbf; font-size: 10px; }
 .footer-bottom a { margin-left: 15px; }
+
 .toast { position: fixed; bottom: 18px; left: 50%; transform: translate(-50%,20px); background: #092344; color: #fff; padding: 12px 18px; border: 1px solid #f4bd5470; border-radius: 12px; font-size: 12px; opacity: 0; pointer-events: none; transition: .25s; z-index: 60; max-width: calc(100% - 30px); text-align:center; }
 .toast.show { opacity: 1; transform: translate(-50%,0); }
 .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s, transform .7s; }
@@ -1042,6 +1043,64 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
 
     <section class="partners"><div class="container"><p>Built around trust and responsible banking</p><div class="partner-logos"><span>VISA</span><span>◉ Mastercard</span><span> Pay</span><span>G Pay</span><span>PayPal</span><span>◈ Secure payments</span></div></div></section>
   </main>
+
+  <!-- FULL FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand" onclick="showPublicLanding()">
+            <span class="brand-mark">A</span>
+            <span class="brand-copy"><strong>APEX TRUST BANK</strong><small>Your Trust. Our Priority.</small></span>
+          </div>
+          <p>Banking designed to help you manage today and prepare for tomorrow. Please verify our official contact and regulatory details before launch.</p>
+          <div class="socials">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="X">𝕏</a>
+            <a href="#" aria-label="LinkedIn">in</a>
+            <a href="#" aria-label="Instagram">◎</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick links</h4>
+          <a href="#home" onclick="showPublicLanding()">Home</a>
+          <a href="#services" onclick="showPublicLanding()">Personal banking</a>
+          <a href="#services" onclick="showPublicLanding()">Business banking</a>
+          <a href="#services" onclick="showPublicLanding()">Savings</a>
+          <a href="#services" onclick="showPublicLanding()">Loans &amp; credit</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Support</h4>
+          <a href="#support" onclick="showPage('dashboard')">Help center</a>
+          <a href="#support" onclick="showPage('dashboard')">Contact support</a>
+          <a href="#support" onclick="showPage('dashboard')">FAQs</a>
+          <a href="#support" onclick="showPage('dashboard')">Security</a>
+          <a href="#support" onclick="showPage('dashboard')">Report a concern</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact &amp; legal</h4>
+          <div class="contact-line">support@example.com</div>
+          <div class="contact-line">Add verified phone number</div>
+          <div class="contact-line">Add verified branch address</div>
+          <a href="#" onclick="showToast('Privacy Policy'); return false;">Privacy policy</a>
+          <a href="#" onclick="showToast('Terms & Conditions'); return false;">Terms &amp; conditions</a>
+          <a href="#" onclick="showToast('Accessibility'); return false;">Accessibility</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; <span id="year">2026</span> APEX TRUST BANK. All rights reserved.</div>
+        <div>
+          <a href="#" onclick="showToast('Security statement'); return false;">Security</a>
+          <a href="#" onclick="showToast('Terms'); return false;">Terms</a>
+          <a href="#" onclick="showToast('Privacy'); return false;">Privacy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 </div>
 
 <!-- SIDE NAVIGATION DRAWER (CLIENT PORTAL MENU) -->
