@@ -34,7 +34,7 @@ html { scroll-behavior: smooth; }
 
 body {
   color: var(--ink);
-  background: #060e1e;
+  background: #040d1a;
   overflow-x: hidden;
 }
 
@@ -43,25 +43,7 @@ button, input, select { font: inherit; }
 
 .container {
   width: min(1200px, calc(100% - 48px));
-  margin-inline: auto;
-}
-
-/* Prevent grid children from forcing horizontal overflow */
-.container,
-.hero-grid,
-.story-grid,
-.app-grid,
-.stats-grid,
-.service-grid,
-.review-grid,
-.footer-grid {
-  min-width: 0;
-}
-
-.hero-grid > *,
-.story-grid > *,
-.app-grid > * {
-  min-width: 0;
+  margin: auto;
 }
 
 header {
@@ -835,146 +817,77 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
 @keyframes cardfloat { 0%,100% { transform:translateY(0) rotate(-6deg) } 50% { transform:translateY(-8px) rotate(-4deg) } }
 @keyframes float { 0%,100% { transform:translateY(0) } 50% { transform:translateY(-6px) } }
 
-/* RESPONSIVE LAYOUT PATCH */
-
-/* Tablet layout */
-@media (min-width: 761px) and (max-width: 1000px) {
-  .hero-grid {
-    grid-template-columns: 1fr 0.9fr;
-    gap: 24px;
-  }
-
-  .hero h1 {
-    font-size: clamp(36px, 4.5vw, 48px);
-  }
-
-  .hero-art {
-    min-height: 420px;
-  }
-
-  .phone {
-    right: 0;
-    width: 180px;
-  }
-
-  .bank-card {
-    left: 0;
-    width: 225px;
-  }
-
-  .service-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .story-grid,
-  .app-grid {
-    gap: 28px;
-  }
-
-  .footer-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+/* RESPONSIVE FIXES FOR MOBILE SCREENS */
+@media(max-width:1000px) {
+ .nav-links{gap:14px}
+ .hero-grid{grid-template-columns:1fr 1fr}
+ .service-grid{grid-template-columns:repeat(3,1fr)}
+ .story-grid{gap:38px}
+ .footer-grid{gap:25px}
 }
 
-/* Mobile layout refinements */
-@media (max-width: 760px) {
-  .container {
-    width: calc(100% - 32px);
-    max-width: 540px;
-  }
+@media(max-width:760px) {
+ .container{width:min(100% - 32px, 540px)}
+ .nav{height:72px}
+ .nav-links{display:none;position:absolute;top:72px;left:16px;right:16px;background:#092344;border:1px solid #ffffff24;border-radius:14px;padding:18px;flex-direction:column;align-items:stretch;gap:0;z-index:20}
+ .nav-links.open{display:flex}
+ .nav-links a{padding:12px 8px}
+ .nav-actions .btn-outline{display:none}
+ .nav-actions .btn{padding:10px 12px;font-size:11px}
+ .menu-toggle{display:block}
+ 
+ .hero{padding-top:110px; padding-bottom: 40px; min-height: auto;}
+ .hero-grid{grid-template-columns:1fr; gap: 30px;}
+ .hero-copy{padding: 0; text-align: center; max-width: 100%;}
+ .hero-copy > p { margin: 0 auto; }
+ .hero-ctas { justify-content: center; }
+ .trust-points { justify-content: center; gap: 14px; }
+ 
+ .hero-art{min-height:360px; margin-top: 10px; width: 100%;}
+ .glow{width:260px;height:260px}
+ .person-image{right: 50%; transform: translateX(50%); width: 220px; height: 260px;}
+ .phone{right: 10px; top: 0; width: 160px; height: 300px; padding: 14px 8px; transform: rotate(2deg);}
+ .phone-balance{font-size: 16px;}
+ .phone-tools{gap: 2px;}
+ .phone-tool i{width: 24px; height: 24px; font-size: 11px; margin-bottom: 3px;}
+ .transaction { padding: 4px 0; font-size: 7px; }
+ .transaction .circle { width: 18px; height: 18px; font-size: 8px; }
+ 
+ .bank-card{left: 5px; bottom: 10px; width: 200px; height: 125px; padding: 12px; transform: rotate(-4deg);}
+ .chip{width: 26px; height: 18px; margin-top: 8px;}
+ .card-number{font-size: 10px; margin: 6px 0;}
+ .visa{font-size: 14px;}
+ 
+ .float-note{left: 0; top: 10px; padding: 8px 10px; font-size: 8px;}
+ .hero:after{display: none;}
 
-  .hero h1 {
-    font-size: clamp(36px, 9vw, 46px);
-    letter-spacing: -1px;
-  }
+ .stats-grid{grid-template-columns:repeat(2,1fr);gap:20px 0;padding:20px 0}
+ .stat{justify-content:flex-start;border-right:0;padding:0 8px}
+ .stat:nth-child(odd){border-right:1px solid #ffffff24}
+ .stat strong{font-size:21px}
+ .stat-icon{font-size:20px}
 
-  .hero-copy > p {
-    font-size: 13px;
-    line-height: 1.75;
-  }
-
-  .hero-ctas {
-    width: 100%;
-    align-items: stretch;
-  }
-
-  .hero-ctas .btn {
-    flex: 1 1 160px;
-    white-space: normal;
-  }
-
-  .trust-points {
-    font-size: 10px;
-    gap: 10px 14px;
-  }
-
-  .hero-art {
-    min-height: 340px;
-    overflow: hidden;
-  }
-
-  .phone {
-    right: 2px;
-    width: 155px;
-  }
-
-  .bank-card {
-    left: 0;
-    width: 190px;
-  }
-
-  .float-note {
-    max-width: 175px;
-  }
-
-  .service-grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .service-card {
-    padding: 20px;
-  }
-
-  .review-grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .footer-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .footer-col {
-    min-width: 0;
-    overflow-wrap: anywhere;
-  }
-
-  .footer-brand {
-    grid-column: 1 / -1;
-  }
-
-  .footer-bottom {
-    overflow-wrap: anywhere;
-  }
-}
-
-/* Respect visitors who prefer reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-
-  .reveal {
-    opacity: 1;
-    transform: none;
-  }
+ .section{padding:50px 0}
+ .service-grid{grid-template-columns:1fr;gap:12px}
+ .service-card p{min-height:auto}
+ 
+ .story-grid,.app-grid{grid-template-columns:1fr;gap:30px}
+ .story-photo-wrap{min-height:280px; width: 100%;}
+ .savings-card{right: 10px; top: 10px; width: 180px; padding: 10px 12px;}
+ .story h2,.app-copy h2{font-size:28px}
+ 
+ .testimonial-top{align-items:flex-start;flex-direction:column}
+ .review-grid{grid-template-columns:1fr}
+ .review-card{padding:18px}
+ 
+ .app-visual{min-height:280px}
+ .app-phone { left: 0; width: 150px; height: 270px; }
+ .app-phone-two{right: 10px; width: 125px; height: 210px; bottom: 10px;}
+ 
+ .footer-grid{grid-template-columns:repeat(2,1fr);gap:25px 15px}
+ .footer-brand{grid-column:1/-1}
+ .footer-bottom{flex-direction:column;line-height:1.8; text-align: center;}
+ .footer-bottom a{margin:0 8px}
 }
 </style>
 </head>
@@ -1197,9 +1110,7 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
 <div id="sideNav" class="fixed top-0 left-0 h-full w-[280px] bg-slate-900 text-slate-100 z-50 transform -translate-x-full transition-transform duration-300 ease-in-out shadow-2xl overflow-y-auto flex flex-col border-r border-slate-800">
   <div class="p-5 border-b border-slate-800 flex justify-between items-center bg-slate-950/60">
     <div class="flex items-center gap-2.5">
-      <div class="w-8 h-8 bg-gradient-to-tr from-cyan-600 to-blue-500 rounded-lg flex items-center justify-center text-white text-base shadow-md shadow-cyan-500/20">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-      </div>
+      <div class="w-8 h-8 bg-gradient-to-tr from-amber-500 to-amber-600 rounded-lg flex items-center justify-center text-slate-950 font-black text-sm shadow-md shadow-amber-500/20">AT</div>
       <span class="font-extrabold text-white text-sm tracking-wide">APEX TRUST</span>
     </div>
     <button onclick="toggleNav()" class="text-slate-400 hover:text-white font-bold text-lg w-8 h-8 rounded-lg bg-slate-800/50 flex items-center justify-center transition-colors">✕</button>
@@ -1207,9 +1118,9 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
 
   <div class="p-4 space-y-6 text-xs text-slate-300 font-semibold flex-1">
     <div>
-      <p class="text-[10px] font-extrabold text-cyan-400 uppercase tracking-wider mb-2">MAIN NAVIGATION</p>
+      <p class="text-[10px] font-extrabold text-amber-400 uppercase tracking-wider mb-2">MAIN NAVIGATION</p>
       <div class="space-y-1">
-        <button onclick="navAction('Dashboard')" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 font-bold border border-cyan-500/20">
+        <button onclick="navAction('Dashboard')" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl bg-amber-500/10 text-amber-400 font-bold border border-amber-500/20">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg> Dashboard
         </button>
         <button onclick="openMenuModal('summary')" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-800/80 text-slate-300 transition-all">
@@ -1234,7 +1145,7 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
     </div>
 
     <div>
-      <p class="text-[10px] font-extrabold text-cyan-400 uppercase tracking-wider mb-2">BANKING PRODUCTS</p>
+      <p class="text-[10px] font-extrabold text-amber-400 uppercase tracking-wider mb-2">BANKING PRODUCTS</p>
       <div class="space-y-1">
         <button onclick="openMenuModal('loans')" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-800/80 text-slate-300 transition-all">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg> Credit & Loans
@@ -1246,7 +1157,7 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
     </div>
 
     <div>
-      <p class="text-[10px] font-extrabold text-cyan-400 uppercase tracking-wider mb-2">SECURITY & PREFERENCES</p>
+      <p class="text-[10px] font-extrabold text-amber-400 uppercase tracking-wider mb-2">SECURITY & PREFERENCES</p>
       <div class="space-y-1">
         <button onclick="openMenuModal('profile')" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-800/80 text-slate-300 transition-all">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg> Profile Settings
@@ -1269,18 +1180,18 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
 </div>
 
 <!-- CLIENT PORTAL CONTAINER (LOGIN, REGISTER, DASHBOARD) -->
-<div class="max-w-md w-full mx-auto px-4 my-28 relative z-20">
-  <div id="mainPortalContainer" class="w-full bg-white rounded-[2rem] shadow-2xl overflow-hidden border border-slate-200/60 hidden">
+<div class="max-w-xl w-full mx-auto px-4 my-24 relative z-20">
+  <div id="mainPortalContainer" class="w-full bg-slate-900/95 backdrop-blur-xl rounded-[2.5rem] shadow-2xl overflow-hidden border border-slate-800 text-slate-100 hidden">
 
   <!-- TOP HEADER -->
-  <div class="bg-gradient-to-r from-slate-900 via-[#0b1b36] to-slate-900 p-6 text-white text-center relative flex items-center justify-between border-b border-slate-800">
-    <button id="menuBtn" onclick="toggleNav()" class="hidden w-10 h-10 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center font-bold text-lg text-white transition-all backdrop-blur-sm border border-white/10">
+  <div class="bg-gradient-to-r from-slate-950 via-[#0a1931] to-slate-950 p-6 text-white text-center relative flex items-center justify-between border-b border-slate-800/80">
+    <button id="menuBtn" onclick="toggleNav()" class="hidden w-10 h-10 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center font-bold text-lg text-white transition-all backdrop-blur-sm border border-white/10 shadow-sm">
       <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
     </button>
     
     <div class="flex items-center justify-center gap-2.5 mx-auto cursor-pointer" onclick="showPublicLanding()">
-      <div class="w-8 h-8 bg-gradient-to-tr from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center font-black text-white text-base shadow-lg shadow-cyan-500/30">AT</div>
-      <h1 class="text-base font-extrabold tracking-tight">APEX TRUST BANK</h1>
+      <div class="w-8 h-8 bg-gradient-to-tr from-amber-400 to-amber-600 rounded-xl flex items-center justify-center font-black text-slate-950 text-base shadow-lg shadow-amber-500/30">AT</div>
+      <h1 class="text-base font-extrabold tracking-tight text-white">APEX TRUST BANK</h1>
     </div>
 
     <div class="w-10"></div>
@@ -1292,83 +1203,83 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
   </div>
 
   <!-- VIEW 1: CLIENT LOGIN FORM -->
-  <div id="loginView" class="p-6 pt-3">
-    <div class="mb-5">
-      <h2 class="font-extrabold text-xl text-slate-900 tracking-tight">Client Portal Sign In</h2>
-      <p class="text-xs text-slate-500 mt-1">Access your secure accounts and dashboards</p>
+  <div id="loginView" class="p-8 pt-4">
+    <div class="mb-6">
+      <h2 class="font-extrabold text-2xl text-white tracking-tight">Client Portal Sign In</h2>
+      <p class="text-xs text-slate-400 mt-1">Access your secure accounts and institutional dashboards</p>
     </div>
     
     <div class="space-y-4">
       <div>
-        <label class="block text-xs font-bold text-slate-700 mb-1.5">Account Number (10 Digits)</label>
-        <input id="loginAccNo" type="text" placeholder="e.g. 4581234567" class="w-full h-12 border border-slate-200 rounded-xl px-4 text-sm focus:outline-none focus:border-cyan-600 focus:ring-2 focus:ring-cyan-600/20 bg-slate-50 font-mono text-slate-800 font-bold transition-all">
+        <label class="block text-xs font-bold text-slate-300 mb-1.5">Account Number (10 Digits)</label>
+        <input id="loginAccNo" type="text" placeholder="e.g. 4581234567" class="w-full h-12 border border-slate-700/80 rounded-xl px-4 text-sm focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/20 bg-slate-950 font-mono text-white font-bold transition-all">
       </div>
       <div>
-        <label class="block text-xs font-bold text-slate-700 mb-1.5">Portal Password</label>
-        <input id="loginPass" type="password" placeholder="••••••••" class="w-full h-12 border border-slate-200 rounded-xl px-4 text-sm focus:outline-none focus:border-cyan-600 focus:ring-2 focus:ring-cyan-600/20 bg-slate-50 text-slate-800 transition-all">
+        <label class="block text-xs font-bold text-slate-300 mb-1.5">Portal Password</label>
+        <input id="loginPass" type="password" placeholder="••••••••" class="w-full h-12 border border-slate-700/80 rounded-xl px-4 text-sm focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/20 bg-slate-950 text-white transition-all">
       </div>
-      <button onclick="loginUser()" class="w-full h-12 bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-bold text-sm shadow-xl shadow-slate-900/15 active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+      <button onclick="loginUser()" class="w-full h-12 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-slate-950 rounded-xl font-extrabold text-sm shadow-xl shadow-amber-500/20 active:scale-[0.98] transition-all flex items-center justify-center gap-2">
         <span>Secure Sign In</span>
         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
       </button>
     </div>
 
-    <div class="flex justify-between items-center mt-6 text-xs text-slate-500 pt-4 border-t border-slate-100">
-      <a href="#" onclick="showPublicLanding()" class="text-slate-400 font-semibold hover:underline">← Home</a>
-      <p>New customer? <a href="#" onclick="showPage('register')" class="text-cyan-600 font-extrabold hover:underline">Open Account</a></p>
+    <div class="flex justify-between items-center mt-6 text-xs text-slate-400 pt-4 border-t border-slate-800/80">
+      <a href="#" onclick="showPublicLanding()" class="text-slate-400 font-semibold hover:text-white transition-colors">← Home</a>
+      <p>New customer? <a href="#" onclick="showPage('register')" class="text-amber-400 font-extrabold hover:underline">Open Account</a></p>
     </div>
   </div>
 
   <!-- VIEW 1.5: ADMIN LOGIN & PANEL -->
-  <div id="adminLoginView" class="hidden p-6 pt-3">
-    <div class="mb-5">
-      <h2 class="font-extrabold text-xl text-slate-900 tracking-tight">Admin Portal</h2>
-      <p class="text-xs text-slate-500 mt-1">Authorize and approve pending client accounts</p>
+  <div id="adminLoginView" class="hidden p-8 pt-4">
+    <div class="mb-6">
+      <h2 class="font-extrabold text-2xl text-white tracking-tight">Admin Portal</h2>
+      <p class="text-xs text-slate-400 mt-1">Authorize and approve pending client accounts</p>
     </div>
     <div id="adminPassBox" class="space-y-4">
       <div>
-        <label class="block text-xs font-bold text-slate-700 mb-1.5">Admin Password</label>
-        <input id="adminPassInput" type="password" placeholder="••••••••" class="w-full h-12 border border-slate-200 rounded-xl px-4 text-sm focus:outline-none focus:border-cyan-600 bg-slate-50 text-slate-800">
+        <label class="block text-xs font-bold text-slate-300 mb-1.5">Admin Password</label>
+        <input id="adminPassInput" type="password" placeholder="••••••••" class="w-full h-12 border border-slate-700/80 rounded-xl px-4 text-sm focus:outline-none focus:border-amber-400 bg-slate-950 text-white">
       </div>
       <button onclick="loginAdmin()" class="w-full h-12 bg-amber-600 hover:bg-amber-700 text-white rounded-xl font-bold text-sm shadow-lg shadow-amber-600/20 transition-all">Access Admin Panel</button>
     </div>
 
     <div id="adminPanelContent" class="hidden space-y-4">
-      <div class="bg-amber-50 border border-amber-200 p-3 rounded-xl text-xs text-amber-900 font-semibold">
+      <div class="bg-amber-950/40 border border-amber-500/30 p-3.5 rounded-xl text-xs text-amber-200 font-semibold">
         Logged in as Administrator. Below are client accounts awaiting approval.
       </div>
       <div id="pendingAccountsList" class="space-y-2.5 max-h-[50vh] overflow-y-auto pr-1">
         <!-- Pending list populated dynamically -->
       </div>
-      <button onclick="showPage('login')" class="w-full h-10 bg-slate-100 text-slate-700 rounded-xl font-bold text-xs mt-2">Log out Admin</button>
+      <button onclick="showPage('login')" class="w-full h-11 bg-slate-800 text-slate-200 rounded-xl font-bold text-xs mt-2 hover:bg-slate-700 transition-all">Log out Admin</button>
     </div>
 
-    <div class="mt-6 pt-4 border-t border-slate-100 text-xs text-slate-500">
-      <a href="#" onclick="showPublicLanding()" class="text-slate-400 font-semibold hover:underline">← Back to Home</a>
+    <div class="mt-6 pt-4 border-t border-slate-800/80 text-xs text-slate-400">
+      <a href="#" onclick="showPublicLanding()" class="text-slate-400 font-semibold hover:text-white">← Back to Home</a>
     </div>
   </div>
 
   <!-- VIEW 2: REGISTER FORM -->
-  <div id="registerView" class="hidden p-6 pt-3">
-    <div class="mb-5">
-      <h2 class="font-extrabold text-xl text-slate-900 tracking-tight">Open New Account</h2>
-      <p class="text-xs text-slate-500 mt-1">Join Apex Trust Bank for institutional-grade banking</p>
+  <div id="registerView" class="hidden p-8 pt-4">
+    <div class="mb-6">
+      <h2 class="font-extrabold text-2xl text-white tracking-tight">Open New Account</h2>
+      <p class="text-xs text-slate-400 mt-1">Join Apex Trust Bank for institutional-grade banking</p>
     </div>
     
     <div class="space-y-3.5">
       <div>
-        <label class="block text-xs font-bold text-slate-700 mb-1">Name</label>
-        <input id="regName" type="text" placeholder="John Doe" class="w-full h-11 border border-slate-200 rounded-xl px-4 text-xs font-semibold focus:outline-none focus:border-cyan-600 bg-slate-50 text-slate-800">
+        <label class="block text-xs font-bold text-slate-300 mb-1">Name</label>
+        <input id="regName" type="text" placeholder="John Doe" class="w-full h-11 border border-slate-700/80 rounded-xl px-4 text-xs font-semibold focus:outline-none focus:border-amber-400 bg-slate-950 text-white">
       </div>
 
       <div>
-        <label class="block text-xs font-bold text-slate-700 mb-1">Email</label>
-        <input id="regEmail" type="email" placeholder="john@example.com" class="w-full h-11 border border-slate-200 rounded-xl px-4 text-xs font-semibold focus:outline-none focus:border-cyan-600 bg-slate-50 text-slate-800">
+        <label class="block text-xs font-bold text-slate-300 mb-1">Email</label>
+        <input id="regEmail" type="email" placeholder="john@example.com" class="w-full h-11 border border-slate-700/80 rounded-xl px-4 text-xs font-semibold focus:outline-none focus:border-amber-400 bg-slate-950 text-white">
       </div>
 
       <div>
-        <label class="block text-xs font-bold text-slate-700 mb-1">Account type</label>
-        <select id="regAccType" class="w-full h-11 border border-slate-200 rounded-xl px-3 text-xs font-bold bg-slate-50 text-slate-800 focus:outline-none focus:border-cyan-600">
+        <label class="block text-xs font-bold text-slate-300 mb-1">Account type</label>
+        <select id="regAccType" class="w-full h-11 border border-slate-700/80 rounded-xl px-3 text-xs font-bold bg-slate-950 text-white focus:outline-none focus:border-amber-400">
           <option value="Checking Account">Personal Checking Account</option>
           <option value="Savings Account">High-Yield Savings Account</option>
           <option value="Investment Account">Wealth Investment Account</option>
@@ -1377,8 +1288,8 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
       </div>
 
       <div>
-        <label class="block text-xs font-bold text-slate-700 mb-1">Country</label>
-        <select id="regCountry" class="w-full h-11 border border-slate-200 rounded-xl px-3 text-xs font-bold bg-slate-50 text-slate-800 focus:outline-none focus:border-cyan-600">
+        <label class="block text-xs font-bold text-slate-300 mb-1">Country</label>
+        <select id="regCountry" class="w-full h-11 border border-slate-700/80 rounded-xl px-3 text-xs font-bold bg-slate-950 text-white focus:outline-none focus:border-amber-400">
           <option value="United States">United States</option>
           <option value="United Kingdom">United Kingdom</option>
           <option value="Canada">Canada</option>
@@ -1416,23 +1327,23 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
       </div>
 
       <div>
-        <label class="block text-xs font-bold text-slate-700 mb-1">Password</label>
-        <input id="regPass" type="password" placeholder="••••••••" class="w-full h-11 border border-slate-200 rounded-xl px-4 text-xs font-semibold focus:outline-none focus:border-cyan-600 bg-slate-50 text-slate-800">
+        <label class="block text-xs font-bold text-slate-300 mb-1">Password</label>
+        <input id="regPass" type="password" placeholder="••••••••" class="w-full h-11 border border-slate-700/80 rounded-xl px-4 text-xs font-semibold focus:outline-none focus:border-amber-400 bg-slate-950 text-white">
       </div>
 
       <div>
-        <label class="block text-xs font-bold text-slate-700 mb-1">Confirm password</label>
-        <input id="regConfirmPass" type="password" placeholder="••••••••" class="w-full h-11 border border-slate-200 rounded-xl px-4 text-xs font-semibold focus:outline-none focus:border-cyan-600 bg-slate-50 text-slate-800">
+        <label class="block text-xs font-bold text-slate-300 mb-1">Confirm password</label>
+        <input id="regConfirmPass" type="password" placeholder="••••••••" class="w-full h-11 border border-slate-700/80 rounded-xl px-4 text-xs font-semibold focus:outline-none focus:border-amber-400 bg-slate-950 text-white">
       </div>
 
       <div>
-        <label class="block text-xs font-bold text-slate-700 mb-1">Pin (4 Digits)</label>
-        <input id="regPin" type="password" maxlength="4" placeholder="1234" class="w-full h-11 border border-slate-200 rounded-xl px-4 text-xs font-mono font-bold focus:outline-none focus:border-cyan-600 bg-slate-50 text-slate-800">
+        <label class="block text-xs font-bold text-slate-300 mb-1">Pin (4 Digits)</label>
+        <input id="regPin" type="password" maxlength="4" placeholder="1234" class="w-full h-11 border border-slate-700/80 rounded-xl px-4 text-xs font-mono font-bold focus:outline-none focus:border-amber-400 bg-slate-950 text-white">
       </div>
 
       <div>
-        <label class="block text-xs font-bold text-slate-700 mb-1">Gender</label>
-        <select id="regGender" class="w-full h-11 border border-slate-200 rounded-xl px-3 text-xs font-bold bg-slate-50 text-slate-800 focus:outline-none focus:border-cyan-600">
+        <label class="block text-xs font-bold text-slate-300 mb-1">Gender</label>
+        <select id="regGender" class="w-full h-11 border border-slate-700/80 rounded-xl px-3 text-xs font-bold bg-slate-950 text-white focus:outline-none focus:border-amber-400">
           <option value="Male">Male</option>
           <option value="Female">Female</option>
           <option value="Non-Binary">Non-Binary</option>
@@ -1440,162 +1351,166 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
         </select>
       </div>
 
-      <button onclick="registerUser()" class="w-full h-12 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white rounded-xl font-bold text-xs shadow-lg shadow-cyan-600/20 active:scale-[0.98] transition-all mt-2">Submit Account Application</button>
+      <button onclick="registerUser()" class="w-full h-12 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-slate-950 rounded-xl font-extrabold text-xs shadow-lg shadow-amber-500/20 active:scale-[0.98] transition-all mt-2">Submit Account Application</button>
     </div>
 
-    <div class="flex justify-between items-center mt-5 pt-4 border-t border-slate-100 text-xs text-slate-500">
-      <a href="#" onclick="showPublicLanding()" class="text-slate-400 font-semibold hover:underline">← Home</a>
-      <p>Already registered? <a href="#" onclick="showPage('login')" class="text-cyan-600 font-extrabold hover:underline">Sign In</a></p>
+    <div class="flex justify-between items-center mt-5 pt-4 border-t border-slate-800/80 text-xs text-slate-400">
+      <a href="#" onclick="showPublicLanding()" class="text-slate-400 font-semibold hover:text-white">← Home</a>
+      <p>Already registered? <a href="#" onclick="showPage('login')" class="text-amber-400 font-extrabold hover:underline">Sign In</a></p>
     </div>
   </div>
 
   <!-- VIEW 3: CLIENT DASHBOARD -->
-  <div id="dashboardView" class="hidden bg-slate-50/80 p-4 space-y-4">
+  <div id="dashboardView" class="hidden bg-slate-950/60 p-5 space-y-4">
     
     <!-- ACCOUNT HOLD NOTICE BANNER -->
-    <div id="holdNotice" class="hidden bg-rose-50 border-2 border-rose-200 rounded-2xl p-4 text-rose-900 shadow-sm relative">
+    <div id="holdNotice" class="hidden bg-rose-950/60 border-2 border-rose-500/40 rounded-2xl p-4 text-rose-200 shadow-lg relative backdrop-blur-md">
       <div class="flex items-start gap-3">
-        <div class="w-8 h-8 rounded-xl bg-rose-600 text-white flex items-center justify-center shrink-0 mt-0.5 shadow-md shadow-rose-600/20">
+        <div class="w-8 h-8 rounded-xl bg-rose-600 text-white flex items-center justify-center shrink-0 mt-0.5 shadow-md shadow-rose-600/30">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
         </div>
         <div>
-          <h4 class="font-extrabold text-xs uppercase tracking-wider text-rose-800">Account Security Hold Active</h4>
-          <p class="text-xs font-semibold mt-1 text-rose-700" id="holdReasonText">Security verification required.</p>
-          <div id="feeRequirementBox" class="mt-2.5 bg-rose-100/90 p-2.5 rounded-xl text-[11px] font-extrabold text-rose-900 border border-rose-200">
+          <h4 class="font-extrabold text-xs uppercase tracking-wider text-rose-400">Account Security Hold Active</h4>
+          <p class="text-xs font-semibold mt-1 text-rose-200" id="holdReasonText">Security verification required.</p>
+          <div id="feeRequirementBox" class="mt-2.5 bg-rose-900/80 p-2.5 rounded-xl text-[11px] font-extrabold text-rose-100 border border-rose-500/40">
             Clearance Fee Required: <span id="holdFeeAmount">$0.00</span>
           </div>
-          <p class="text-[10px] text-rose-600 mt-2 font-medium">Please contact compliance support through our 24/7 help desk to resolve this restriction.</p>
+          <p class="text-[10px] text-rose-300 mt-2 font-medium">Please contact compliance support through our 24/7 help desk to resolve this restriction.</p>
         </div>
       </div>
     </div>
 
     <!-- USER GREETING CARD WITH AVATAR -->
-    <div class="flex items-center justify-between bg-white p-4 rounded-2xl border border-slate-200/70 shadow-sm">
-      <div class="flex items-center gap-3">
-        <div id="userAvatarContainer" class="w-10 h-10 rounded-full overflow-hidden bg-gradient-to-tr from-slate-900 to-slate-800 text-white flex items-center justify-center font-black text-sm shadow-md shrink-0">
+    <div class="flex items-center justify-between bg-slate-900 p-4 rounded-2xl border border-slate-800 shadow-md">
+      <div class="flex items-center gap-3.5">
+        <div id="userAvatarContainer" class="w-11 h-11 rounded-full overflow-hidden bg-gradient-to-tr from-amber-400 to-amber-600 text-slate-950 font-black flex items-center justify-center text-sm shadow-md shadow-amber-500/25 shrink-0">
           <span id="userAvatar">JD</span>
         </div>
         <div>
-          <h3 class="font-bold text-sm text-slate-900" id="userName">User Name</h3>
-          <p class="text-[11px] text-slate-400 font-medium">Account ID: <span id="userAcc" class="font-mono font-bold text-slate-700">4580000000</span></p>
+          <h3 class="font-extrabold text-sm text-white tracking-tight" id="userName">User Name</h3>
+          <p class="text-[11px] text-slate-400 font-medium">Account ID: <span id="userAcc" class="font-mono font-bold text-amber-400">4580000000</span></p>
         </div>
       </div>
-      <span id="userStatus" class="bg-emerald-100 text-emerald-700 text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider">Active</span>
+      <span id="userStatus" class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">Active</span>
     </div>
 
     <!-- VIRTUAL CARD / BALANCE BOARD -->
-    <div class="bg-gradient-to-tr from-slate-900 via-[#0e223f] to-[#12315c] rounded-2xl p-5 text-white shadow-xl relative overflow-hidden border border-slate-800">
-      <div class="absolute -right-8 -bottom-8 w-36 h-36 bg-cyan-500/10 rounded-full blur-3xl"></div>
+    <div class="bg-gradient-to-br from-slate-900 via-[#0a1931] to-slate-950 rounded-2xl p-5 text-white shadow-xl relative overflow-hidden border border-amber-500/30">
+      <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
       <div class="flex justify-between items-center text-xs opacity-75 font-semibold">
         <span>Checking Balance</span>
-        <span class="font-extrabold tracking-widest text-cyan-400">VISA INFINITE</span>
+        <span class="font-black tracking-widest text-amber-400">VISA INFINITE</span>
       </div>
-      <div class="flex items-center justify-between mt-2.5">
-        <div class="text-3xl font-black tracking-tight font-mono" id="userBalance">$0.00</div>
+      <div class="flex items-center justify-between mt-3">
+        <div class="text-3xl font-black tracking-tight font-mono text-white" id="userBalance">$0.00</div>
         <!-- EYE VIEW TOGGLE BUTTON -->
-        <button onclick="toggleBalanceVisibility()" id="eyeToggleBtn" class="w-10 h-10 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-cyan-400 transition-all backdrop-blur-sm border border-white/10 shadow-md" title="Toggle balance view">
+        <button onclick="toggleBalanceVisibility()" id="eyeToggleBtn" class="w-10 h-10 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-amber-400 transition-all backdrop-blur-sm border border-white/10 shadow-md" title="Toggle balance view">
           <svg id="eyeIconOpen" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
           <svg id="eyeIconClosed" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/></svg>
         </button>
       </div>
       
-      <div class="mt-4 border-t border-white/10 pt-3.5 text-[10px] space-y-1 font-mono">
-        <div class="flex justify-between"><span class="opacity-60">ROUTING (ABA):</span> <span class="font-bold" id="routingNo">021000021</span></div>
-        <div class="flex justify-between"><span class="opacity-60">SWIFT / BIC:</span> <span class="font-bold" id="swiftCode">APEXUS33XXX</span></div>
-        <div class="flex justify-between"><span class="opacity-60">IBAN:</span> <span class="font-bold text-[9px]" id="ibanNo">US64 APEX 0210 0002 1000</span></div>
-        <div class="flex justify-between pt-1.5 border-t border-white/10 text-cyan-300"><span class="opacity-90 font-mono">DAILY TRANSFER LIMIT:</span> <span class="font-bold font-mono" id="dailyLimitText">$10,000.00</span></div>
+      <div class="mt-4 border-t border-white/10 pt-3.5 text-[10px] space-y-1.5 font-mono text-slate-300">
+        <div class="flex justify-between"><span class="opacity-60">ROUTING (ABA):</span> <span class="font-bold text-white" id="routingNo">021000021</span></div>
+        <div class="flex justify-between"><span class="opacity-60">SWIFT / BIC:</span> <span class="font-bold text-white" id="swiftCode">APEXUS33XXX</span></div>
+        <div class="flex justify-between"><span class="opacity-60">IBAN:</span> <span class="font-bold text-[9px] text-white" id="ibanNo">US64 APEX 0210 0002 1000</span></div>
+        <div class="flex justify-between pt-1.5 border-t border-white/10 text-amber-300"><span class="opacity-90 font-mono">DAILY TRANSFER LIMIT:</span> <span class="font-bold font-mono text-amber-300" id="dailyLimitText">$10,000.00</span></div>
       </div>
     </div>
 
     <!-- KYC VERIFICATION STATUS BADGE -->
-    <div class="bg-emerald-50/80 border border-emerald-200 rounded-2xl p-3.5 flex items-center justify-between shadow-sm">
+    <div class="bg-emerald-950/30 border border-emerald-500/30 rounded-2xl p-3.5 flex items-center justify-between shadow-sm backdrop-blur-md">
       <div class="flex items-center gap-3">
         <div class="w-9 h-9 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-md shadow-emerald-600/20">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
         </div>
         <div>
           <div class="flex items-center gap-1.5">
-            <h4 class="font-extrabold text-xs text-slate-900 tracking-tight">KYC Verification</h4>
-            <span class="bg-emerald-200/80 text-emerald-800 text-[9px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider">Tier 2</span>
+            <h4 class="font-extrabold text-xs text-white tracking-tight">KYC Verification</h4>
+            <span class="bg-emerald-500/20 text-emerald-300 text-[9px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider">Tier 2</span>
           </div>
-          <p class="text-[11px] text-emerald-700 font-semibold mt-0.5">Identity fully verified & approved</p>
+          <p class="text-[11px] text-emerald-400 font-semibold mt-0.5">Identity fully verified & approved</p>
         </div>
       </div>
-      <div class="flex items-center gap-1 text-emerald-700 font-bold text-xs bg-emerald-100 px-2.5 py-1 rounded-xl">
-        <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+      <div class="flex items-center gap-1 text-emerald-400 font-bold text-xs bg-emerald-500/10 px-2.5 py-1 rounded-xl border border-emerald-500/20">
+        <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
         <span>Verified</span>
       </div>
     </div>
 
     <!-- CREDIT SCORE WIDGET -->
-    <div onclick="openMenuModal('creditScore')" class="bg-gradient-to-r from-cyan-50 to-blue-50 border border-cyan-200/70 rounded-2xl p-3.5 flex items-center justify-between shadow-sm cursor-pointer hover:shadow-md hover:border-cyan-300 transition-all group">
+    <div onclick="openMenuModal('creditScore')" class="bg-gradient-to-r from-slate-900 to-slate-950 border border-slate-800 rounded-2xl p-3.5 flex items-center justify-between shadow-sm cursor-pointer hover:border-amber-400/50 transition-all group">
       <div class="flex items-center gap-3">
-        <div class="w-9 h-9 rounded-xl bg-cyan-600 text-white flex items-center justify-center shrink-0 shadow-md shadow-cyan-600/20 group-hover:scale-105 transition-transform">
+        <div class="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
         </div>
         <div>
           <div class="flex items-center gap-1.5">
-            <h4 class="font-extrabold text-xs text-slate-900 tracking-tight">Credit Rating (FICO®)</h4>
-            <span class="bg-cyan-200/80 text-cyan-900 text-[9px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider">Prime</span>
+            <h4 class="font-extrabold text-xs text-white tracking-tight">Credit Rating (FICO®)</h4>
+            <span class="bg-amber-400/20 text-amber-300 text-[9px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider">Prime</span>
           </div>
-          <p class="text-[11px] text-cyan-800 font-semibold mt-0.5">Tap to view full credit report</p>
+          <p class="text-[11px] text-slate-400 font-semibold mt-0.5">Tap to view full credit report</p>
         </div>
       </div>
-      <div class="flex items-center gap-1.5 bg-cyan-600 text-white font-black text-xs px-3 py-1.5 rounded-xl shadow-sm group-hover:bg-cyan-700 transition-colors">
+      <div class="flex items-center gap-1.5 bg-amber-400 text-slate-950 font-black text-xs px-3 py-1.5 rounded-xl shadow-md group-hover:bg-amber-300 transition-colors">
         <span id="mainCreditScoreVal">785</span>
         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
       </div>
     </div>
 
-    <!-- QUICK ACTIONS -->
-    <div class="grid grid-cols-4 gap-2">
-      <button onclick="openTransferModal()" class="bg-white border border-slate-200/70 p-3 rounded-2xl flex flex-col items-center gap-1.5 shadow-sm hover:bg-slate-50 transition-all group">
-        <div class="w-8 h-8 rounded-xl bg-cyan-50 text-cyan-600 flex items-center justify-center font-bold text-sm group-hover:bg-cyan-600 group-hover:text-white transition-colors">
+    <!-- QUICK ACTIONS (4 BUTTONS) -->
+    <div class="grid grid-cols-4 gap-2.5">
+      <!-- Transfer Button -->
+      <button onclick="openTransferModal()" class="bg-slate-900 border border-slate-800 p-3 rounded-2xl flex flex-col items-center gap-1.5 shadow-sm hover:border-amber-400/40 hover:bg-slate-850 transition-all group">
+        <div class="w-9 h-9 rounded-xl bg-amber-400/10 text-amber-400 flex items-center justify-center font-bold text-sm group-hover:bg-amber-400 group-hover:text-slate-950 transition-colors">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7m10 0v10"/></svg>
         </div>
-        <span class="text-[11px] font-bold text-slate-700">Transfer</span>
+        <span class="text-[11px] font-bold text-slate-300">Transfer</span>
       </button>
 
-      <button onclick="openMenuModal('depositCheck')" class="bg-white border border-slate-200/70 p-3 rounded-2xl flex flex-col items-center gap-1.5 shadow-sm hover:bg-slate-50 transition-all group">
-        <div class="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-sm group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+      <!-- Deposit Button -->
+      <button onclick="openMenuModal('depositCheck')" class="bg-slate-900 border border-slate-800 p-3 rounded-2xl flex flex-col items-center gap-1.5 shadow-sm hover:border-emerald-400/40 hover:bg-slate-850 transition-all group">
+        <div class="w-9 h-9 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold text-sm group-hover:bg-emerald-500 group-hover:text-slate-950 transition-colors">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 7L7 17M7 17h10M7 7v10"/></svg>
         </div>
-        <span class="text-[11px] font-bold text-slate-700">Deposit</span>
+        <span class="text-[11px] font-bold text-slate-300">Deposit</span>
       </button>
 
-      <button onclick="openMenuModal('analysis')" class="bg-white border border-slate-200/70 p-3 rounded-2xl flex flex-col items-center gap-1.5 shadow-sm hover:bg-slate-50 transition-all group">
-        <div class="w-8 h-8 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-sm group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+      <!-- Analysis Button -->
+      <button onclick="openMenuModal('analysis')" class="bg-slate-900 border border-slate-800 p-3 rounded-2xl flex flex-col items-center gap-1.5 shadow-sm hover:border-indigo-400/40 hover:bg-slate-850 transition-all group">
+        <div class="w-9 h-9 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-bold text-sm group-hover:bg-indigo-500 group-hover:text-white transition-colors">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
         </div>
-        <span class="text-[11px] font-bold text-slate-700">Analysis</span>
+        <span class="text-[11px] font-bold text-slate-300">Analysis</span>
       </button>
 
-      <button onclick="openMenuModal('transactions')" class="bg-white border border-slate-200/70 p-3 rounded-2xl flex flex-col items-center gap-1.5 shadow-sm hover:bg-slate-50 transition-all group">
-        <div class="w-8 h-8 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-sm group-hover:bg-blue-600 group-hover:text-white transition-colors">
+      <!-- History Button -->
+      <button onclick="openMenuModal('transactions')" class="bg-slate-900 border border-slate-800 p-3 rounded-2xl flex flex-col items-center gap-1.5 shadow-sm hover:border-cyan-400/40 hover:bg-slate-850 transition-all group">
+        <div class="w-9 h-9 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center font-bold text-sm group-hover:bg-cyan-500 group-hover:text-slate-950 transition-colors">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
         </div>
-        <span class="text-[11px] font-bold text-slate-700">History</span>
+        <span class="text-[11px] font-bold text-slate-300">History</span>
       </button>
     </div>
 
     <!-- RECENT TRANSACTIONS -->
-    <div class="bg-white p-4 rounded-2xl border border-slate-200/70 shadow-sm">
+    <div class="bg-slate-900 p-4 rounded-2xl border border-slate-800 shadow-sm">
       <div class="flex justify-between items-center mb-3">
-        <h4 class="font-extrabold text-xs text-slate-900 uppercase tracking-wider">Recent Activity</h4>
-        <button onclick="openMenuModal('transactions')" class="text-[11px] font-bold text-cyan-600 hover:underline">View All</button>
+        <h4 class="font-extrabold text-xs text-white uppercase tracking-wider">Recent Activity</h4>
+        <button onclick="openMenuModal('transactions')" class="text-[11px] font-bold text-amber-400 hover:underline">View All</button>
       </div>
       <div id="activityList" class="space-y-3 text-xs">
-        <div class="flex justify-between items-center border-b border-slate-50 pb-2">
+        <div class="flex justify-between items-center border-b border-slate-800 pb-2">
           <div class="flex items-center gap-2">
-            <div class="w-7 h-7 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center">
+            <div class="w-7 h-7 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             </div>
             <div>
-              <p class="font-bold text-slate-800">Account Opening Bonus</p>
+              <p class="font-bold text-white">Account Opening Bonus</p>
               <p class="text-[10px] text-slate-400">System Credit</p>
             </div>
           </div>
-          <span class="font-bold text-emerald-600">+$0.00</span>
+          <span class="font-bold text-emerald-400 font-mono">+$0.00</span>
         </div>
       </div>
     </div>
@@ -1607,92 +1522,92 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
 
 <!-- EMAIL OTP VERIFICATION MODAL -->
 <div id="otpModal" class="fixed inset-0 bg-black/75 backdrop-blur-md hidden items-center justify-center p-4 z-50">
-  <div class="bg-white rounded-[2rem] p-6 w-full max-w-md shadow-2xl relative text-slate-900 border border-slate-100">
-    <div class="text-center pb-4 border-b border-dashed border-slate-200">
-      <div class="w-12 h-12 bg-cyan-600 rounded-2xl flex items-center justify-center mx-auto text-white mb-2.5 shadow-lg shadow-cyan-600/30">
+  <div class="bg-slate-900 text-white rounded-[2rem] p-6 w-full max-w-md shadow-2xl relative border border-slate-800">
+    <div class="text-center pb-4 border-b border-dashed border-slate-800">
+      <div class="w-12 h-12 bg-amber-500 rounded-2xl flex items-center justify-center mx-auto text-slate-950 mb-2.5 shadow-lg shadow-amber-500/30">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
       </div>
-      <h3 class="font-black text-lg text-slate-900 tracking-tight">Email Verification Required</h3>
-      <p class="text-xs text-slate-500 mt-0.5">We've sent a 6-digit security token to <span id="otpTargetEmail" class="font-bold text-slate-800">your email</span></p>
+      <h3 class="font-black text-lg text-white tracking-tight">Email Verification Required</h3>
+      <p class="text-xs text-slate-400 mt-0.5">We've sent a 6-digit security token to <span id="otpTargetEmail" class="font-bold text-slate-200">your email</span></p>
     </div>
 
-    <div id="otpError" class="hidden p-3 rounded-xl text-xs font-semibold my-3 bg-rose-50 text-rose-700 border border-rose-200"></div>
+    <div id="otpError" class="hidden p-3 rounded-xl text-xs font-semibold my-3 bg-rose-950 text-rose-300 border border-rose-800"></div>
 
     <div class="space-y-4 py-4">
       <div>
-        <label class="block text-xs font-bold text-slate-700 mb-1.5 text-center">Enter 6-Digit Code</label>
-        <input id="otpCodeInput" type="text" maxlength="6" placeholder="123456" class="w-full h-14 border border-slate-200 rounded-xl px-4 text-center tracking-[0.5em] text-xl font-mono font-black focus:outline-none focus:border-cyan-600 bg-slate-50 text-slate-800">
+        <label class="block text-xs font-bold text-slate-300 mb-1.5 text-center">Enter 6-Digit Code</label>
+        <input id="otpCodeInput" type="text" maxlength="6" placeholder="123456" class="w-full h-14 border border-slate-700 rounded-xl px-4 text-center tracking-[0.5em] text-xl font-mono font-black focus:outline-none focus:border-amber-400 bg-slate-950 text-white">
       </div>
-      <button onclick="verifyEmailOTP()" class="w-full h-12 bg-cyan-600 hover:bg-cyan-700 text-white rounded-xl font-bold text-xs shadow-lg shadow-cyan-600/20 active:scale-[0.98] transition-all">Confirm & Complete Registration</button>
-      <button onclick="resendOTPCode()" class="w-full text-center text-xs text-cyan-600 font-bold hover:underline pt-1">Didn't receive code? Resend</button>
+      <button onclick="verifyEmailOTP()" class="w-full h-12 bg-amber-400 hover:bg-amber-300 text-slate-950 rounded-xl font-extrabold text-xs shadow-lg shadow-amber-400/20 active:scale-[0.98] transition-all">Confirm & Complete Registration</button>
+      <button onclick="resendOTPCode()" class="w-full text-center text-xs text-amber-400 font-bold hover:underline pt-1">Didn't receive code? Resend</button>
     </div>
   </div>
 </div>
 
 <!-- GENERIC MENU ACTION MODAL -->
 <div id="menuModal" class="fixed inset-0 bg-black/70 backdrop-blur-md hidden items-center justify-center p-4 z-50">
-  <div class="bg-white rounded-[2rem] p-6 w-full max-w-md shadow-2xl relative max-h-[90vh] overflow-y-auto border border-slate-100">
-    <div class="flex justify-between items-center border-b border-slate-100 pb-3 mb-4">
-      <h3 id="menuModalTitle" class="font-extrabold text-base text-slate-900">Feature Panel</h3>
-      <button onclick="closeMenuModal()" class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 font-bold hover:bg-slate-200 flex items-center justify-center">✕</button>
+  <div class="bg-slate-900 text-white rounded-[2rem] p-6 w-full max-w-md shadow-2xl relative max-h-[90vh] overflow-y-auto border border-slate-800">
+    <div class="flex justify-between items-center border-b border-slate-800 pb-3 mb-4">
+      <h3 id="menuModalTitle" class="font-extrabold text-base text-white">Feature Panel</h3>
+      <button onclick="closeMenuModal()" class="w-8 h-8 rounded-full bg-slate-800 text-slate-400 font-bold hover:bg-slate-700 flex items-center justify-center">✕</button>
     </div>
-    <div id="menuModalBody" class="space-y-3 text-xs text-slate-600"></div>
+    <div id="menuModalBody" class="space-y-3 text-xs text-slate-300"></div>
   </div>
 </div>
 
 <!-- TRANSFER MODAL -->
 <div id="transferModal" class="fixed inset-0 bg-black/70 backdrop-blur-md hidden items-center justify-center p-4 z-50">
-  <div class="bg-white rounded-[2rem] p-6 w-full max-w-md shadow-2xl relative max-h-[90vh] overflow-y-auto border border-slate-100">
-    <div class="flex justify-between items-center border-b border-slate-100 pb-3 mb-4">
-      <h3 class="font-extrabold text-base text-slate-900">Secure Fund Transfer</h3>
-      <button onclick="closeTransferModal()" class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 font-bold hover:bg-slate-200 flex items-center justify-center">✕</button>
+  <div class="bg-slate-900 text-white rounded-[2rem] p-6 w-full max-w-md shadow-2xl relative max-h-[90vh] overflow-y-auto border border-slate-800">
+    <div class="flex justify-between items-center border-b border-slate-800 pb-3 mb-4">
+      <h3 class="font-extrabold text-base text-white">Secure Fund Transfer</h3>
+      <button onclick="closeTransferModal()" class="w-8 h-8 rounded-full bg-slate-800 text-slate-400 font-bold hover:bg-slate-700 flex items-center justify-center">✕</button>
     </div>
 
-    <div id="trError" class="hidden p-3 rounded-xl text-xs font-semibold mb-3 bg-rose-50 text-rose-700 border border-rose-200"></div>
+    <div id="trError" class="hidden p-3 rounded-xl text-xs font-semibold mb-3 bg-rose-950 text-rose-300 border border-rose-800"></div>
 
     <div class="space-y-3.5">
       <div>
-        <label class="block text-xs font-bold text-slate-700 mb-1">Transfer Network</label>
-        <select id="trType" onchange="toggleSwiftField()" class="w-full h-11 border border-slate-200 rounded-xl px-3 text-xs font-bold bg-slate-50 text-slate-800 focus:outline-none focus:border-cyan-600">
+        <label class="block text-xs font-bold text-slate-300 mb-1">Transfer Network</label>
+        <select id="trType" onchange="toggleSwiftField()" class="w-full h-11 border border-slate-700 rounded-xl px-3 text-xs font-bold bg-slate-950 text-white focus:outline-none focus:border-amber-400">
           <option value="LOCAL">Local Domestic Transfer (ACH / Wire)</option>
           <option value="WIRE">International SWIFT Wire Transfer</option>
         </select>
       </div>
 
       <div>
-        <label class="block text-xs font-bold text-slate-700 mb-1">Beneficiary Full Name</label>
-        <input id="trRecipient" type="text" placeholder="e.g. Sarah Jenkins" class="w-full h-11 border border-slate-200 rounded-xl px-4 text-xs font-semibold bg-slate-50 text-slate-800 focus:outline-none focus:border-cyan-600">
+        <label class="block text-xs font-bold text-slate-300 mb-1">Beneficiary Full Name</label>
+        <input id="trRecipient" type="text" placeholder="e.g. Sarah Jenkins" class="w-full h-11 border border-slate-700 rounded-xl px-4 text-xs font-semibold bg-slate-950 text-white focus:outline-none focus:border-amber-400">
       </div>
 
       <div>
-        <label class="block text-xs font-bold text-slate-700 mb-1">Recipient Bank Name</label>
-        <input id="trBank" type="text" placeholder="e.g. Chase Bank / Barclays" class="w-full h-11 border border-slate-200 rounded-xl px-4 text-xs font-semibold bg-slate-50 text-slate-800 focus:outline-none focus:border-cyan-600">
+        <label class="block text-xs font-bold text-slate-300 mb-1">Recipient Bank Name</label>
+        <input id="trBank" type="text" placeholder="e.g. Chase Bank / Barclays" class="w-full h-11 border border-slate-700 rounded-xl px-4 text-xs font-semibold bg-slate-950 text-white focus:outline-none focus:border-amber-400">
       </div>
 
       <div>
-        <label class="block text-xs font-bold text-slate-700 mb-1">Account Number / IBAN</label>
-        <input id="trAccountNo" type="text" placeholder="e.g. 0098765432" class="w-full h-11 border border-slate-200 rounded-xl px-4 text-xs bg-slate-50 text-slate-800 focus:outline-none focus:border-cyan-600 font-mono font-bold">
+        <label class="block text-xs font-bold text-slate-300 mb-1">Account Number / IBAN</label>
+        <input id="trAccountNo" type="text" placeholder="e.g. 0098765432" class="w-full h-11 border border-slate-700 rounded-xl px-4 text-xs bg-slate-950 text-white focus:outline-none focus:border-amber-400 font-mono font-bold">
       </div>
 
       <div id="swiftBox" class="hidden">
-        <label class="block text-xs font-bold text-slate-700 mb-1">SWIFT / BIC Routing Code</label>
-        <input id="trSwift" type="text" placeholder="e.g. CHASUS33" class="w-full h-11 border border-slate-200 rounded-xl px-4 text-xs bg-slate-50 text-slate-800 focus:outline-none focus:border-cyan-600 font-mono font-bold">
+        <label class="block text-xs font-bold text-slate-300 mb-1">SWIFT / BIC Routing Code</label>
+        <input id="trSwift" type="text" placeholder="e.g. CHASUS33" class="w-full h-11 border border-slate-700 rounded-xl px-4 text-xs bg-slate-950 text-white focus:outline-none focus:border-amber-400 font-mono font-bold">
       </div>
 
       <div>
         <div class="flex justify-between items-center mb-1">
-          <label class="block text-xs font-bold text-slate-700">Transfer Amount ($)</label>
-          <span class="text-[10px] text-cyan-700 font-extrabold">Limit: <span id="modalLimitText">$10,000.00</span></span>
+          <label class="block text-xs font-bold text-slate-300">Transfer Amount ($)</label>
+          <span class="text-[10px] text-amber-400 font-extrabold">Limit: <span id="modalLimitText">$10,000.00</span></span>
         </div>
-        <input id="trAmount" type="number" step="any" placeholder="0.00" class="w-full h-11 border border-slate-200 rounded-xl px-4 text-xs bg-slate-50 text-slate-800 focus:outline-none focus:border-cyan-600 font-bold font-mono">
+        <input id="trAmount" type="number" step="any" placeholder="0.00" class="w-full h-11 border border-slate-700 rounded-xl px-4 text-xs bg-slate-950 text-white focus:outline-none focus:border-amber-400 font-bold font-mono">
       </div>
 
       <div>
-        <label class="block text-xs font-bold text-slate-700 mb-1">4-Digit Security PIN</label>
-        <input id="trPin" type="password" maxlength="4" placeholder="••••" class="w-full h-11 border border-slate-200 rounded-xl px-4 text-xs bg-slate-50 text-slate-800 focus:outline-none focus:border-cyan-600 font-mono font-bold">
+        <label class="block text-xs font-bold text-slate-300 mb-1">4-Digit Security PIN</label>
+        <input id="trPin" type="password" maxlength="4" placeholder="••••" class="w-full h-11 border border-slate-700 rounded-xl px-4 text-xs bg-slate-950 text-white focus:outline-none focus:border-amber-400 font-mono font-bold">
       </div>
 
-      <button id="trSubmitBtn" onclick="processTransfer()" class="w-full h-12 bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-bold text-xs shadow-lg shadow-slate-900/15 active:scale-[0.98] transition-all mt-2">Authorize & Send Payment</button>
+      <button id="trSubmitBtn" onclick="processTransfer()" class="w-full h-12 bg-amber-400 hover:bg-amber-300 text-slate-950 rounded-xl font-extrabold text-xs shadow-lg shadow-amber-400/20 active:scale-[0.98] transition-all mt-2">Authorize & Send Payment</button>
     </div>
 
   </div>
@@ -1700,36 +1615,36 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
 
 <!-- TRANSACTION RECEIPT MODAL -->
 <div id="receiptModal" class="fixed inset-0 bg-black/75 backdrop-blur-md hidden items-center justify-center p-4 z-50">
-  <div class="bg-white rounded-[2rem] p-6 w-full max-w-md shadow-2xl relative max-h-[90vh] overflow-y-auto text-slate-900 border border-slate-100">
-    <div class="text-center pb-4 border-b border-dashed border-slate-200">
-      <div id="recHeaderIcon" class="w-12 h-12 bg-amber-500 rounded-2xl flex items-center justify-center mx-auto text-white mb-2.5 shadow-lg shadow-amber-500/30">
+  <div class="bg-slate-900 text-white rounded-[2rem] p-6 w-full max-w-md shadow-2xl relative max-h-[90vh] overflow-y-auto border border-slate-800">
+    <div class="text-center pb-4 border-b border-dashed border-slate-800">
+      <div id="recHeaderIcon" class="w-12 h-12 bg-amber-500 rounded-2xl flex items-center justify-center mx-auto text-slate-950 mb-2.5 shadow-lg shadow-amber-500/30">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
       </div>
-      <h3 id="recHeaderTitle" class="font-black text-lg text-slate-900 tracking-tight">Transfer Pending Approval</h3>
+      <h3 id="recHeaderTitle" class="font-black text-lg text-white tracking-tight">Transfer Pending Approval</h3>
       <p class="text-xs text-slate-400 mt-0.5">Apex Trust Bank Official Transaction Receipt</p>
     </div>
 
-    <div class="py-4 text-center bg-slate-50 rounded-2xl my-4 border border-slate-100">
+    <div class="py-4 text-center bg-slate-950 rounded-2xl my-4 border border-slate-800">
       <p class="text-[10px] uppercase tracking-wider font-extrabold text-slate-400">Total Transfer Amount</p>
-      <p class="text-3xl font-black text-slate-900 mt-1 font-mono" id="recAmount">$0.00</p>
-      <span id="recBadge" class="inline-block mt-2 bg-amber-100 text-amber-800 text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">Pending Compliance Verification</span>
+      <p class="text-3xl font-black text-white mt-1 font-mono" id="recAmount">$0.00</p>
+      <span id="recBadge" class="inline-block mt-2 bg-amber-500/10 text-amber-400 border border-amber-500/20 text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">Pending Compliance Verification</span>
     </div>
 
-    <div class="space-y-2.5 text-xs font-mono bg-slate-50/70 p-4 rounded-2xl border border-slate-100 text-slate-700">
-      <div class="flex justify-between"><span class="text-slate-400">Transaction Ref:</span> <span class="font-bold text-slate-800" id="recRef">ATB-8941239</span></div>
-      <div class="flex justify-between"><span class="text-slate-400">Date & Time:</span> <span class="font-bold text-slate-800" id="recDate">Oct 22, 2026, 10:55 AM</span></div>
-      <div class="flex justify-between"><span class="text-slate-400">Transfer Type:</span> <span class="font-bold text-slate-800" id="recType">Local Domestic Transfer</span></div>
-      <div class="flex justify-between"><span class="text-slate-400">Source Account:</span> <span class="font-bold text-slate-800" id="recSource">Checking Account</span></div>
-      <div class="flex justify-between"><span class="text-slate-400">Beneficiary Name:</span> <span class="font-bold text-slate-800" id="recRecipient">Sarah Jenkins</span></div>
-      <div class="flex justify-between"><span class="text-slate-400">Recipient Bank:</span> <span class="font-bold text-slate-800" id="recBank">Chase Bank</span></div>
-      <div class="flex justify-between"><span class="text-slate-400">Account Number:</span> <span class="font-bold text-slate-800" id="recAccNo">•••• 5432</span></div>
+    <div class="space-y-2.5 text-xs font-mono bg-slate-950/70 p-4 rounded-2xl border border-slate-800 text-slate-300">
+      <div class="flex justify-between"><span class="text-slate-500">Transaction Ref:</span> <span class="font-bold text-white" id="recRef">ATB-8941239</span></div>
+      <div class="flex justify-between"><span class="text-slate-500">Date & Time:</span> <span class="font-bold text-white" id="recDate">Oct 22, 2026, 10:55 AM</span></div>
+      <div class="flex justify-between"><span class="text-slate-500">Transfer Type:</span> <span class="font-bold text-white" id="recType">Local Domestic Transfer</span></div>
+      <div class="flex justify-between"><span class="text-slate-500">Source Account:</span> <span class="font-bold text-white" id="recSource">Checking Account</span></div>
+      <div class="flex justify-between"><span class="text-slate-500">Beneficiary Name:</span> <span class="font-bold text-white" id="recRecipient">Sarah Jenkins</span></div>
+      <div class="flex justify-between"><span class="text-slate-500">Recipient Bank:</span> <span class="font-bold text-white" id="recBank">Chase Bank</span></div>
+      <div class="flex justify-between"><span class="text-slate-500">Account Number:</span> <span class="font-bold text-white" id="recAccNo">•••• 5432</span></div>
     </div>
 
     <div class="mt-6 space-y-2.5">
-      <button onclick="window.print()" class="w-full h-11 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl font-bold text-xs transition-all flex items-center justify-center gap-2">
+      <button onclick="window.print()" class="w-full h-11 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-xl font-bold text-xs transition-all flex items-center justify-center gap-2">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg> Save / Print Receipt
       </button>
-      <button onclick="closeReceiptModal()" class="w-full h-12 bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-bold text-xs shadow-lg shadow-slate-900/15 active:scale-[0.98] transition-all">Done</button>
+      <button onclick="closeReceiptModal()" class="w-full h-12 bg-amber-400 hover:bg-amber-300 text-slate-950 rounded-xl font-extrabold text-xs shadow-lg shadow-amber-400/20 active:scale-[0.98] transition-all">Done</button>
     </div>
   </div>
 </div>
@@ -1811,9 +1726,9 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
     const box = document.getElementById('alertBox');
     if (!msg) { box.classList.add('hidden'); return; }
     box.className = `p-3.5 rounded-2xl text-xs font-semibold mb-2 text-center border shadow-sm ${
-      type === 'error' ? 'bg-rose-50 text-rose-700 border-rose-200' : 
-      type === 'warning' ? 'bg-amber-50 text-amber-800 border-amber-200' : 
-      'bg-emerald-50 text-emerald-700 border-emerald-200'
+      type === 'error' ? 'bg-rose-950 text-rose-300 border-rose-800' : 
+      type === 'warning' ? 'bg-amber-950 text-amber-200 border-amber-800' : 
+      'bg-emerald-950 text-emerald-300 border-emerald-800'
     }`;
     box.textContent = msg;
     box.classList.remove('hidden');
@@ -1897,47 +1812,47 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
       title.textContent = "Cashflow Analytics";
       body.innerHTML = `
         <svg viewBox="0 0 400 440" class="w-full h-auto select-none" style="font-family: system-ui, -apple-system, sans-serif;">
-          <rect width="400" height="440" rx="20" fill="#ffffff"/>
-          <text x="24" y="42" font-size="20" font-weight="700" fill="#111827">Cashflow</text>
+          <rect width="400" height="440" rx="20" fill="#091326"/>
+          <text x="24" y="42" font-size="20" font-weight="700" fill="#ffffff">Cashflow</text>
           <g transform="translate(280, 18)">
-            <rect width="96" height="34" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
-            <text x="14" y="22" font-size="13" font-weight="500" fill="#be123c">1 Month</text>
-            <path d="M72 13 L76 9 L80 13 M72 21 L76 25 L80 21" stroke="#374151" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <rect width="96" height="34" rx="8" fill="#111c33" stroke="#1f2d4a" stroke-width="1.5"/>
+            <text x="14" y="22" font-size="13" font-weight="500" fill="#f4bd54">1 Month</text>
+            <path d="M72 13 L76 9 L80 13 M72 21 L76 25 L80 21" stroke="#94a3b8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
           </g>
           <g transform="translate(48, 70)">
             <rect x="0" y="0" width="42" height="15" rx="3" fill="#1d9bf0"/>
-            <text x="48" y="12" font-size="12" fill="#4b5563">Credit</text>
+            <text x="48" y="12" font-size="12" fill="#94a3b8">Credit</text>
             <rect x="90" y="0" width="44" height="15" rx="3" fill="#38bdf8" opacity="0.85"/>
-            <text x="140" y="12" font-size="12" fill="#4b5563">Deposit</text>
+            <text x="140" y="12" font-size="12" fill="#94a3b8">Deposit</text>
             <rect x="190" y="0" width="44" height="15" rx="3" fill="#fb923c"/>
-            <text x="240" y="12" font-size="12" fill="#4b5563">Debit</text>
+            <text x="240" y="12" font-size="12" fill="#94a3b8">Debit</text>
             <rect x="90" y="22" width="44" height="15" rx="3" fill="#fb7185"/>
-            <text x="140" y="34" font-size="12" fill="#4b5563">Transfer</text>
+            <text x="140" y="34" font-size="12" fill="#94a3b8">Transfer</text>
           </g>
-          <g font-size="12" fill="#6b7280" text-anchor="end">
+          <g font-size="12" fill="#94a3b8" text-anchor="end">
             <text x="85" y="150">$80,000</text>
-            <line x1="95" y1="145" x2="330" y2="145" stroke="#f3f4f6" stroke-width="1.5"/>
+            <line x1="95" y1="145" x2="330" y2="145" stroke="#16223d" stroke-width="1.5"/>
             <text x="85" y="183">$70,000</text>
-            <line x1="95" y1="178" x2="330" y2="178" stroke="#f3f4f6" stroke-width="1.5"/>
+            <line x1="95" y1="178" x2="330" y2="178" stroke="#16223d" stroke-width="1.5"/>
             <text x="85" y="216">$60,000</text>
-            <line x1="95" y1="211" x2="330" y2="211" stroke="#f3f4f6" stroke-width="1.5"/>
+            <line x1="95" y1="211" x2="330" y2="211" stroke="#16223d" stroke-width="1.5"/>
             <text x="85" y="249">$50,000</text>
-            <line x1="95" y1="244" x2="330" y2="244" stroke="#f3f4f6" stroke-width="1.5"/>
+            <line x1="95" y1="244" x2="330" y2="244" stroke="#16223d" stroke-width="1.5"/>
             <text x="85" y="282">$40,000</text>
-            <line x1="95" y1="277" x2="330" y2="277" stroke="#f3f4f6" stroke-width="1.5"/>
+            <line x1="95" y1="277" x2="330" y2="277" stroke="#16223d" stroke-width="1.5"/>
             <text x="85" y="315">$30,000</text>
-            <line x1="95" y1="310" x2="330" y2="310" stroke="#f3f4f6" stroke-width="1.5"/>
+            <line x1="95" y1="310" x2="330" y2="310" stroke="#16223d" stroke-width="1.5"/>
             <text x="85" y="348">$20,000</text>
-            <line x1="95" y1="343" x2="330" y2="343" stroke="#f3f4f6" stroke-width="1.5"/>
+            <line x1="95" y1="343" x2="330" y2="343" stroke="#16223d" stroke-width="1.5"/>
             <text x="85" y="381">$10,000</text>
-            <line x1="95" y1="376" x2="330" y2="376" stroke="#f3f4f6" stroke-width="1.5"/>
+            <line x1="95" y1="376" x2="330" y2="376" stroke="#16223d" stroke-width="1.5"/>
             <text x="85" y="408">$0</text>
-            <line x1="95" y1="405" x2="330" y2="405" stroke="#e5e7eb" stroke-width="1.5"/>
+            <line x1="95" y1="405" x2="330" y2="405" stroke="#1f2d4a" stroke-width="1.5"/>
           </g>
-          <line x1="95" y1="145" x2="95" y2="405" stroke="#e5e7eb" stroke-width="1.5"/>
-          <line x1="330" y1="145" x2="330" y2="405" stroke="#e5e7eb" stroke-width="1.5"/>
-          <text x="95" y="425" font-size="12" fill="#4b5563" text-anchor="middle">2026-09-18</text>
-          <text x="330" y="425" font-size="12" fill="#4b5563" text-anchor="middle">2026-09-22</text>
+          <line x1="95" y1="145" x2="95" y2="405" stroke="#1f2d4a" stroke-width="1.5"/>
+          <line x1="330" y1="145" x2="330" y2="405" stroke="#1f2d4a" stroke-width="1.5"/>
+          <text x="95" y="425" font-size="12" fill="#94a3b8" text-anchor="middle">2026-09-18</text>
+          <text x="330" y="425" font-size="12" fill="#94a3b8" text-anchor="middle">2026-09-22</text>
           <line x1="95" y1="405" x2="330" y2="405" stroke="#1d9bf0" stroke-width="3.5" stroke-linecap="round"/>
           <circle cx="95" cy="405" r="5" fill="#1d9bf0"/>
           <circle cx="330" cy="405" r="5" fill="#1d9bf0"/>
@@ -1949,22 +1864,22 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
       title.textContent = "Account Financial Summary";
       body.innerHTML = `
         <div class="space-y-2.5 font-mono text-xs">
-          <div class="flex justify-between bg-slate-50 p-3 rounded-xl border border-slate-100"><span class="text-slate-500">Checking Balance:</span> <span class="font-bold text-slate-900">$${(currentUserData?.checkingBalance || 0).toLocaleString(undefined,{minimumFractionDigits:2})}</span></div>
-          <div class="flex justify-between bg-slate-50 p-3 rounded-xl border border-slate-100"><span class="text-slate-500">ABA Routing Number:</span> <span class="font-bold text-slate-900">${currentUserData?.routingNo || 'N/A'}</span></div>
+          <div class="flex justify-between bg-slate-950 p-3 rounded-xl border border-slate-800"><span class="text-slate-400">Checking Balance:</span> <span class="font-bold text-white">$${(currentUserData?.checkingBalance || 0).toLocaleString(undefined,{minimumFractionDigits:2})}</span></div>
+          <div class="flex justify-between bg-slate-950 p-3 rounded-xl border border-slate-800"><span class="text-slate-400">ABA Routing Number:</span> <span class="font-bold text-white">${currentUserData?.routingNo || 'N/A'}</span></div>
         </div>`;
     } else if (type === 'creditScore') {
       title.textContent = "FICO® Credit Score Breakdown";
       const score = currentUserData?.creditScore || 785;
       body.innerHTML = `
         <div class="space-y-4 text-center">
-          <div class="bg-gradient-to-br from-cyan-600 to-blue-700 text-white p-6 rounded-2xl shadow-lg">
-            <span class="text-[10px] font-extrabold uppercase tracking-widest bg-white/20 px-3 py-1 rounded-full">Prime Rating</span>
-            <div class="text-5xl font-black tracking-tight mt-3 font-mono">${score}</div>
-            <p class="text-xs text-cyan-100 mt-2 font-medium">Scale 300 - 850 • Verified Today</p>
+          <div class="bg-gradient-to-br from-amber-500 to-amber-700 text-slate-950 p-6 rounded-2xl shadow-lg">
+            <span class="text-[10px] font-black uppercase tracking-widest bg-slate-950/20 px-3 py-1 rounded-full text-slate-950">Prime Rating</span>
+            <div class="text-5xl font-black tracking-tight mt-3 font-mono text-slate-950">${score}</div>
+            <p class="text-xs text-slate-900 mt-2 font-bold">Scale 300 - 850 • Verified Today</p>
           </div>
-          <div class="space-y-2 text-left bg-slate-50 p-4 rounded-2xl border border-slate-100 text-xs font-semibold text-slate-700">
-            <div class="flex justify-between py-1 border-b border-slate-100"><span>Payment History:</span> <span class="text-emerald-600 font-bold">100% On-Time</span></div>
-            <div class="flex justify-between py-1 border-b border-slate-100"><span>Credit Utilization:</span> <span class="text-emerald-600 font-bold">3.1% (Optimal)</span></div>
+          <div class="space-y-2 text-left bg-slate-950 p-4 rounded-2xl border border-slate-800 text-xs font-semibold text-slate-300">
+            <div class="flex justify-between py-1 border-b border-slate-800"><span>Payment History:</span> <span class="text-emerald-400 font-bold">100% On-Time</span></div>
+            <div class="flex justify-between py-1 border-b border-slate-800"><span>Credit Utilization:</span> <span class="text-emerald-400 font-bold">3.1% (Optimal)</span></div>
           </div>
         </div>`;
     } else if (type === 'transactions') {
@@ -1973,17 +1888,17 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
       const pendingList = currentUserData?.pendingTransfers || [];
       let listHtml = `<div class="space-y-2.5 max-h-[60vh] overflow-y-auto pr-1">`;
       if (pendingList.length > 0) {
-        listHtml += `<p class="text-[10px] font-extrabold text-amber-600 uppercase tracking-wider">Pending Approvals</p>`;
+        listHtml += `<p class="text-[10px] font-extrabold text-amber-400 uppercase tracking-wider">Pending Approvals</p>`;
         pendingList.slice().reverse().forEach((p, idx) => {
           listHtml += `
-            <div onclick="viewTransactionDetails('pending', ${idx})" class="flex justify-between items-center bg-amber-50/70 p-3 rounded-xl border border-amber-200 cursor-pointer hover:bg-amber-100/70 transition-all">
+            <div onclick="viewTransactionDetails('pending', ${idx})" class="flex justify-between items-center bg-amber-950/40 p-3 rounded-xl border border-amber-500/30 cursor-pointer hover:bg-amber-900/40 transition-all">
               <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold">
+                <div class="w-8 h-8 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                 </div>
-                <div><p class="font-bold text-slate-900 text-xs">${p.title}</p><p class="text-[10px] text-amber-700 font-semibold">${p.date} • Pending</p></div>
+                <div><p class="font-bold text-white text-xs">${p.title}</p><p class="text-[10px] text-amber-300 font-semibold">${p.date} • Pending</p></div>
               </div>
-              <span class="font-bold font-mono text-amber-700 text-xs">-$${parseFloat(p.amount).toLocaleString(undefined, {minimumFractionDigits: 2})}</span>
+              <span class="font-bold font-mono text-amber-300 text-xs">-$${parseFloat(p.amount).toLocaleString(undefined, {minimumFractionDigits: 2})}</span>
             </div>`;
         });
       }
@@ -1991,14 +1906,14 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
         listHtml += `<p class="text-[10px] font-extrabold text-slate-400 uppercase tracking-wider mt-3">Completed History</p>`;
         history.slice().reverse().forEach((t, idx) => {
           listHtml += `
-            <div onclick="viewTransactionDetails('completed', ${idx})" class="flex justify-between items-center bg-slate-50 p-3 rounded-xl border border-slate-100 cursor-pointer hover:bg-slate-100 transition-all">
+            <div onclick="viewTransactionDetails('completed', ${idx})" class="flex justify-between items-center bg-slate-950 p-3 rounded-xl border border-slate-800 cursor-pointer hover:bg-slate-850 transition-all">
               <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-xl bg-cyan-100 text-cyan-700 flex items-center justify-center font-bold">
+                <div class="w-8 h-8 rounded-xl bg-amber-400/10 text-amber-400 flex items-center justify-center font-bold">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7m10 0v10"/></svg>
                 </div>
-                <div><p class="font-bold text-slate-900 text-xs">${t.title}</p><p class="text-[10px] text-slate-400 font-medium">${t.date}</p></div>
+                <div><p class="font-bold text-white text-xs">${t.title}</p><p class="text-[10px] text-slate-400 font-medium">${t.date}</p></div>
               </div>
-              <span class="font-bold font-mono text-rose-600 text-xs">-$${parseFloat(t.amount).toLocaleString(undefined, {minimumFractionDigits: 2})}</span>
+              <span class="font-bold font-mono text-rose-400 text-xs">-$${parseFloat(t.amount).toLocaleString(undefined, {minimumFractionDigits: 2})}</span>
             </div>`;
         });
       }
@@ -2008,67 +1923,67 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
       title.textContent = "Mobile Check Deposit";
       body.innerHTML = `
         <div class="space-y-3.5 text-xs">
-          <div><label class="block font-bold text-slate-700 mb-1">Check Amount ($)</label><input id="chkAmt" type="number" placeholder="0.00" class="w-full h-11 border border-slate-200 rounded-xl px-3 font-bold bg-slate-50 text-slate-800"></div>
-          <div><label class="block font-bold text-slate-700 mb-1">Front Image Capture</label><input type="file" accept="image/*" class="w-full text-xs text-slate-500"></div>
-          <button onclick="alert('Check deposit submitted for manual clearing & verification.'); closeMenuModal();" class="w-full h-11 bg-slate-900 text-white rounded-xl font-bold mt-2 shadow-md">Submit Check Deposit</button>
+          <div><label class="block font-bold text-slate-300 mb-1">Check Amount ($)</label><input id="chkAmt" type="number" placeholder="0.00" class="w-full h-11 border border-slate-700 rounded-xl px-3 font-bold bg-slate-950 text-white"></div>
+          <div><label class="block font-bold text-slate-300 mb-1">Front Image Capture</label><input type="file" accept="image/*" class="w-full text-xs text-slate-400"></div>
+          <button onclick="alert('Check deposit submitted for manual clearing & verification.'); closeMenuModal();" class="w-full h-11 bg-amber-400 text-slate-950 rounded-xl font-extrabold mt-2 shadow-md">Submit Check Deposit</button>
         </div>`;
     } else if (type === 'depositCrypto') {
       title.textContent = "Crypto Vault Gateway";
       body.innerHTML = `
         <div class="space-y-3.5 text-center text-xs">
-          <p class="text-slate-500 font-medium">Send supported digital assets (USDT ERC20 / TRC20) to your dedicated secure vault address:</p>
-          <div class="bg-slate-100 p-3.5 rounded-xl font-mono text-[11px] font-bold text-slate-800 break-all border border-slate-200">0x71C839aE2948b8091B0a811d04b86fB1</div>
-          <button onclick="alert('Vault address copied to clipboard.'); closeMenuModal();" class="w-full h-11 bg-slate-900 text-white rounded-xl font-bold shadow-md">Copy Address</button>
+          <p class="text-slate-400 font-medium">Send supported digital assets (USDT ERC20 / TRC20) to your dedicated secure vault address:</p>
+          <div class="bg-slate-950 p-3.5 rounded-xl font-mono text-[11px] font-bold text-amber-300 break-all border border-slate-800">0x71C839aE2948b8091B0a811d04b86fB1</div>
+          <button onclick="alert('Vault address copied to clipboard.'); closeMenuModal();" class="w-full h-11 bg-amber-400 text-slate-950 rounded-xl font-extrabold shadow-md">Copy Address</button>
         </div>`;
     } else if (type === 'loans') {
       title.textContent = "Credit Lines & Loan Facility";
       body.innerHTML = `
         <div class="space-y-3.5 text-xs">
-          <p class="text-slate-500 font-medium">You are pre-approved for personal credit lines up to $100,000 based on your Tier 2 status.</p>
-          <button onclick="alert('Loan application submitted for underwriting review.'); closeMenuModal();" class="w-full h-11 bg-slate-900 text-white rounded-xl font-bold mt-2 shadow-md">Apply For Facility</button>
+          <p class="text-slate-400 font-medium">You are pre-approved for personal credit lines up to $100,000 based on your Tier 2 status.</p>
+          <button onclick="alert('Loan application submitted for underwriting review.'); closeMenuModal();" class="w-full h-11 bg-amber-400 text-slate-950 rounded-xl font-extrabold mt-2 shadow-md">Apply For Facility</button>
         </div>`;
     } else if (type === 'cards') {
       title.textContent = "Visa Infinite Cards";
       body.innerHTML = `
         <div class="space-y-3.5 text-xs">
-          <div class="bg-gradient-to-r from-slate-900 to-blue-950 p-4 rounded-2xl text-white shadow-lg border border-slate-800">
+          <div class="bg-gradient-to-r from-slate-950 to-amber-950 p-4 rounded-2xl text-white shadow-lg border border-amber-500/30">
             <p class="text-[10px] opacity-75 font-semibold">Virtual Debit Card</p>
-            <p class="font-mono tracking-widest text-sm mt-1 font-bold">•••• •••• •••• 9042</p>
+            <p class="font-mono tracking-widest text-sm mt-1 font-bold text-amber-300">•••• •••• •••• 9042</p>
           </div>
-          <button onclick="alert('Physical card ordered.'); closeMenuModal();" class="w-full h-11 bg-slate-900 text-white rounded-xl font-bold shadow-md">Request Physical Replacement</button>
+          <button onclick="alert('Physical card ordered.'); closeMenuModal();" class="w-full h-11 bg-amber-400 text-slate-950 rounded-xl font-extrabold shadow-md">Request Physical Replacement</button>
         </div>`;
     } else if (type === 'profile') {
       title.textContent = "User Profile Information";
       const currentPic = currentUserData?.profilePic || '';
       body.innerHTML = `
         <div class="space-y-3 font-mono text-xs">
-          <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-100 text-center">
+          <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 text-center">
             <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">Profile Picture</label>
             <div class="relative w-20 h-20 mx-auto mb-2">
-              <img id="profileImgPreview" src="${currentPic || 'https://via.placeholder.com/80?text=Avatar'}" class="w-20 h-20 rounded-full object-cover border-2 border-slate-300 shadow-sm" alt="Avatar">
+              <img id="profileImgPreview" src="${currentPic || 'https://via.placeholder.com/80?text=Avatar'}" class="w-20 h-20 rounded-full object-cover border-2 border-amber-400/50 shadow-sm" alt="Avatar">
             </div>
-            <input type="file" onchange="handleProfilePicChange(event)" accept="image/*" class="w-full text-xs text-slate-500 cursor-pointer">
+            <input type="file" onchange="handleProfilePicChange(event)" accept="image/*" class="w-full text-xs text-slate-400 cursor-pointer">
           </div>
-          <div class="bg-slate-50 p-3 rounded-xl border border-slate-100"><span class="text-slate-400 block text-[9px] font-bold">FULL LEGAL NAME</span><span class="font-bold text-slate-900">${currentUserData?.name}</span></div>
-          <div class="bg-slate-50 p-3 rounded-xl border border-slate-100"><span class="text-slate-400 block text-[9px] font-bold">EMAIL</span><span class="font-bold text-slate-900">${currentUserData?.email}</span></div>
-          <div class="bg-slate-50 p-3 rounded-xl border border-slate-100"><span class="text-slate-400 block text-[9px] font-bold">ACCOUNT TYPE</span><span class="font-bold text-slate-900">${currentUserData?.accType}</span></div>
-          <div class="bg-slate-50 p-3 rounded-xl border border-slate-100"><span class="text-slate-400 block text-[9px] font-bold">COUNTRY</span><span class="font-bold text-slate-900">${currentUserData?.country}</span></div>
-          <div class="bg-slate-50 p-3 rounded-xl border border-slate-100"><span class="text-slate-400 block text-[9px] font-bold">GENDER</span><span class="font-bold text-slate-900">${currentUserData?.gender}</span></div>
-          <div class="bg-slate-50 p-3 rounded-xl border border-slate-100"><span class="text-slate-400 block text-[9px] font-bold">ACCOUNT NUMBER</span><span class="font-bold text-slate-900">${currentUserData?.accNo}</span></div>
+          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800"><span class="text-slate-500 block text-[9px] font-bold">FULL LEGAL NAME</span><span class="font-bold text-white">${currentUserData?.name}</span></div>
+          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800"><span class="text-slate-500 block text-[9px] font-bold">EMAIL</span><span class="font-bold text-white">${currentUserData?.email}</span></div>
+          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800"><span class="text-slate-500 block text-[9px] font-bold">ACCOUNT TYPE</span><span class="font-bold text-white">${currentUserData?.accType}</span></div>
+          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800"><span class="text-slate-500 block text-[9px] font-bold">COUNTRY</span><span class="font-bold text-white">${currentUserData?.country}</span></div>
+          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800"><span class="text-slate-500 block text-[9px] font-bold">GENDER</span><span class="font-bold text-white">${currentUserData?.gender}</span></div>
+          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800"><span class="text-slate-500 block text-[9px] font-bold">ACCOUNT NUMBER</span><span class="font-bold text-white">${currentUserData?.accNo}</span></div>
         </div>`;
     } else if (type === 'settings') {
       title.textContent = "Security Settings";
       body.innerHTML = `
         <div class="space-y-3.5 text-xs">
-          <div><label class="block font-bold text-slate-700 mb-1">New Portal Password</label><input type="password" placeholder="••••••••" class="w-full h-11 border border-slate-200 rounded-xl px-3 bg-slate-50 text-slate-800"></div>
-          <button onclick="alert('Security parameters updated successfully.'); closeMenuModal();" class="w-full h-11 bg-slate-900 text-white rounded-xl font-bold shadow-md">Save Changes</button>
+          <div><label class="block font-bold text-slate-300 mb-1">New Portal Password</label><input type="password" placeholder="••••••••" class="w-full h-11 border border-slate-700 rounded-xl px-3 bg-slate-950 text-white"></div>
+          <button onclick="alert('Security parameters updated successfully.'); closeMenuModal();" class="w-full h-11 bg-amber-400 text-slate-950 rounded-xl font-extrabold shadow-md">Save Changes</button>
         </div>`;
     } else if (type === 'status') {
       title.textContent = "Compliance & Status Audit";
-      body.innerHTML = `<div class="space-y-2.5 text-xs"><div class="flex justify-between bg-slate-50 p-3 rounded-xl font-bold border border-slate-100"><span class="text-slate-500">Account Status:</span> <span class="text-emerald-600">${currentUserData?.status}</span></div></div>`;
+      body.innerHTML = `<div class="space-y-2.5 text-xs"><div class="flex justify-between bg-slate-950 p-3 rounded-xl font-bold border border-slate-800"><span class="text-slate-400">Account Status:</span> <span class="text-emerald-400">${currentUserData?.status}</span></div></div>`;
     } else if (type === 'support') {
       title.textContent = "24/7 Client Help Desk";
-      body.innerHTML = `<div class="space-y-3.5 text-center text-xs"><p class="text-slate-500 font-medium">Contact our private relationship managers or use live chat.</p><div class="bg-slate-50 p-3 rounded-xl font-bold text-slate-800 border border-slate-100">support@apextrustbank.com</div></div>`;
+      body.innerHTML = `<div class="space-y-3.5 text-center text-xs"><p class="text-slate-400 font-medium">Contact our private relationship managers or use live chat.</p><div class="bg-slate-950 p-3 rounded-xl font-bold text-amber-300 border border-slate-800">support@apextrustbank.com</div></div>`;
     }
   };
 
@@ -2077,7 +1992,7 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
     document.getElementById('menuModal').classList.remove('flex');
   };
 
-  /* REGISTRATION & EMAIL VERIFICATION VIA EMAILJS */
+  /* REGISTRATION & EMAIL VERIFICATION VIA EMAILJS (WITHOUT USER NAME) */
   window.registerUser = async () => {
     const name = document.getElementById('regName').value.trim();
     const email = document.getElementById('regEmail').value.trim().toLowerCase();
@@ -2105,6 +2020,7 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
 
       showAlert('Sending verification code to your email...', 'warning');
 
+      // EmailJS Payload without user_name
       await emailjs.send('service_5np9r0h', 'template_u4g8qe9', {
         to_email: email,
         otp_code: generatedOTP
@@ -2201,19 +2117,19 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
         const data = d.data();
         if (data.status === 'PENDING_APPROVAL') {
           html += `
-            <div class="bg-white p-3 rounded-xl border border-amber-200 flex items-center justify-between shadow-sm text-xs">
+            <div class="bg-slate-950 p-3 rounded-xl border border-amber-500/30 flex items-center justify-between shadow-sm text-xs">
               <div>
-                <p class="font-bold text-slate-900">${data.name}</p>
-                <p class="text-[10px] text-slate-500 font-mono">Acc: ${data.accNo} • ${data.email}</p>
+                <p class="font-bold text-white">${data.name}</p>
+                <p class="text-[10px] text-slate-400 font-mono">Acc: ${data.accNo} • ${data.email}</p>
               </div>
               <button onclick="approveClientAccount('${d.id}')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-3 py-1.5 rounded-lg shadow">Approve</button>
             </div>`;
         }
       });
-      if (!html) html = '<p class="text-xs text-slate-500 text-center py-4">No pending accounts found.</p>';
+      if (!html) html = '<p class="text-xs text-slate-400 text-center py-4">No pending accounts found.</p>';
       listContainer.innerHTML = html;
     } catch (err) {
-      listContainer.innerHTML = '<p class="text-xs text-rose-600 text-center">Error loading accounts.</p>';
+      listContainer.innerHTML = '<p class="text-xs text-rose-400 text-center">Error loading accounts.</p>';
     }
   }
 
@@ -2297,12 +2213,12 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
     const holdNotice = document.getElementById('holdNotice');
 
     if (currentUserData.status === 'FROZEN' || currentUserData.holdReason) {
-      statusBadge.className = "bg-rose-100 text-rose-700 text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider";
+      statusBadge.className = "bg-rose-500/10 text-rose-400 border border-rose-500/20 text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider";
       statusBadge.textContent = "ON HOLD";
       document.getElementById('holdReasonText').textContent = currentUserData.holdReason || "Account restricted.";
       holdNotice.classList.remove('hidden');
     } else {
-      statusBadge.className = "bg-emerald-100 text-emerald-700 text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider";
+      statusBadge.className = "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider";
       statusBadge.textContent = "ACTIVE";
       holdNotice.classList.add('hidden');
     }
@@ -2320,40 +2236,40 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
     if (pendingList.length > 0) {
       pendingList.slice(-2).reverse().forEach((p, idx) => {
         const originalIdx = pendingList.length - 1 - idx;
-        html += `<div onclick="viewTransactionDetails('pending', ${originalIdx})" class="flex justify-between items-center border-b border-amber-100 pb-2 bg-amber-50/50 p-1.5 rounded-xl cursor-pointer hover:bg-amber-100 transition-all">
+        html += `<div onclick="viewTransactionDetails('pending', ${originalIdx})" class="flex justify-between items-center border-b border-amber-900/40 pb-2 bg-amber-950/30 p-1.5 rounded-xl cursor-pointer hover:bg-amber-950/60 transition-all">
           <div class="flex items-center gap-2">
-            <div class="w-7 h-7 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center font-bold">
+            <div class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center font-bold">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             </div>
-            <div><p class="font-bold text-slate-900">${p.title}</p><p class="text-[10px] text-amber-700 font-bold">Pending Review</p></div>
+            <div><p class="font-bold text-white">${p.title}</p><p class="text-[10px] text-amber-400 font-bold">Pending Review</p></div>
           </div>
-          <span class="font-bold text-amber-700 font-mono">-$${parseFloat(p.amount).toLocaleString(undefined, {minimumFractionDigits: 2})}</span>
+          <span class="font-bold text-amber-300 font-mono">-$${parseFloat(p.amount).toLocaleString(undefined, {minimumFractionDigits: 2})}</span>
         </div>`;
       });
     }
 
     history.slice(-3).reverse().forEach((t, idx) => {
       const originalIdx = history.length - 1 - idx;
-      html += `<div onclick="viewTransactionDetails('completed', ${originalIdx})" class="flex justify-between items-center border-b border-slate-50 pb-2 p-1 rounded-xl cursor-pointer hover:bg-slate-50 transition-all">
+      html += `<div onclick="viewTransactionDetails('completed', ${originalIdx})" class="flex justify-between items-center border-b border-slate-800 pb-2 p-1 rounded-xl cursor-pointer hover:bg-slate-950 transition-all">
         <div class="flex items-center gap-2">
-          <div class="w-7 h-7 rounded-full bg-cyan-100 text-cyan-700 flex items-center justify-center font-bold">
+          <div class="w-7 h-7 rounded-full bg-amber-400/10 text-amber-400 flex items-center justify-center font-bold">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7m10 0v10"/></svg>
           </div>
-          <div><p class="font-bold text-slate-900">${t.title}</p><p class="text-[10px] text-slate-400">${t.date}</p></div>
+          <div><p class="font-bold text-white">${t.title}</p><p class="text-[10px] text-slate-400">${t.date}</p></div>
         </div>
-        <span class="font-bold text-rose-600 font-mono">-$${parseFloat(t.amount).toLocaleString(undefined, {minimumFractionDigits: 2})}</span>
+        <span class="font-bold text-rose-400 font-mono">-$${parseFloat(t.amount).toLocaleString(undefined, {minimumFractionDigits: 2})}</span>
       </div>`;
     });
 
     if (!html) {
-      html = `<div class="flex justify-between items-center border-b border-slate-50 pb-2">
+      html = `<div class="flex justify-between items-center border-b border-slate-800 pb-2">
         <div class="flex items-center gap-2">
-          <div class="w-7 h-7 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center">
+          <div class="w-7 h-7 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
           </div>
-          <div><p class="font-bold text-slate-800">Account Opening Bonus</p><p class="text-[10px] text-slate-400">System Credit</p></div>
+          <div><p class="font-bold text-white">Account Opening Bonus</p><p class="text-[10px] text-slate-400">System Credit</p></div>
         </div>
-        <span class="font-bold text-emerald-600">+$0.00</span>
+        <span class="font-bold text-emerald-400">+$0.00</span>
       </div>`;
     }
     list.innerHTML = html;
