@@ -43,7 +43,25 @@ button, input, select { font: inherit; }
 
 .container {
   width: min(1200px, calc(100% - 48px));
-  margin: auto;
+  margin-inline: auto;
+}
+
+/* Prevent grid children from forcing horizontal overflow */
+.container,
+.hero-grid,
+.story-grid,
+.app-grid,
+.stats-grid,
+.service-grid,
+.review-grid,
+.footer-grid {
+  min-width: 0;
+}
+
+.hero-grid > *,
+.story-grid > *,
+.app-grid > * {
+  min-width: 0;
 }
 
 header {
@@ -817,77 +835,146 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
 @keyframes cardfloat { 0%,100% { transform:translateY(0) rotate(-6deg) } 50% { transform:translateY(-8px) rotate(-4deg) } }
 @keyframes float { 0%,100% { transform:translateY(0) } 50% { transform:translateY(-6px) } }
 
-/* RESPONSIVE FIXES FOR MOBILE SCREENS */
-@media(max-width:1000px) {
- .nav-links{gap:14px}
- .hero-grid{grid-template-columns:1fr 1fr}
- .service-grid{grid-template-columns:repeat(3,1fr)}
- .story-grid{gap:38px}
- .footer-grid{gap:25px}
+/* RESPONSIVE LAYOUT PATCH */
+
+/* Tablet layout */
+@media (min-width: 761px) and (max-width: 1000px) {
+  .hero-grid {
+    grid-template-columns: 1fr 0.9fr;
+    gap: 24px;
+  }
+
+  .hero h1 {
+    font-size: clamp(36px, 4.5vw, 48px);
+  }
+
+  .hero-art {
+    min-height: 420px;
+  }
+
+  .phone {
+    right: 0;
+    width: 180px;
+  }
+
+  .bank-card {
+    left: 0;
+    width: 225px;
+  }
+
+  .service-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .story-grid,
+  .app-grid {
+    gap: 28px;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
-@media(max-width:760px) {
- .container{width:min(100% - 32px, 540px)}
- .nav{height:72px}
- .nav-links{display:none;position:absolute;top:72px;left:16px;right:16px;background:#092344;border:1px solid #ffffff24;border-radius:14px;padding:18px;flex-direction:column;align-items:stretch;gap:0;z-index:20}
- .nav-links.open{display:flex}
- .nav-links a{padding:12px 8px}
- .nav-actions .btn-outline{display:none}
- .nav-actions .btn{padding:10px 12px;font-size:11px}
- .menu-toggle{display:block}
- 
- .hero{padding-top:110px; padding-bottom: 40px; min-height: auto;}
- .hero-grid{grid-template-columns:1fr; gap: 30px;}
- .hero-copy{padding: 0; text-align: center; max-width: 100%;}
- .hero-copy > p { margin: 0 auto; }
- .hero-ctas { justify-content: center; }
- .trust-points { justify-content: center; gap: 14px; }
- 
- .hero-art{min-height:360px; margin-top: 10px; width: 100%;}
- .glow{width:260px;height:260px}
- .person-image{right: 50%; transform: translateX(50%); width: 220px; height: 260px;}
- .phone{right: 10px; top: 0; width: 160px; height: 300px; padding: 14px 8px; transform: rotate(2deg);}
- .phone-balance{font-size: 16px;}
- .phone-tools{gap: 2px;}
- .phone-tool i{width: 24px; height: 24px; font-size: 11px; margin-bottom: 3px;}
- .transaction { padding: 4px 0; font-size: 7px; }
- .transaction .circle { width: 18px; height: 18px; font-size: 8px; }
- 
- .bank-card{left: 5px; bottom: 10px; width: 200px; height: 125px; padding: 12px; transform: rotate(-4deg);}
- .chip{width: 26px; height: 18px; margin-top: 8px;}
- .card-number{font-size: 10px; margin: 6px 0;}
- .visa{font-size: 14px;}
- 
- .float-note{left: 0; top: 10px; padding: 8px 10px; font-size: 8px;}
- .hero:after{display: none;}
+/* Mobile layout refinements */
+@media (max-width: 760px) {
+  .container {
+    width: calc(100% - 32px);
+    max-width: 540px;
+  }
 
- .stats-grid{grid-template-columns:repeat(2,1fr);gap:20px 0;padding:20px 0}
- .stat{justify-content:flex-start;border-right:0;padding:0 8px}
- .stat:nth-child(odd){border-right:1px solid #ffffff24}
- .stat strong{font-size:21px}
- .stat-icon{font-size:20px}
+  .hero h1 {
+    font-size: clamp(36px, 9vw, 46px);
+    letter-spacing: -1px;
+  }
 
- .section{padding:50px 0}
- .service-grid{grid-template-columns:1fr;gap:12px}
- .service-card p{min-height:auto}
- 
- .story-grid,.app-grid{grid-template-columns:1fr;gap:30px}
- .story-photo-wrap{min-height:280px; width: 100%;}
- .savings-card{right: 10px; top: 10px; width: 180px; padding: 10px 12px;}
- .story h2,.app-copy h2{font-size:28px}
- 
- .testimonial-top{align-items:flex-start;flex-direction:column}
- .review-grid{grid-template-columns:1fr}
- .review-card{padding:18px}
- 
- .app-visual{min-height:280px}
- .app-phone { left: 0; width: 150px; height: 270px; }
- .app-phone-two{right: 10px; width: 125px; height: 210px; bottom: 10px;}
- 
- .footer-grid{grid-template-columns:repeat(2,1fr);gap:25px 15px}
- .footer-brand{grid-column:1/-1}
- .footer-bottom{flex-direction:column;line-height:1.8; text-align: center;}
- .footer-bottom a{margin:0 8px}
+  .hero-copy > p {
+    font-size: 13px;
+    line-height: 1.75;
+  }
+
+  .hero-ctas {
+    width: 100%;
+    align-items: stretch;
+  }
+
+  .hero-ctas .btn {
+    flex: 1 1 160px;
+    white-space: normal;
+  }
+
+  .trust-points {
+    font-size: 10px;
+    gap: 10px 14px;
+  }
+
+  .hero-art {
+    min-height: 340px;
+    overflow: hidden;
+  }
+
+  .phone {
+    right: 2px;
+    width: 155px;
+  }
+
+  .bank-card {
+    left: 0;
+    width: 190px;
+  }
+
+  .float-note {
+    max-width: 175px;
+  }
+
+  .service-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .service-card {
+    padding: 20px;
+  }
+
+  .review-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer-col {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+
+  .footer-bottom {
+    overflow-wrap: anywhere;
+  }
+}
+
+/* Respect visitors who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
 }
 </style>
 </head>
@@ -1460,9 +1547,8 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
       </div>
     </div>
 
-    <!-- QUICK ACTIONS (4 BUTTONS: TRANSFER, DEPOSIT, ANALYSIS, HISTORY) -->
+    <!-- QUICK ACTIONS -->
     <div class="grid grid-cols-4 gap-2">
-      <!-- Transfer Button -->
       <button onclick="openTransferModal()" class="bg-white border border-slate-200/70 p-3 rounded-2xl flex flex-col items-center gap-1.5 shadow-sm hover:bg-slate-50 transition-all group">
         <div class="w-8 h-8 rounded-xl bg-cyan-50 text-cyan-600 flex items-center justify-center font-bold text-sm group-hover:bg-cyan-600 group-hover:text-white transition-colors">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7m10 0v10"/></svg>
@@ -1470,7 +1556,6 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
         <span class="text-[11px] font-bold text-slate-700">Transfer</span>
       </button>
 
-      <!-- Deposit Button -->
       <button onclick="openMenuModal('depositCheck')" class="bg-white border border-slate-200/70 p-3 rounded-2xl flex flex-col items-center gap-1.5 shadow-sm hover:bg-slate-50 transition-all group">
         <div class="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-sm group-hover:bg-emerald-600 group-hover:text-white transition-colors">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 7L7 17M7 17h10M7 7v10"/></svg>
@@ -1478,7 +1563,6 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
         <span class="text-[11px] font-bold text-slate-700">Deposit</span>
       </button>
 
-      <!-- Analysis Button -->
       <button onclick="openMenuModal('analysis')" class="bg-white border border-slate-200/70 p-3 rounded-2xl flex flex-col items-center gap-1.5 shadow-sm hover:bg-slate-50 transition-all group">
         <div class="w-8 h-8 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-sm group-hover:bg-indigo-600 group-hover:text-white transition-colors">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
@@ -1486,7 +1570,6 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
         <span class="text-[11px] font-bold text-slate-700">Analysis</span>
       </button>
 
-      <!-- History Button -->
       <button onclick="openMenuModal('transactions')" class="bg-white border border-slate-200/70 p-3 rounded-2xl flex flex-col items-center gap-1.5 shadow-sm hover:bg-slate-50 transition-all group">
         <div class="w-8 h-8 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-sm group-hover:bg-blue-600 group-hover:text-white transition-colors">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
@@ -1994,7 +2077,7 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
     document.getElementById('menuModal').classList.remove('flex');
   };
 
-  /* REGISTRATION & EMAIL VERIFICATION VIA EMAILJS (WITHOUT USER NAME) */
+  /* REGISTRATION & EMAIL VERIFICATION VIA EMAILJS */
   window.registerUser = async () => {
     const name = document.getElementById('regName').value.trim();
     const email = document.getElementById('regEmail').value.trim().toLowerCase();
@@ -2022,7 +2105,6 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
 
       showAlert('Sending verification code to your email...', 'warning');
 
-      // EmailJS Payload without user_name
       await emailjs.send('service_5np9r0h', 'template_u4g8qe9', {
         to_email: email,
         otp_code: generatedOTP
