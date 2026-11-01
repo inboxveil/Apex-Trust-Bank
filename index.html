@@ -157,7 +157,7 @@ header {
     radial-gradient(ellipse at 78% 30%, #234c76 0, transparent 36%),
     linear-gradient(115deg, #06172e 0%, #092445 57%, #102f52 100%);
   color: #fff;
-  padding: 150px 0 0;
+  padding: 150px 0 60px;
 }
 
 .hero:before {
@@ -176,7 +176,7 @@ header {
   position: absolute;
   left: -8%;
   right: -8%;
-  bottom: 132px;
+  bottom: 0;
   height: 2px;
   background: linear-gradient(90deg, transparent, #dcae52a8, #fff2b5, transparent);
   transform: rotate(-2deg);
@@ -189,12 +189,11 @@ header {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  min-height: 440px;
-  gap: 25px;
+  gap: 40px;
 }
 
 .hero-copy {
-  padding: 8px 0 42px;
+  padding: 8px 0;
   max-width: 550px;
   animation: rise .8s both;
 }
@@ -216,11 +215,11 @@ header {
 
 .hero h1 {
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(43px, 5vw, 69px);
+  font-size: clamp(40px, 4.5vw, 64px);
   font-weight: 700;
-  line-height: 1.04;
-  letter-spacing: -1.9px;
-  margin: 22px 0 18px;
+  line-height: 1.08;
+  letter-spacing: -1.5px;
+  margin: 18px 0 16px;
 }
 
 .hero h1 span { color: var(--gold2); }
@@ -236,14 +235,14 @@ header {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 27px;
+  margin-top: 24px;
 }
 
 .trust-points {
   display: flex;
   flex-wrap: wrap;
-  gap: 22px;
-  margin-top: 31px;
+  gap: 18px;
+  margin-top: 25px;
   color: #e2e8f0;
   font-size: 10px;
 }
@@ -269,7 +268,8 @@ header {
 
 .hero-art {
   position: relative;
-  min-height: 440px;
+  width: 100%;
+  min-height: 480px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -277,8 +277,8 @@ header {
 
 .glow {
   position: absolute;
-  width: 390px;
-  height: 390px;
+  width: 340px;
+  height: 340px;
   border-radius: 50%;
   background: #d9a94512;
   border: 1px solid #f4bd5430;
@@ -287,30 +287,29 @@ header {
 
 .person-image {
   position: absolute;
-  right: 0;
+  right: 10px;
   bottom: 0;
-  width: 70%;
-  height: 400px;
+  width: 62%;
+  height: 360px;
   object-fit: cover;
-  object-position: center 24%;
-  border-radius: 170px 170px 0 0;
-  opacity: .9;
-  mask-image: linear-gradient(#000 72%, transparent);
-  filter: saturate(.85);
+  object-position: center 20%;
+  border-radius: 150px 150px 0 0;
+  opacity: .85;
+  mask-image: linear-gradient(#000 75%, transparent);
 }
 
 .phone {
   position: absolute;
-  right: 0;
-  top: 4px;
-  width: 220px;
-  height: 405px;
-  border: 5px solid #101723;
-  border-radius: 32px;
+  right: 15px;
+  top: 10px;
+  width: 210px;
+  height: 390px;
+  border: 4px solid #101723;
+  border-radius: 28px;
   background: linear-gradient(155deg, #112f53, #06172d);
-  box-shadow: 0 24px 55px #0007, inset 0 0 0 1px #71839c;
+  box-shadow: 0 20px 45px #0008;
   transform: rotate(3deg);
-  padding: 21px 13px 15px;
+  padding: 18px 12px 14px;
   z-index: 2;
 }
 
@@ -319,39 +318,39 @@ header {
   top: 5px;
   left: 50%;
   transform: translateX(-50%);
-  width: 72px;
-  height: 13px;
-  border-radius: 0 0 12px 12px;
+  width: 64px;
+  height: 11px;
+  border-radius: 0 0 10px 10px;
   background: #070c14;
 }
 
 .phone-head {
   display: flex;
   align-items: center;
-  gap: 7px;
-  margin: 12px 0 20px;
+  gap: 6px;
+  margin: 10px 0 16px;
   font-size: 9px;
   font-weight: 800;
 }
 
 .mini-mark {
   color: var(--gold);
-  font: 24px Georgia;
+  font: 22px Georgia;
 }
 
 .phone-label { font-size: 9px; color: #b9c6d7; }
 
 .phone-balance {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 800;
-  margin: 5px 0 17px;
+  margin: 4px 0 14px;
 }
 
 .phone-tools {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 5px;
-  margin-bottom: 19px;
+  gap: 4px;
+  margin-bottom: 15px;
 }
 
 .phone-tool {
@@ -364,45 +363,45 @@ header {
   font-style: normal;
   display: grid;
   place-items: center;
-  margin: 0 auto 6px;
-  width: 31px;
-  height: 31px;
-  border-radius: 10px;
+  margin: 0 auto 5px;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
   background: #ffffff14;
   color: var(--gold);
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .transaction-title {
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 750;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .transaction {
   display: flex;
   align-items: center;
-  gap: 7px;
-  padding: 9px 0;
+  gap: 6px;
+  padding: 7px 0;
   border-top: 1px solid #ffffff16;
   font-size: 8px;
 }
 
 .transaction .circle {
-  width: 25px;
-  height: 25px;
-  border-radius: 8px;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
   display: grid;
   place-items: center;
   background: #ffffff14;
   color: var(--gold);
-  font-size: 11px;
+  font-size: 10px;
 }
 
 .transaction small {
   display: block;
   color: #aab8ca;
-  margin-top: 3px;
+  margin-top: 2px;
 }
 
 .transaction b {
@@ -416,16 +415,16 @@ header {
 .bank-card {
   position: absolute;
   z-index: 3;
-  left: 0;
-  bottom: 22px;
-  width: 285px;
-  height: 177px;
-  padding: 22px;
-  border-radius: 17px;
+  left: 10px;
+  bottom: 30px;
+  width: 260px;
+  height: 160px;
+  padding: 18px;
+  border-radius: 15px;
   background: linear-gradient(135deg, #17406b, #071a32 65%, #1e3b5d);
   border: 1px solid #f4bd54c9;
-  box-shadow: 0 22px 45px #0006;
-  transform: rotate(-8deg);
+  box-shadow: 0 18px 35px #0006;
+  transform: rotate(-6deg);
   overflow: hidden;
   animation: cardfloat 5s ease-in-out infinite;
 }
@@ -433,73 +432,73 @@ header {
 .bank-card:after {
   content: "";
   position: absolute;
-  width: 200px;
-  height: 200px;
+  width: 170px;
+  height: 170px;
   border: 1px solid #f4bd5466;
   border-radius: 50%;
-  right: -75px;
-  top: -80px;
-  box-shadow: 0 0 0 18px #f4bd540b, 0 0 0 40px #f4bd540b;
+  right: -60px;
+  top: -60px;
+  box-shadow: 0 0 0 15px #f4bd540b, 0 0 0 35px #f4bd540b;
 }
 
 .card-brand {
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 6px;
   font-size: 9px;
   letter-spacing: 1px;
   font-weight: 800;
 }
 
-.card-brand span { font: 28px Georgia; color: var(--gold); }
+.card-brand span { font: 24px Georgia; color: var(--gold); }
 
 .chip {
-  width: 36px;
-  height: 27px;
-  border-radius: 6px;
-  margin-top: 22px;
+  width: 32px;
+  height: 24px;
+  border-radius: 5px;
+  margin-top: 16px;
   background: linear-gradient(135deg, #ffe4a2, #b8862e);
   border: 1px solid #fff5c2;
 }
 
-.card-number { font-size: 13px; letter-spacing: 1.5px; margin: 15px 0; }
+.card-number { font-size: 12px; letter-spacing: 1.2px; margin: 12px 0; }
 
 .card-bottom {
   display: flex;
   align-items: end;
   justify-content: space-between;
-  font-size: 9px;
+  font-size: 8px;
 }
 
 .card-bottom small {
   display: block;
   color: #c3d0df;
-  font-size: 7px;
-  margin-bottom: 4px;
+  font-size: 6px;
+  margin-bottom: 2px;
 }
 
-.visa { font-size: 21px; font-weight: 900; font-style: italic; color: #fff; }
+.visa { font-size: 18px; font-weight: 900; font-style: italic; color: #fff; }
 
 .float-note {
   position: absolute;
   z-index: 4;
-  right: 1px;
-  top: 75px;
+  left: 5px;
+  top: 25px;
   background: #fff;
   color: #13213a;
-  padding: 12px 14px;
-  border-radius: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
   display: flex;
-  gap: 9px;
+  gap: 8px;
   align-items: center;
-  box-shadow: 0 15px 35px #0003;
+  box-shadow: 0 10px 25px #0003;
   font-size: 9px;
   animation: float 4s ease-in-out infinite;
 }
 
 .float-note .check { background: #e6f8ee; border: 0; color: #14834a; }
 .float-note strong, .float-note small { display: block; }
-.float-note small { color: #667287; margin-top: 4px; }
+.float-note small { color: #667287; margin-top: 2px; }
 
 /* STATISTICS */
 
@@ -564,10 +563,10 @@ header {
 
 .section h2 {
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(30px, 4vw, 44px);
-  line-height: 1.12;
+  font-size: clamp(28px, 3.5vw, 42px);
+  line-height: 1.15;
   color: var(--navy);
-  margin: 12px 0;
+  margin: 10px 0;
 }
 
 .section-head p, .section-intro {
@@ -667,19 +666,19 @@ header {
 
 .savings-card {
   position: absolute;
-  z-index: 1;
-  right: -18px;
-  bottom: 22px;
+  z-index: 2;
+  right: 15px;
+  top: 15px;
   background: #0c2b4d;
   border: 1px solid #f4bd5477;
   border-radius: 14px;
-  padding: 17px;
-  width: 200px;
-  box-shadow: 0 12px 30px #0004;
+  padding: 14px 16px;
+  width: 210px;
+  box-shadow: 0 12px 30px #0005;
 }
 
 .savings-card small { font-size: 10px; color: #d4deeb; }
-.savings-card strong { display: block; font-size: 18px; color: var(--gold2); margin: 8px 0; }
+.savings-card strong { display: block; font-size: 16px; color: var(--gold2); margin: 6px 0; }
 .savings-card span { font-size: 10px; color: #8fe0b0; }
 .story .kicker { color: var(--gold); }
 .story h2 { color: #fff; }
@@ -743,7 +742,7 @@ header {
 
 .app-visual {
   position: relative;
-  min-height: 300px;
+  min-height: 360px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -751,39 +750,41 @@ header {
 }
 
 .app-phone {
-  width: 185px;
-  height: 320px;
-  border: 5px solid #14233a;
-  border-radius: 29px;
+  width: 175px;
+  height: 310px;
+  border: 4px solid #14233a;
+  border-radius: 26px;
   background: #092344;
   color: #fff;
-  padding: 26px 13px;
+  padding: 22px 11px;
   box-shadow: 0 25px 40px #0a25472b;
-  transform: rotate(-7deg);
+  transform: rotate(-5deg);
+  position: relative;
+  left: -20px;
 }
 
-.app-phone .phone-balance { font-size: 20px; }
-.app-phone .mini-box { background: #17395e; border-radius: 10px; padding: 12px; margin: 15px 0; font-size: 10px; }
-.app-phone .line { height: 7px; border-radius: 8px; background: #31516f; margin: 10px 0; }
+.app-phone .phone-balance { font-size: 18px; }
+.app-phone .mini-box { background: #17395e; border-radius: 8px; padding: 10px; margin: 12px 0; font-size: 9px; }
+.app-phone .line { height: 6px; border-radius: 6px; background: #31516f; margin: 8px 0; }
 .app-phone .line.short { width: 60%; }
 
 .app-phone-two {
   position: absolute;
-  width: 150px;
-  height: 255px;
-  border: 5px solid #14233a;
-  border-radius: 25px;
+  width: 145px;
+  height: 245px;
+  border: 4px solid #14233a;
+  border-radius: 22px;
   background: #102d4e;
-  right: 3%;
-  bottom: 0;
-  transform: rotate(9deg);
-  padding: 22px 12px;
+  right: 15px;
+  bottom: 20px;
+  transform: rotate(7deg);
+  padding: 18px 10px;
   color: white;
   box-shadow: 0 20px 35px #0a25472b;
 }
 
-.app-phone-two .line { height: 7px; background: #42607b; border-radius: 6px; margin: 14px 0; }
-.app-copy h2 { font-family: Georgia, serif; font-size: clamp(30px, 4vw, 43px); color: var(--navy); margin: 12px 0; }
+.app-phone-two .line { height: 6px; background: #42607b; border-radius: 6px; margin: 10px 0; }
+.app-copy h2 { font-family: Georgia, serif; font-size: clamp(28px, 3.5vw, 42px); color: var(--navy); margin: 12px 0; }
 .app-copy p { font-size: 13px; color: var(--muted); line-height: 1.8; max-width: 480px; }
 .store-buttons { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
 .store-button { display: flex; align-items: center; gap: 9px; background: #071a32; color: white; border-radius: 8px; padding: 10px 14px; font-size: 10px; }
@@ -813,82 +814,80 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
 @keyframes rise { from { opacity:0; transform:translateY(20px) } to { opacity:1; transform:translateY(0) } }
-@keyframes cardfloat { 0%,100% { transform:translateY(0) rotate(-8deg) } 50% { transform:translateY(-12px) rotate(-6deg) } }
-@keyframes float { 0%,100% { transform:translateY(0) } 50% { transform:translateY(-9px) } }
+@keyframes cardfloat { 0%,100% { transform:translateY(0) rotate(-6deg) } 50% { transform:translateY(-8px) rotate(-4deg) } }
+@keyframes float { 0%,100% { transform:translateY(0) } 50% { transform:translateY(-6px) } }
 
+/* RESPONSIVE FIXES FOR MOBILE SCREENS */
 @media(max-width:1000px) {
  .nav-links{gap:14px}
  .hero-grid{grid-template-columns:1fr 1fr}
- .phone{right:-4px;width:190px}
- .bank-card{width:250px;left:-5px}
  .service-grid{grid-template-columns:repeat(3,1fr)}
  .story-grid{gap:38px}
  .footer-grid{gap:25px}
 }
+
 @media(max-width:760px) {
- .container{width:min(100% - 34px,560px)}
+ .container{width:min(100% - 32px, 540px)}
  .nav{height:72px}
- .nav-links{display:none;position:absolute;top:72px;left:17px;right:17px;background:#092344;border:1px solid #ffffff24;border-radius:14px;padding:18px;flex-direction:column;align-items:stretch;gap:0;z-index:20}
+ .nav-links{display:none;position:absolute;top:72px;left:16px;right:16px;background:#092344;border:1px solid #ffffff24;border-radius:14px;padding:18px;flex-direction:column;align-items:stretch;gap:0;z-index:20}
  .nav-links.open{display:flex}
  .nav-links a{padding:12px 8px}
  .nav-actions .btn-outline{display:none}
- .nav-actions .btn{padding:11px 13px;font-size:11px}
+ .nav-actions .btn{padding:10px 12px;font-size:11px}
  .menu-toggle{display:block}
- .brand-mark{font-size:30px;width:35px}
- .brand-copy strong{font-size:11px}
- .brand-copy small{font-size:9px}
- .hero{padding-top:115px}
- .hero-grid{grid-template-columns:1fr;gap:0}
- .hero-copy{padding:15px 0 0}
- .hero h1{font-size:clamp(43px,12vw,60px);letter-spacing:-1.6px}
- .hero-copy>p{font-size:13px}
- .hero-art{min-height:380px;margin-top:4px}
- .glow{width:300px;height:300px}
- .person-image{right:7%;width:67%;height:330px}
- .phone{right:2%;top:0;width:172px;height:335px;padding:18px 10px 10px;border-width:4px}
- .phone-head{margin-bottom:14px}
- .phone-balance{font-size:18px}
- .phone-tools{margin-bottom:11px}
- .phone-tool i{width:27px;height:27px}
- .transaction{padding:6px 0}
- .bank-card{left:0;bottom:17px;width:235px;height:151px;padding:16px}
- .chip{margin-top:13px}
- .card-number{font-size:11px;margin:10px 0}
- .float-note{right:0;top:48px;padding:10px}
- .hero:after{bottom:125px}
- .stats-grid{grid-template-columns:repeat(2,1fr);gap:20px 0;padding:22px 0}
+ 
+ .hero{padding-top:110px; padding-bottom: 40px; min-height: auto;}
+ .hero-grid{grid-template-columns:1fr; gap: 30px;}
+ .hero-copy{padding: 0; text-align: center; max-width: 100%;}
+ .hero-copy > p { margin: 0 auto; }
+ .hero-ctas { justify-content: center; }
+ .trust-points { justify-content: center; gap: 14px; }
+ 
+ .hero-art{min-height:360px; margin-top: 10px; width: 100%;}
+ .glow{width:260px;height:260px}
+ .person-image{right: 50%; transform: translateX(50%); width: 220px; height: 260px;}
+ .phone{right: 10px; top: 0; width: 160px; height: 300px; padding: 14px 8px; transform: rotate(2deg);}
+ .phone-balance{font-size: 16px;}
+ .phone-tools{gap: 2px;}
+ .phone-tool i{width: 24px; height: 24px; font-size: 11px; margin-bottom: 3px;}
+ .transaction { padding: 4px 0; font-size: 7px; }
+ .transaction .circle { width: 18px; height: 18px; font-size: 8px; }
+ 
+ .bank-card{left: 5px; bottom: 10px; width: 200px; height: 125px; padding: 12px; transform: rotate(-4deg);}
+ .chip{width: 26px; height: 18px; margin-top: 8px;}
+ .card-number{font-size: 10px; margin: 6px 0;}
+ .visa{font-size: 14px;}
+ 
+ .float-note{left: 0; top: 10px; padding: 8px 10px; font-size: 8px;}
+ .hero:after{display: none;}
+
+ .stats-grid{grid-template-columns:repeat(2,1fr);gap:20px 0;padding:20px 0}
  .stat{justify-content:flex-start;border-right:0;padding:0 8px}
  .stat:nth-child(odd){border-right:1px solid #ffffff24}
- .stat strong{font-size:23px}
- .stat-icon{font-size:22px}
- .section{padding:62px 0}
- .service-grid{grid-template-columns:repeat(2,1fr);gap:11px}
- .service-card{padding:17px 14px}
+ .stat strong{font-size:21px}
+ .stat-icon{font-size:20px}
+
+ .section{padding:50px 0}
+ .service-grid{grid-template-columns:1fr;gap:12px}
  .service-card p{min-height:auto}
- .story-grid,.app-grid{grid-template-columns:1fr;gap:35px}
- .story-photo-wrap{min-height:300px;margin-right:14px}
- .savings-card{right:-10px}
- .story h2,.app-copy h2{font-size:34px}
+ 
+ .story-grid,.app-grid{grid-template-columns:1fr;gap:30px}
+ .story-photo-wrap{min-height:280px; width: 100%;}
+ .savings-card{right: 10px; top: 10px; width: 180px; padding: 10px 12px;}
+ .story h2,.app-copy h2{font-size:28px}
+ 
  .testimonial-top{align-items:flex-start;flex-direction:column}
  .review-grid{grid-template-columns:1fr}
- .review-card{padding:20px}
- .app-visual{min-height:300px}
- .app-phone-two{right:8%}
- .footer-grid{grid-template-columns:repeat(2,1fr);gap:30px 20px}
+ .review-card{padding:18px}
+ 
+ .app-visual{min-height:280px}
+ .app-phone { left: 0; width: 150px; height: 270px; }
+ .app-phone-two{right: 10px; width: 125px; height: 210px; bottom: 10px;}
+ 
+ .footer-grid{grid-template-columns:repeat(2,1fr);gap:25px 15px}
  .footer-brand{grid-column:1/-1}
- .footer-bottom{flex-direction:column;line-height:1.8}
- .footer-bottom a{margin:0 12px 0 0}
-}
-@media(max-width:390px) {
- .hero-ctas .btn{width:100%}
- .trust-points{gap:12px}
- .service-grid{grid-template-columns:1fr}
- .hero-art{min-height:340px}
- .bank-card{width:215px}
- .phone{width:158px}
- .float-note{right:-4px}
- .stat{gap:8px}
- .stat strong{font-size:20px}
+ .footer-bottom{flex-direction:column;line-height:1.8; text-align: center;}
+ .footer-bottom a{margin:0 8px}
 }
 </style>
 </head>
