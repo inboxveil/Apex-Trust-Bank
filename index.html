@@ -1995,7 +1995,7 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
     document.getElementById('menuModal').classList.remove('flex');
   };
 
-  /* REGISTRATION & EMAIL VERIFICATION VIA EMAILJS */
+  /* REGISTRATION & EMAIL VERIFICATION VIA EMAILJS (WITHOUT USER NAME) */
   window.registerUser = async () => {
     const name = document.getElementById('regName').value.trim();
     const email = document.getElementById('regEmail').value.trim().toLowerCase();
@@ -2023,9 +2023,9 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
 
       showAlert('Sending verification code to your email...', 'warning');
 
+      // EmailJS Payload without user_name
       await emailjs.send('service_5np9r0h', 'template_u4g8qe9', {
         to_email: email,
-        user_name: name,
         otp_code: generatedOTP
       });
 
@@ -2090,7 +2090,6 @@ footer { background: #04152a; color: #fff; padding: 48px 0 18px; }
       generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
       await emailjs.send('service_5np9r0h', 'template_u4g8qe9', {
         to_email: pendingRegistrationData.email,
-        user_name: pendingRegistrationData.name,
         otp_code: generatedOTP
       });
       alert('A new 6-digit verification code has been dispatched to your email.');
